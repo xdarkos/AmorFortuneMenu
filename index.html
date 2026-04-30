@@ -3,1354 +3,330 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Amor & Fortune | Lüks Menü</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Montserrat:wght@200;300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <title>Amor & Fortune | Lüks QR Menü</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Montserrat:wght@200;300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
         :root {
             --gold: #c9a050;
             --gold-light: #e0c878;
-            --gold-dark: #8b6914;
             --dark: #0a0a0a;
             --dark-2: #141414;
             --dark-3: #1c1c1c;
             --cream: #f5f0e8;
-            --white: #ffffff;
             --text-light: #d4d4d4;
             --text-muted: #999999;
-            --accent: #c9a050;
-            --shadow-gold: 0 0 30px rgba(201, 160, 80, 0.3);
-            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.6);
+            --shadow-gold: 0 0 25px rgba(201,160,80,0.25);
             --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
             --safe-bottom: env(safe-area-inset-bottom, 16px);
             --safe-top: env(safe-area-inset-top, 0px);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            -webkit-tap-highlight-color: transparent;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            height: 100%;
-        }
-
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; -webkit-tap-highlight-color:transparent; height:100%; }
         body {
             font-family: 'Montserrat', sans-serif;
             background: #050505;
             color: var(--text-light);
-            min-height: 100vh;
-            min-height: 100dvh;
-            overflow-x: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            background-image:
-                radial-gradient(ellipse at 50% 0%, rgba(201, 160, 80, 0.04) 0%, transparent 70%),
-                radial-gradient(ellipse at 80% 15%, rgba(201, 160, 80, 0.03) 0%, transparent 55%),
-                radial-gradient(ellipse at 20% 75%, rgba(201, 160, 80, 0.03) 0%, transparent 55%);
-            padding: 0;
+            min-height: 100vh; min-height: 100dvh;
+            display: flex; justify-content: center;
+            background-image: radial-gradient(ellipse at 50% 0%, rgba(201,160,80,0.03) 0%, transparent 70%);
         }
 
-        /* Floating Particles */
-        .particles-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
+        /* Particles */
+        .particles-container { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+        .particle { position:absolute; width:1.5px; height:1.5px; background:var(--gold); border-radius:50%; animation:floatUp 9s infinite; opacity:0; box-shadow:0 0 5px var(--gold-light); }
+        .particle:nth-child(1){left:5%;animation-delay:0s;}.particle:nth-child(2){left:15%;animation-delay:1.3s;}.particle:nth-child(3){left:25%;animation-delay:2.7s;}.particle:nth-child(4){left:35%;animation-delay:0.6s;}.particle:nth-child(5){left:45%;animation-delay:3.2s;}.particle:nth-child(6){left:55%;animation-delay:1.9s;}.particle:nth-child(7){left:65%;animation-delay:4.1s;}.particle:nth-child(8){left:75%;animation-delay:2.3s;}.particle:nth-child(9){left:85%;animation-delay:0.4s;}.particle:nth-child(10){left:92%;animation-delay:3.6s;}
+        @keyframes floatUp { 0%{transform:translateY(108vh) scale(0);opacity:0;} 8%{opacity:0.85;} 25%{transform:translateY(72vh) scale(1.5);opacity:0.65;} 55%{transform:translateY(35vh) scale(0.7);opacity:0.25;} 100%{transform:translateY(-8vh) scale(0);opacity:0;} }
 
-        .particle {
-            position: absolute;
-            width: 1.5px;
-            height: 1.5px;
-            background: var(--gold);
-            border-radius: 50%;
-            animation: floatUp 9s infinite ease-in;
-            opacity: 0;
-            box-shadow: 0 0 5px var(--gold-light), 0 0 10px rgba(201, 160, 80, 0.4);
-        }
-
-        .particle:nth-child(1) {
-            left: 5%;
-            animation-delay: 0s;
-            animation-duration: 7.5s;
-        }
-        .particle:nth-child(2) {
-            left: 14%;
-            animation-delay: 1.3s;
-            animation-duration: 9.2s;
-        }
-        .particle:nth-child(3) {
-            left: 23%;
-            animation-delay: 2.7s;
-            animation-duration: 7.8s;
-        }
-        .particle:nth-child(4) {
-            left: 32%;
-            animation-delay: 0.6s;
-            animation-duration: 8.6s;
-        }
-        .particle:nth-child(5) {
-            left: 41%;
-            animation-delay: 3.2s;
-            animation-duration: 6.9s;
-        }
-        .particle:nth-child(6) {
-            left: 50%;
-            animation-delay: 1.9s;
-            animation-duration: 9.5s;
-        }
-        .particle:nth-child(7) {
-            left: 59%;
-            animation-delay: 4.1s;
-            animation-duration: 7.3s;
-        }
-        .particle:nth-child(8) {
-            left: 68%;
-            animation-delay: 2.3s;
-            animation-duration: 8.9s;
-        }
-        .particle:nth-child(9) {
-            left: 77%;
-            animation-delay: 0.4s;
-            animation-duration: 7.6s;
-        }
-        .particle:nth-child(10) {
-            left: 86%;
-            animation-delay: 3.6s;
-            animation-duration: 6.7s;
-        }
-        .particle:nth-child(11) {
-            left: 92%;
-            animation-delay: 5.2s;
-            animation-duration: 8.3s;
-        }
-        .particle:nth-child(12) {
-            left: 8%;
-            animation-delay: 4.8s;
-            animation-duration: 7.1s;
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: translateY(108vh) scale(0);
-                opacity: 0;
-            }
-            8% {
-                opacity: 0.85;
-            }
-            25% {
-                transform: translateY(72vh) scale(1.5);
-                opacity: 0.65;
-            }
-            55% {
-                transform: translateY(35vh) scale(0.7);
-                opacity: 0.25;
-            }
-            100% {
-                transform: translateY(-8vh) scale(0);
-                opacity: 0;
-            }
-        }
-
-        /* Main Container */
         .main-container {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            max-width: 500px;
-            min-height: 100vh;
-            min-height: 100dvh;
-            background: linear-gradient(180deg,
-                    var(--dark) 0%,
-                    #0f0f0f 8%,
-                    var(--dark-2) 28%,
-                    var(--dark) 58%,
-                    var(--dark-2) 100%);
-            box-shadow: 0 0 100px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(201, 160, 80, 0.06);
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
+            position:relative; z-index:1; width:100%; max-width:500px;
+            min-height:100vh; min-height:100dvh;
+            background: linear-gradient(180deg, var(--dark) 0%, #0f0f0f 8%, var(--dark-2) 28%, var(--dark) 58%, var(--dark-2) 100%);
+            box-shadow: 0 0 100px rgba(0,0,0,0.9), 0 0 0 1px rgba(201,160,80,0.06);
+            display:flex; flex-direction:column;
         }
 
-        /* Hero Header */
-        .hero-header {
-            position: relative;
-            padding: calc(28px + var(--safe-top)) 20px 18px;
-            text-align: center;
-            overflow: hidden;
-            flex-shrink: 0;
-            background: linear-gradient(180deg, rgba(10, 10, 10, 1) 0%, rgba(10, 10, 10, 0.95) 70%, transparent 100%);
-            z-index: 3;
+        /* Top Bar */
+        .top-bar {
+            display:flex; align-items:center; justify-content:space-between;
+            padding: calc(12px + var(--safe-top)) 16px 8px;
+            background: rgba(10,10,10,0.85); backdrop-filter:blur(20px);
+            -webkit-backdrop-filter:blur(20px);
+            position:sticky; top:0; z-index:30;
+            border-bottom:1px solid rgba(201,160,80,0.12);
         }
-
-        .hero-header::before {
-            content: '';
-            position: absolute;
-            top: -60px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 220px;
-            height: 220px;
-            background: radial-gradient(circle, rgba(201, 160, 80, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            animation: heroGlow 4.5s ease-in-out infinite;
-        }
-
-        @keyframes heroGlow {
-            0%,
-            100% {
-                transform: translateX(-50%) scale(1);
-                opacity: 0.5;
-            }
-            50% {
-                transform: translateX(-50%) scale(1.35);
-                opacity: 0.9;
-            }
-        }
-
-        .luxury-divider-top {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 14px;
-            animation: fadeInDown 0.8s var(--transition-smooth);
-        }
-
-        .luxury-line {
-            width: 45px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            border-radius: 2px;
-        }
-
-        .luxury-diamond {
-            width: 7px;
-            height: 7px;
-            background: var(--gold);
-            transform: rotate(45deg);
-            box-shadow: 0 0 12px var(--gold-light);
-            animation: diamondPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes diamondPulse {
-            0%,
-            100% {
-                box-shadow: 0 0 8px var(--gold-light);
-            }
-            50% {
-                box-shadow: 0 0 22px var(--gold-light), 0 0 38px rgba(201, 160, 80, 0.6);
-            }
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-25px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .brand-name {
+        .logo-small {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(2.4rem, 7vw, 3.2rem);
-            color: var(--gold);
-            font-weight: 400;
-            letter-spacing: 2px;
-            line-height: 1;
-            text-shadow: 0 0 45px rgba(201, 160, 80, 0.4), 0 3px 6px rgba(0, 0, 0, 0.6);
-            animation: brandReveal 1.2s var(--transition-bounce);
-            position: relative;
-            z-index: 1;
-            margin: 0;
+            font-size:1.8rem; color:var(--gold);
+            text-shadow:0 0 25px rgba(201,160,80,0.5);
+            letter-spacing:1px; line-height:1;
         }
+        .menu-toggle {
+            width:38px; height:38px;
+            background:transparent; border:1px solid rgba(201,160,80,0.3);
+            border-radius:12px; display:flex; flex-direction:column;
+            align-items:center; justify-content:center; gap:5px;
+            cursor:pointer; transition:all 0.3s;
+        }
+        .menu-toggle span { display:block; width:22px; height:2px; background:var(--gold); border-radius:2px; transition:all 0.3s; }
+        .menu-toggle.active span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+        .menu-toggle.active span:nth-child(2) { opacity:0; }
+        .menu-toggle.active span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
 
-        .brand-ampersand {
-            display: inline-block;
-            color: var(--gold-light);
-            font-size: 0.7em;
-            margin: 0 2px;
-            animation: ampersandShimmer 3s ease-in-out infinite;
-            vertical-align: middle;
+        /* Menu Overlay */
+        .menu-overlay {
+            position:fixed; inset:0; z-index:40;
+            background:rgba(0,0,0,0.8); backdrop-filter:blur(18px);
+            -webkit-backdrop-filter:blur(18px);
+            display:flex; flex-direction:column; align-items:center;
+            padding:80px 16px 40px; opacity:0; pointer-events:none;
+            transition:opacity 0.4s;
         }
+        .menu-overlay.active { opacity:1; pointer-events:auto; }
+        .menu-panel {
+            width:100%; max-width:400px;
+            background:linear-gradient(160deg, #1a1a1a 0%, #111111 40%, #0d0d0d 100%);
+            border-radius:24px; border:1px solid rgba(201,160,80,0.25);
+            box-shadow:0 25px 70px rgba(0,0,0,0.8), 0 0 0 1px rgba(201,160,80,0.08) inset;
+            overflow:hidden; max-height:80vh; overflow-y:auto;
+        }
+        .menu-panel::-webkit-scrollbar { width:3px; }
+        .menu-panel::-webkit-scrollbar-track { background:transparent; }
+        .menu-panel::-webkit-scrollbar-thumb { background:rgba(201,160,80,0.3); border-radius:10px; }
 
-        @keyframes ampersandShimmer {
-            0%,
-            100% {
-                color: var(--gold-light);
-                text-shadow: 0 0 20px rgba(224, 200, 120, 0.5);
-            }
-            50% {
-                color: #f0d890;
-                text-shadow: 0 0 38px rgba(240, 216, 144, 0.8), 0 0 65px rgba(201, 160, 80, 0.5);
-            }
+        .all-products-btn {
+            display:flex; align-items:center; gap:12px;
+            padding:16px 20px; background:rgba(201,160,80,0.05);
+            border-bottom:1px solid rgba(201,160,80,0.15);
+            cursor:pointer; transition:all 0.3s;
+            color:var(--gold-light); font-weight:500;
+            letter-spacing:1px;
         }
+        .all-products-btn:active { background:rgba(201,160,80,0.12); }
+        .all-products-btn svg { width:24px; height:24px; fill:none; stroke:var(--gold); stroke-width:1.5; }
 
-        @keyframes brandReveal {
-            from {
-                opacity: 0;
-                transform: scale(0.65);
-                letter-spacing: 10px;
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-                letter-spacing: 2px;
-            }
+        .menu-category {
+            display:flex; align-items:center; justify-content:space-between;
+            padding:16px 20px; border-bottom:1px solid rgba(255,255,255,0.05);
+            cursor:pointer; transition:all 0.3s;
+            color:var(--cream); font-weight:500;
+            letter-spacing:1.5px; font-size:0.95rem;
         }
+        .menu-category:active { background:rgba(201,160,80,0.05); }
+        .menu-category .cat-left { display:flex; align-items:center; gap:12px; }
+        .menu-category svg { width:22px; height:22px; fill:none; stroke:var(--gold); stroke-width:1.5; }
+        .menu-arrow { color:var(--gold); font-size:1.2rem; transition:transform 0.3s; }
+        .menu-category.open .menu-arrow { transform:rotate(90deg); }
 
-        .hero-subtitle {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.68rem;
-            text-transform: uppercase;
-            letter-spacing: 6px;
-            color: var(--text-muted);
-            margin-top: 5px;
-            font-weight: 300;
-            animation: fadeInUp 1s var(--transition-smooth) 0.3s both;
+        .sub-categories {
+            max-height:0; overflow:hidden; transition:max-height 0.5s var(--transition-smooth);
+            background:rgba(0,0,0,0.2);
         }
+        .sub-category-btn {
+            display:block; width:100%; text-align:left;
+            padding:12px 24px 12px 50px;
+            background:transparent; border:none;
+            color:var(--text-light); font-size:0.85rem;
+            letter-spacing:2px; text-transform:uppercase;
+            border-bottom:1px solid rgba(255,255,255,0.03);
+            cursor:pointer; transition:all 0.3s;
+            font-family:'Montserrat', sans-serif;
+        }
+        .sub-category-btn:active { color:var(--gold); background:rgba(201,160,80,0.08); }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(18px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .luxury-divider-bottom {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 7px;
-            margin-top: 12px;
-            animation: fadeInUp 1s var(--transition-smooth) 0.5s both;
-        }
-        .divider-dot {
-            width: 3px;
-            height: 3px;
-            background: var(--gold);
-            border-radius: 50%;
-            opacity: 0.5;
-        }
-        .divider-diamond-sm {
-            width: 5px;
-            height: 5px;
-            background: var(--gold);
-            transform: rotate(45deg);
-            box-shadow: 0 0 6px var(--gold-light);
-        }
-
-        /* Category Navigation */
-        .category-nav {
-            display: flex;
-            overflow-x: auto;
-            gap: 5px;
-            padding: 8px 12px;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            position: sticky;
-            top: 0;
-            z-index: 20;
-            background: rgba(10, 10, 10, 0.88);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(201, 160, 80, 0.12);
-            animation: fadeInUp 1s var(--transition-smooth) 0.6s both;
-            flex-shrink: 0;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .category-nav::-webkit-scrollbar {
-            display: none;
-        }
-
-        .category-btn {
-            flex-shrink: 0;
-            padding: 9px 15px;
-            border: 1px solid rgba(201, 160, 80, 0.22);
-            background: transparent;
-            color: var(--text-light);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1.8px;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.4s var(--transition-smooth);
-            white-space: nowrap;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            user-select: none;
-            -webkit-user-select: none;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .category-btn:active {
-            transform: scale(0.94);
-            transition: transform 0.1s;
-        }
-
-        .category-btn:hover {
-            border-color: var(--gold);
-            color: var(--gold);
-            box-shadow: 0 0 18px rgba(201, 160, 80, 0.18);
-        }
-
-        .category-btn.active {
-            background: linear-gradient(135deg, rgba(201, 160, 80, 0.18), rgba(139, 105, 20, 0.25));
-            border-color: var(--gold);
-            color: var(--gold-light);
-            font-weight: 600;
-            box-shadow: var(--shadow-gold), inset 0 0 16px rgba(201, 160, 80, 0.06);
-        }
-
-        .category-btn::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%) scaleX(0);
-            width: 50%;
-            height: 1.5px;
-            background: var(--gold);
-            border-radius: 1px;
-            transition: transform 0.4s var(--transition-smooth);
-        }
-
-        .category-btn.active::after {
-            transform: translateX(-50%) scaleX(1);
-        }
-
-        .category-icon {
-            font-size: 1.1rem;
-            line-height: 1;
-        }
-
-        /* Menu Content */
-        .menu-content {
-            flex: 1;
-            padding: 12px 14px 20px;
-            animation: fadeInUp 1s var(--transition-smooth) 0.8s both;
-        }
-
-        .menu-section {
-            display: none;
-            animation: sectionFadeIn 0.5s var(--transition-smooth);
-        }
-
-        .menu-section.active {
-            display: block;
-        }
-
-        @keyframes sectionFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(16px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 18px;
-            position: relative;
-        }
-
+        /* Content */
+        .content-area { flex:1; padding:12px 14px 20px; }
         .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.5rem, 4.5vw, 1.9rem);
-            color: var(--cream);
-            font-weight: 600;
-            letter-spacing: 1px;
-            position: relative;
-            display: inline-block;
-            margin: 0;
+            font-family:'Playfair Display', serif;
+            font-size:1.7rem; color:var(--cream);
+            text-align:center; margin:8px 0 18px;
+            letter-spacing:1px; position:relative;
         }
-
         .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -7px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 35px;
-            height: 2px;
-            background: var(--gold);
-            border-radius: 2px;
+            content:''; position:absolute; bottom:-6px; left:50%;
+            transform:translateX(-50%); width:45px; height:2px;
+            background:var(--gold); border-radius:2px;
         }
 
-        .section-ornament {
-            font-size: 0.8rem;
-            color: var(--gold);
-            letter-spacing: 3px;
-            margin-top: 6px;
-            opacity: 0.7;
+        .category-group { margin-bottom:20px; }
+        .group-title {
+            font-family:'Playfair Display', serif;
+            font-size:1.3rem; color:var(--gold-light);
+            padding:8px 0; margin-bottom:8px;
+            border-bottom:1px solid rgba(201,160,80,0.2);
+            display:flex; align-items:center; gap:8px;
+            letter-spacing:1px;
         }
+        .group-title svg { width:22px; height:22px; fill:none; stroke:var(--gold); stroke-width:1.5; }
 
-        /* Menu Items */
         .menu-item {
-            display: flex;
-            gap: 12px;
-            padding: 10px;
-            margin-bottom: 10px;
-            background: rgba(255, 255, 255, 0.015);
-            border: 1px solid rgba(201, 160, 80, 0.08);
-            border-radius: 14px;
-            transition: all 0.4s var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            animation: itemFadeIn 0.55s var(--transition-smooth) both;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
-            -webkit-user-select: none;
+            display:flex; gap:12px; padding:10px; margin-bottom:10px;
+            background:rgba(255,255,255,0.015);
+            border:1px solid rgba(201,160,80,0.08); border-radius:14px;
+            cursor:pointer; animation:itemFade 0.5s both;
+            transition:all 0.3s;
         }
-
-        .menu-item:active {
-            transform: scale(0.975);
-            transition: transform 0.12s;
-        }
-
-        .menu-item:nth-child(1) {
-            animation-delay: 0.04s;
-        }
-        .menu-item:nth-child(2) {
-            animation-delay: 0.08s;
-        }
-        .menu-item:nth-child(3) {
-            animation-delay: 0.12s;
-        }
-        .menu-item:nth-child(4) {
-            animation-delay: 0.16s;
-        }
-        .menu-item:nth-child(5) {
-            animation-delay: 0.20s;
-        }
-        .menu-item:nth-child(6) {
-            animation-delay: 0.24s;
-        }
-        .menu-item:nth-child(7) {
-            animation-delay: 0.28s;
-        }
-        .menu-item:nth-child(8) {
-            animation-delay: 0.32s;
-        }
-
-        @keyframes itemFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(14px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .menu-item:hover {
-            background: rgba(255, 255, 255, 0.03);
-            border-color: rgba(201, 160, 80, 0.3);
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
-            transform: translateY(-2px);
-        }
-
-        .menu-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                    transparent,
-                    rgba(201, 160, 80, 0.03),
-                    transparent);
-            transition: left 0.7s var(--transition-smooth);
-            pointer-events: none;
-        }
-
-        .menu-item:hover::before {
-            left: 100%;
-        }
+        .menu-item:active { transform:scale(0.98); }
+        @keyframes itemFade { from{opacity:0;transform:translateY(14px);} }
 
         .item-image {
-            width: 75px;
-            height: 75px;
-            min-width: 75px;
-            border-radius: 10px;
-            object-fit: cover;
-            flex-shrink: 0;
-            border: 2px solid rgba(201, 160, 80, 0.18);
-            transition: all 0.4s var(--transition-smooth);
-            background: var(--dark-3);
-            display: block;
+            width:70px; height:70px; min-width:70px; border-radius:10px;
+            object-fit:contain; background:#111;
+            border:2px solid rgba(201,160,80,0.18);
         }
+        .item-info { flex:1; display:flex; flex-direction:column; justify-content:center; gap:3px; }
+        .item-name { font-family:'Playfair Display', serif; font-size:0.9rem; color:var(--cream); }
+        .item-desc { font-size:0.65rem; color:var(--text-muted); line-height:1.3; }
+        .item-price { font-size:0.9rem; font-weight:700; color:var(--gold); }
+        .badge { font-size:0.55rem; padding:2px 7px; border-radius:20px; background:rgba(201,160,80,0.15); color:var(--gold-light); border:1px solid rgba(201,160,80,0.25); white-space:nowrap; }
 
-        .menu-item:hover .item-image {
-            border-color: rgba(201, 160, 80, 0.5);
-            box-shadow: 0 0 18px rgba(201, 160, 80, 0.2);
-        }
-
-        .item-info {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 3px;
-            min-width: 0;
-        }
-
-        .item-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--cream);
-            letter-spacing: 0.4px;
-            transition: color 0.3s;
-            line-height: 1.2;
-        }
-
-        .menu-item:hover .item-name {
-            color: var(--gold-light);
-        }
-
-        .item-description {
-            font-size: 0.68rem;
-            color: var(--text-muted);
-            line-height: 1.35;
-            font-weight: 300;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            letter-spacing: 0.2px;
-        }
-
-        .item-price {
-            font-family: 'Playfair Display', serif;
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--gold);
-            letter-spacing: 0.5px;
-            transition: all 0.3s;
-        }
-
-        .menu-item:hover .item-price {
-            color: var(--gold-light);
-            text-shadow: 0 0 14px rgba(201, 160, 80, 0.4);
-        }
-
-        .item-badge {
-            display: inline-block;
-            font-size: 0.58rem;
-            padding: 3px 7px;
-            border-radius: 20px;
-            background: rgba(201, 160, 80, 0.12);
-            color: var(--gold-light);
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            font-weight: 500;
-            border: 1px solid rgba(201, 160, 80, 0.25);
-            white-space: nowrap;
-        }
-
-        .price-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
+        .empty-message { text-align:center; color:var(--text-muted); margin-top:50px; font-style:italic; }
 
         /* Footer */
         .cafe-footer {
-            text-align: center;
-            padding: 20px 16px calc(20px + var(--safe-bottom));
-            border-top: 1px solid rgba(201, 160, 80, 0.12);
-            flex-shrink: 0;
-            animation: fadeInUp 1s var(--transition-smooth) 1s both;
+            text-align:center; padding:20px 16px calc(20px + var(--safe-bottom));
+            border-top:1px solid rgba(201,160,80,0.12);
         }
+        .footer-brand { font-family:'Great Vibes', cursive; font-size:1.5rem; color:var(--gold); opacity:0.7; }
+        .footer-info { font-size:0.6rem; color:var(--text-muted); letter-spacing:2px; text-transform:uppercase; margin-top:4px; }
 
-        .footer-brand {
-            font-family: 'Great Vibes', cursive;
-            font-size: 1.7rem;
-            color: var(--gold);
-            opacity: 0.75;
-            letter-spacing: 1px;
-            margin: 0;
-        }
-
-        .footer-info {
-            font-size: 0.6rem;
-            color: var(--text-muted);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: 3px;
-        }
-
-        .footer-social {
-            display: flex;
-            justify-content: center;
-            gap: 14px;
-            margin-top: 10px;
-            flex-wrap: wrap;
-        }
-
-        .social-dot {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            border: 1px solid rgba(201, 160, 80, 0.25);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            color: var(--gold);
-            transition: all 0.3s;
-            cursor: pointer;
-            background: transparent;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .social-dot:active {
-            transform: scale(1.25);
-            transition: transform 0.15s var(--transition-bounce);
-            background: rgba(201, 160, 80, 0.2);
-            border-color: var(--gold);
-            box-shadow: 0 0 22px rgba(201, 160, 80, 0.35);
-        }
-
-        /* ============ MODAL OVERLAY ============ */
+        /* ========== MODAL ========== */
         .modal-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.82);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.35s var(--transition-smooth);
+            position:fixed; inset:0; z-index:1000;
+            background:rgba(0,0,0,0.85); backdrop-filter:blur(20px);
+            -webkit-backdrop-filter:blur(20px);
+            display:flex; align-items:center; justify-content:center;
+            padding:16px; opacity:0; pointer-events:none;
+            transition:opacity 0.35s;
         }
-
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
+        .modal-overlay.active { opacity:1; pointer-events:auto; }
         .modal-card {
-            background: linear-gradient(160deg, #1a1a1a 0%, #111111 40%, #0d0d0d 100%);
-            border: 1.5px solid rgba(201, 160, 80, 0.3);
-            border-radius: 22px;
-            width: 100%;
-            max-width: 420px;
-            max-height: 88vh;
-            max-height: 88dvh;
-            overflow-y: auto;
-            overflow-x: hidden;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(201, 160, 80, 0.08) inset,
-                0 0 60px rgba(201, 160, 80, 0.15);
-            transform: translateY(30px) scale(0.92);
-            transition: transform 0.45s var(--transition-bounce);
-            position: relative;
-            -webkit-overflow-scrolling: touch;
+            background:linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 50%, #0a0a0a 100%);
+            border:1.5px solid rgba(201,160,80,0.3);
+            border-radius:24px;
+            width:100%; max-width:420px;
+            max-height:90vh; max-height:90dvh;
+            overflow-y:auto; overflow-x:hidden;
+            box-shadow:0 30px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(201,160,80,0.08) inset, 0 0 60px rgba(201,160,80,0.15);
+            transform:translateY(30px) scale(0.92);
+            transition:transform 0.45s cubic-bezier(0.34,1.56,0.64,1);
+            position:relative;
+            scrollbar-width:thin; scrollbar-color:rgba(201,160,80,0.3) transparent;
         }
-
-        .modal-overlay.active .modal-card {
-            transform: translateY(0) scale(1);
-        }
-
-        .modal-card::-webkit-scrollbar {
-            width: 3px;
-        }
-        .modal-card::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .modal-card::-webkit-scrollbar-thumb {
-            background: rgba(201, 160, 80, 0.25);
-            border-radius: 10px;
-        }
+        .modal-overlay.active .modal-card { transform:translateY(0) scale(1); }
+        .modal-card::-webkit-scrollbar { width:3px; }
+        .modal-card::-webkit-scrollbar-track { background:transparent; }
+        .modal-card::-webkit-scrollbar-thumb { background:rgba(201,160,80,0.25); border-radius:10px; }
 
         .modal-close-btn {
-            position: sticky;
-            top: 12px;
-            float: right;
-            margin-right: 12px;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.7);
-            border: 1px solid rgba(201, 160, 80, 0.35);
-            color: var(--gold);
-            font-size: 1.1rem;
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            -webkit-tap-highlight-color: transparent;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            position:sticky; top:12px; float:right; margin-right:12px;
+            width:38px; height:38px; border-radius:50%;
+            background:rgba(0,0,0,0.7); backdrop-filter:blur(10px);
+            -webkit-backdrop-filter:blur(10px);
+            border:1px solid rgba(201,160,80,0.35);
+            color:var(--gold); font-size:1.2rem; cursor:pointer;
+            z-index:10; display:flex; align-items:center; justify-content:center;
+            transition:all 0.3s;
         }
-
-        .modal-close-btn:active {
-            background: rgba(201, 160, 80, 0.25);
-            transform: scale(0.9);
-            transition: transform 0.1s;
-        }
+        .modal-close-btn:active { background:rgba(201,160,80,0.25); transform:scale(0.9); }
 
         .modal-image-wrap {
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
-            border-radius: 22px 22px 0 0;
-            position: relative;
-            flex-shrink: 0;
+            width:100%; height:280px; background:#000;
+            display:flex; align-items:center; justify-content:center;
+            border-radius:24px 24px 0 0;
+            overflow:hidden; position:relative;
         }
-
         .modal-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.6s;
+            width:100%; height:100%;
+            object-fit:contain; /* Görsel tamamen görünür, kırpılmaz */
+            display:block;
         }
-
-        .modal-card:hover .modal-image {
-            transform: scale(1.04);
-        }
-
         .modal-image-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 60px;
-            background: linear-gradient(transparent, rgba(13, 13, 13, 0.9));
-            pointer-events: none;
+            position:absolute; bottom:0; left:0; right:0; height:70px;
+            background:linear-gradient(transparent, rgba(10,10,10,0.9));
+            pointer-events:none;
         }
-
-        .modal-body {
-            padding: 16px 18px 20px;
-        }
-
+        .modal-body { padding:16px 20px 22px; }
         .modal-badge {
-            display: inline-block;
-            font-size: 0.6rem;
-            padding: 4px 10px;
-            border-radius: 20px;
-            background: rgba(201, 160, 80, 0.15);
-            color: var(--gold-light);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 500;
-            border: 1px solid rgba(201, 160, 80, 0.3);
-            margin-bottom: 8px;
+            display:inline-block; font-size:0.6rem; padding:4px 10px;
+            border-radius:20px; background:rgba(201,160,80,0.15);
+            color:var(--gold-light); text-transform:uppercase;
+            letter-spacing:1.5px; border:1px solid rgba(201,160,80,0.3);
+            margin-bottom:10px;
         }
-
         .modal-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--cream);
-            letter-spacing: 0.5px;
-            margin: 0 0 8px;
-            line-height: 1.2;
+            font-family:'Playfair Display', serif;
+            font-size:1.8rem; font-weight:700;
+            color:var(--cream); letter-spacing:0.5px;
+            margin:0 0 8px; line-height:1.2;
         }
-
         .modal-description {
-            font-size: 0.8rem;
-            color: #b0b0b0;
-            line-height: 1.55;
-            font-weight: 300;
-            margin-bottom: 14px;
-            letter-spacing: 0.2px;
+            font-size:0.85rem; color:#b0b0b0;
+            line-height:1.6; font-weight:300;
+            margin-bottom:16px;
         }
-
         .modal-price-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
+            display:flex; align-items:center; justify-content:space-between;
+            flex-wrap:wrap; gap:10px;
         }
-
         .modal-price {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--gold);
-            letter-spacing: 0.5px;
-            text-shadow: 0 0 20px rgba(201, 160, 80, 0.3);
+            font-family:'Playfair Display', serif;
+            font-size:2rem; font-weight:700;
+            color:var(--gold);
+            text-shadow:0 0 20px rgba(201,160,80,0.4);
         }
-
         .modal-category-tag {
-            font-size: 0.65rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 5px 12px;
-            border-radius: 20px;
+            font-size:0.65rem; color:var(--text-muted);
+            text-transform:uppercase; letter-spacing:2px;
+            border:1px solid rgba(255,255,255,0.15);
+            padding:6px 14px; border-radius:20px;
         }
 
-        /* Scroll to top */
-        .scroll-top-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 16px;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: rgba(201, 160, 80, 0.18);
-            border: 1px solid rgba(201, 160, 80, 0.35);
-            color: var(--gold);
-            font-size: 1.1rem;
-            cursor: pointer;
-            z-index: 99;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.35s;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(20px);
-            -webkit-tap-highlight-color: transparent;
-        }
+        body.no-scroll { overflow:hidden; position:fixed; width:100%; }
 
-        .scroll-top-btn.visible {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateY(0);
+        @media (max-width:360px) {
+            .item-image { width:60px; height:60px; min-width:60px; }
+            .modal-image-wrap { height:200px; }
+            .modal-title { font-size:1.4rem; }
+            .modal-price { font-size:1.5rem; }
         }
-
-        .scroll-top-btn:active {
-            background: rgba(201, 160, 80, 0.35);
-            box-shadow: 0 0 30px rgba(201, 160, 80, 0.5);
-            transform: scale(0.9);
-            transition: transform 0.1s;
-        }
-
-        /* Responsive tweaks */
-        @media (max-width: 360px) {
-            .item-image {
-                width: 60px;
-                height: 60px;
-                min-width: 60px;
-                border-radius: 8px;
-            }
-            .item-name {
-                font-size: 0.85rem;
-            }
-            .item-description {
-                font-size: 0.62rem;
-                -webkit-line-clamp: 2;
-            }
-            .item-price {
-                font-size: 0.9rem;
-            }
-            .category-btn {
-                padding: 7px 10px;
-                font-size: 0.64rem;
-                letter-spacing: 1.2px;
-            }
-            .category-icon {
-                font-size: 0.9rem;
-            }
-            .modal-image-wrap {
-                height: 170px;
-            }
-            .modal-title {
-                font-size: 1.25rem;
-            }
-            .modal-price {
-                font-size: 1.3rem;
-            }
-            .hero-header {
-                padding: 20px 12px 12px;
-            }
-        }
-
-        @media (min-width: 420px) and (max-width: 500px) {
-            .item-image {
-                width: 85px;
-                height: 85px;
-                min-width: 85px;
-            }
-            .modal-image-wrap {
-                height: 250px;
-            }
-        }
-
-        @media (min-width: 501px) {
-            .main-container {
-                border-radius: 0;
-                box-shadow: 0 0 140px rgba(0, 0, 0, 0.95), 0 0 0 2px rgba(201, 160, 80, 0.06);
-            }
-            .modal-card {
-                border-radius: 24px;
-            }
-        }
-
-        /* Prevent body scroll when modal is open */
-        body.no-scroll {
-            overflow: hidden;
-            position: fixed;
-            width: 100%;
+        @media (min-width:420px) and (max-width:500px) {
+            .item-image { width:80px; height:80px; min-width:80px; }
+            .modal-image-wrap { height:320px; }
         }
     </style>
 </head>
 <body>
-
-    <!-- Floating Particles -->
     <div class="particles-container" aria-hidden="true">
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
     </div>
 
-    <!-- Main Container -->
-    <div class="main-container" id="mainContainer">
-
-        <!-- Hero Header -->
-        <header class="hero-header">
-            <div class="luxury-divider-top">
-                <span class="luxury-line"></span>
-                <span class="luxury-diamond"></span>
-                <span class="luxury-line"></span>
+    <div class="main-container">
+        <div class="top-bar">
+            <span class="logo-small">Amor & Fortune</span>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span><span></span><span></span>
             </div>
-            <h1 class="brand-name">
-                Amor <span class="brand-ampersand">&</span> Fortune
-            </h1>
-            <p class="hero-subtitle">• Lüks Menü •</p>
-            <div class="luxury-divider-bottom">
-                <span class="divider-dot"></span>
-                <span class="divider-dot"></span>
-                <span class="divider-dot"></span>
-                <span class="divider-diamond-sm"></span>
-                <span class="divider-dot"></span>
-                <span class="divider-dot"></span>
-                <span class="divider-dot"></span>
-            </div>
-        </header>
+        </div>
 
-        <!-- Category Navigation -->
-        <nav class="category-nav" id="categoryNav">
-            <button class="category-btn active" data-category="yemekler">
-                <span class="category-icon">🍽️</span> Yemekler
-            </button>
-            <button class="category-btn" data-category="tatlilar">
-                <span class="category-icon">🍰</span> Tatlılar
-            </button>
-            <button class="category-btn" data-category="nargile">
-                <span class="category-icon">💨</span> Nargile
-            </button>
-            <button class="category-btn" data-category="kahve">
-                <span class="category-icon">☕</span> Kahve
-            </button>
-            <button class="category-btn" data-category="icecekler">
-                <span class="category-icon">🥤</span> İçecekler
-            </button>
-        </nav>
+        <div class="menu-overlay" id="menuOverlay">
+            <div class="menu-panel" id="menuPanel"></div>
+        </div>
 
-        <!-- Menu Content -->
-        <main class="menu-content" id="menuContent">
+        <div class="content-area" id="contentArea">
+            <h2 class="section-title" id="contentTitle">Tüm Ürünler</h2>
+            <div id="productList"></div>
+        </div>
 
-            <!-- Yemekler Section -->
-            <section class="menu-section active" id="yemekler" data-section-name="Yemekler">
-                <div class="section-header">
-                    <h2 class="section-title">Yemekler</h2>
-                    <p class="section-ornament">✦ Şefin Özel Seçkisi ✦</p>
-                </div>
-
-                <div class="menu-item" data-name="Bonfile & Madlen" data-price="₺520" data-badge="Özel" data-desc="Özel marine edilmiş bonfile dilimleri, madlen sos, karamelize soğan ve mevsim yeşillikleri eşliğinde sunulur. Şefimizin imza tabağıdır." data-img="https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=600&h=400&fit=crop&crop=center" data-category="Yemekler">
-                    <img src="https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=200&h=200&fit=crop&crop=center" alt="Bonfile & Madlen" class="item-image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                    <div class="item-info">
-                        <span class="item-name">Bonfile & Madlen</span>
-                        <span class="item-description">Özel marine bonfile, madlen sos, karamelize soğan</span>
-                        <div class="price-row">
-                            <span class="item-price">₺520</span>
-                            <span class="item-badge">Özel</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-name="Trüflü Fettuccine" data-price="₺380" data-badge="" data-desc="El yapımı taze fettuccine, siyah trüf mantarı, krema ve eski parmesan peyniri ile hazırlanır. İtalyan esintili eşsiz bir lezzet." data-img="https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=600&h=400&fit=crop&crop=center" data-category="Yemekler">
-                    <img src="https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=200&h=200&fit=crop&crop=center" alt="Trüflü Fettuccine" class="item-image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                    <div class="item-info">
-                        <span class="item-name">Trüflü Fettuccine</span>
-                        <span class="item-description">El yapımı fettuccine, siyah trüf, parmesan, krema</span>
-                        <div class="price-row">
-                            <span class="item-price">₺380</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-name="Somon & Avokado Tabağı" data-price="₺450" data-badge="Popüler" data-desc="Nar gibi kızarmış Atlantik somonu, taze avokado püresi, limon emülsiyonu ve nar taneleriyle süslenmiş özel bir sunum." data-img="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&h=400&fit=crop&crop=center" data-category="Yemekler">
-                    <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=200&h=200&fit=crop&crop=center" alt="Somon & Avokado" class="item-image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                    <div class="item-info">
-                        <span class="item-name">Somon & Avokado Tabağı</span>
-                        <span class="item-description">Kızarmış somon, avokado püresi, limon emülsiyonu</span>
-                        <div class="price-row">
-                            <span class="item-price">₺450</span>
-                            <span class="item-badge">Popüler</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-name="Fortune Burger" data-price="₺340" data-badge="" data-desc="200 gram özel dana kıyması, karamelize soğan, olgunlaştırılmış cheddar peyniri ve brioche ekmeği ile. Yanında çıtır patates ile servis edilir." data-img="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=400&fit=crop&crop=center" data-category="Yemekler">
-                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200&h=200&fit=crop&crop=center" alt="Fortune Burger" class="item-image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                    <div class="item-info">
-                        <span class="item-name">Fortune Burger</span>
-                        <span class="item-description">200gr özel kıyma, cheddar, karamelize soğan, brioche</span>
-                        <div class="price-row">
-                            <span class="item-price">₺340</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-name="Akdeniz Salatası" data-price="₺280" data-badge="" data-desc="Taze roka, cherry domates, bufalo mozzarella, balzamik glaze ve sızma zeytinyağı ile hazırlanan ferahlatıcı bir başlangıç." data-img="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=400&fit=crop&crop=center" data-category="Yemekler">
-                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=200&h=200&fit=crop&crop=center" alt="Akdeniz Salatası" class="item-image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                    <div class="item-info">
-                        <span class="item-name">Akdeniz Salatası</span>
-                        <span class="item-description">Taze roka, cherry domates, mozzarella, balzamik</span>
-                        <div class="price-row">
-                            <span class="item-price">₺280</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Tatlılar Section -->
-            <section class="menu-section" id="tatlilar" data-section-name="Tatlılar">
-                <div class="section-header">
-                    <h2 class="section-title">Tatlılar</h2>
-                    <p class="section-ornament">✦ Tatlı Bir Mola ✦</p>
-                </div>
-
-                <div class="menu-item" data-name="Çikolatalı Sufle" data-price="₺190" data-badge="Favori" data-desc="Sıcak akışkan çikolatalı sufle, Madagaskar vanilyalı dondurma ve taze nane yaprağı ile servis edilir. Çikolata tutkunları için." data-img="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=600&h=400&fit=crop&crop=center" data-category="Tatlılar">
-                    <img src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=200&h=200&fit=crop&crop=center" alt="Çikolatalı Sufle" class="item-image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                    <div class="item-info">
-                        <span class="item-name">Çikolatalı Sufle</span>
-                        <span class="item-description">Sıcak çikolatalı sufle, vanilyalı dondurma ile</span>
-                        <div class="price-row">
-                            <span class="item-price">₺190</span>
-                            <span class="item-badge">Favori</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-name="Cheesecake & Orman Meyveleri" data-price="₺210" data-badge="" data-desc="Krema peynirli New York cheesecake, taze orman meyveleri sosu ve badem kırıntısı ile taçlandırılmıştır." data-img="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600&h=400&fit=crop&crop=center" data-category="Tatlılar">
-                    <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=200&h=200&fit=crop&crop=center" alt="Cheesecake" class="item-image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                    <div class="item-info">
-                        <span class="item-name">Cheesecake & Orman Meyveleri</span>
-                        <span class="item-description">Krem peynirli cheesecake, taze orman meyveleri sosu</span>
-                        <div class="price-row">
-                            <span class="item-price">₺210</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-name="Crème Brûlée" data-price="₺175" data-badge="" data-desc="Klasik Fransız tatlısı, kadifemsi vanilyalı muhallebi ve çıtır karamelize şeker kabuğu. Geleneksel tarifle hazırlanır." data-img="https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=600&h=400&fit=crop&crop=center" data-category="Tatlılar">
-                    <img src="https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=200&h=200&fit=crop&crop=center" alt="Crème Brûlée" class="item-image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                    <div class="item-info">
-                        <span class="item-name">Crème Brûlée</span>
-                        <span class="item-description">Klasik Fransız tatlısı, karamelize şeker kabuğu</span>
-                        <div class="price-row">
-                            <span class="item-price">₺175</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Nargile Section -->
-            <section class="menu-section" id="nargile" data-section-name="Nargile">
-                <div class="section-header">
-                    <h2 class="section-title">Nargile</h2>
-                    <p class="section-ornament">✦ Premium Lezzetler ✦</p>
-                </div>
-
-                <div class="menu-item" data-name="Özel Karışım Nargile" data-price="₺350" data-badge="Özel" data-desc="Amor & Fortune özel blend tütünü, pürüzsüz içim deneyimi ve uzun süreli keyif sunar. Ev yapımı melas ile hazırlanır." data-img="https://images.unsplash.com/photo-1572960251616-62b8b0f04edf?w=600&h=400&fit=crop&crop=center" data-category="Nargile">
-                    <img src="https://images.unsplash.com/photo-1572960251616-62b8b0f04edf?w=200&h=200&fit=crop&crop=center" alt="Özel Nargile" class="item-image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                    <div class="item-info">
-                        <span class="item-name">Özel Karışım Nargile</span>
-                        <span class="item-description">Amor & Fortune özel blend, pürüzsüz içim</span>
-                        <div class="price-row">
-                            <span class="item-price">₺350</span>
-                            <span class="item-badge">Özel</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-name="Meyve Aromalı Nargile" data-price="₺300" data-badge="" data-desc="Üzüm, çilek, mango, karpuz & nane gibi zengin aroma seçenekleriyle ferahlatıcı bir nargile deneyimi." data-img="https://images.unsplash.com/photo-1523371054106-bbf80586c38c?w=600&h=400&fit=crop&crop=center" data-category="Nargile">
-                    <img src="https://images.unsplash.com/photo-1523371054106-bbf80586c38c?w=200&h=200&fit=crop&crop=center" alt="Meyve Nargile" class="item-image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                    <div class="item-info">
-                        <span class="item-name">Meyve Aromalı Nargile</span>
-                        <span class="item-description">Üzüm, çilek, mango, karpuz & nane seçenekleri</span>
-                        <div class="price-row">
-                            <span class="item-price">₺300</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-name="Premium Ice Nargile" data-price="₺400" data-badge="" data-desc="Buzlu sistemle soğutulmuş, yoğun duman ve ferahlatıcı içim deneyimi. Özel buz haznesiyle ekstra serinlik." data-img="https://images.unsplash.com/photo-1549877452-9c387954fbc2?w=600&h=400&fit=crop&crop=center" data-category="Nargile">
-                    <img src="https://images.unsplash.com/photo-1549877452-9c387954fbc2?w=200&h=200&fit=crop&crop=center" alt="Ice Nargile" class="item-image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                    <div class="item-info">
-                        <span class="item-name">Premium Ice Nargile</span>
-                        <span class="item-description">Buzlu sistem, yoğun duman, ferahlatıcı içim</span>
-                        <div class="price-row">
-                            <span class="item-price">₺400</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Kahve Section -->
-            <section class="menu-section" id="kahve" data-section-name="Kahve">
-                <div class="section-header">
-                    <h2 class="section-title">Kahve</h2>
-                    <p class="section-ornament">✦ Elit Kahve Deneyimi ✦</p>
-                </div>
-
-                <div class="menu-item" data-name="Espresso" data-price="₺85" data-badge="" data-desc="Çift çekilmiş özel kavrum kahve çekirdeklerinden, yoğun ve aromatik bir espresso. Kahvenin en saf hali." data-img="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=600&h=400&fit=crop&crop=center" data-category="Kahve">
-                    <img src="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=200&h=200&fit=crop&crop=center" alt="Espresso" class="item-image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                    <div class="item-info">
-                        <span class="item-name">Espresso</span>
-                        <span class="item-description">Çift çekilmiş özel kavrum, yoğun ve aromatik</span>
-                        <div class="price-row">
-                            <span class="item-price">₺85</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-name="Latte Art Özel" data-price="₺120" data-badge="İmza" data-desc="Barista imzasıyla hazırlanan, kadifemsi süt köpüğü üzerinde özel latte art deseni. Görsel ve lezzet şöleni." data-img="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=600&h=400&fit=crop&crop=center" data-category="Kahve">
-                    <img src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=200&h=200&fit=crop&crop=center" alt="Latte Art" class="item-image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                    <div class="item-info">
-                        <span class="item-name">Latte Art Özel</span>
-                        <span class="item-description">Barista imzası, kadifemsi süt köpüğü, latte art</span>
-                        <div class="price-row">
-                            <span class="item-price">₺120</span>
-                            <span class="item-badge">İmza</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-name="Türk Kahvesi" data-price="₺70" data-badge="" data-desc="Geleneksel pişirme yöntemiyle, bol köpüklü, kısık ateşte özenle hazırlanır. Yanında özel lokum ile servis edilir." data-img="https://images.unsplash.com/photo-1580722045030-9c8b2fcb95b7?w=600&h=400&fit=crop&crop=center" data-category="Kahve">
-                    <img src="https://images.unsplash.com/photo-1580722045030-9c8b2fcb95b7?w=200&h=200&fit=crop&crop=center" alt="Türk Kahvesi" class="item-image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                    <div class="item-info">
-                        <span class="item-name">Türk Kahvesi</span>
-                        <span class="item-description">Geleneksel pişirme, bol köpüklü, lokum eşliğinde</span>
-                        <div class="price-row">
-                            <span class="item-price">₺70</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-name="Cold Brew" data-price="₺140" data-badge="" data-desc="12 saat soğuk demlenmiş özel kahve, yumuşak içimli ve ferahlatıcı. Buzlu servis edilir, yaz aylarının vazgeçilmezi." data-img="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&h=400&fit=crop&crop=center" data-category="Kahve">
-                    <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=200&h=200&fit=crop&crop=center" alt="Cold Brew" class="item-image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                    <div class="item-info">
-                        <span class="item-name">Cold Brew</span>
-                        <span class="item-description">12 saat soğuk demlenmiş, yumuşak ve ferahlatıcı</span>
-                        <div class="price-row">
-                            <span class="item-price">₺140</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- İçecekler Section -->
-            <section class="menu-section" id="icecekler" data-section-name="İçecekler">
-                <div class="section-header">
-                    <h2 class="section-title">İçecekler</h2>
-                    <p class="section-ornament">✦ Ferahlatıcı Seçenekler ✦</p>
-                </div>
-
-                <div class="menu-item" data-name="Amor Mojito" data-price="₺160" data-badge="İmza" data-desc="Taze nane, lime, özel ev yapımı şurup ve soda ile hazırlanan ferahlatıcı imza kokteylimiz." data-img="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=600&h=400&fit=crop&crop=center" data-category="İçecekler">
-                    <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=200&h=200&fit=crop&crop=center" alt="Amor Mojito" class="item-image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                    <div class="item-info">
-                        <span class="item-name">Amor Mojito</span>
-                        <span class="item-description">Taze nane, lime, özel şurup, soda ile ferahlatıcı</span>
-                        <div class="price-row">
-                            <span class="item-price">₺160</span>
-                            <span class="item-badge">İmza</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-name="Smoothie Bowl" data-price="₺180" data-badge="" data-desc="Çilek, muz, yaban mersini ve badem sütü ile hazırlanan, granola ve taze meyvelerle süslenen sağlıklı smoothie bowl." data-img="https://images.unsplash.com/photo-1590301157890-4810ed352733?w=600&h=400&fit=crop&crop=center" data-category="İçecekler">
-                    <img src="https://images.unsplash.com/photo-1590301157890-4810ed352733?w=200&h=200&fit=crop&crop=center" alt="Smoothie Bowl" class="item-image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                    <div class="item-info">
-                        <span class="item-name">Smoothie Bowl</span>
-                        <span class="item-description">Çilek, muz, yaban mersini, badem sütü, granola</span>
-                        <div class="price-row">
-                            <span class="item-price">₺180</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="menu-item" data-name="Fortune Spritz" data-price="₺200" data-badge="" data-desc="Özel narenciye karışımı, İtalyan maden suyu ve aromatik bitkilerle hazırlanan ferahlatıcı özel içecek." data-img="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&h=400&fit=crop&crop=center" data-category="İçecekler">
-                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=200&h=200&fit=crop&crop=center" alt="Fortune Spritz" class="item-image" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                    <div class="item-info">
-                        <span class="item-name">Fortune Spritz</span>
-                        <span class="item-description">Özel narenciye, maden suyu, aromatik bitkiler</span>
-                        <div class="price-row">
-                            <span class="item-price">₺200</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Footer -->
         <footer class="cafe-footer">
             <p class="footer-brand">Amor & Fortune</p>
-            <p class="footer-info">© 2025 • Lüks Kafe Deneyimi • Tüm Hakları Saklıdır</p>
-            <div class="footer-social">
-                <button class="social-dot" title="Instagram" aria-label="Instagram">📸</button>
-                <button class="social-dot" title="Konum" aria-label="Konum">📍</button>
-                <button class="social-dot" title="İletişim" aria-label="İletişim">📞</button>
-            </div>
+            <p class="footer-info">© 2025 • Lüks Kafe Deneyimi</p>
         </footer>
     </div>
 
-    <!-- Modal Overlay -->
-    <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
-        <div class="modal-card" id="modalCard" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-            <button class="modal-close-btn" id="modalCloseBtn" aria-label="Kapat">✕</button>
+    <!-- ÜRÜN DETAY MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-card" id="modalCard">
+            <button class="modal-close-btn" id="modalCloseBtn">✕</button>
             <div class="modal-image-wrap">
                 <img src="" alt="" class="modal-image" id="modalImage">
                 <div class="modal-image-overlay"></div>
@@ -1367,220 +343,236 @@
         </div>
     </div>
 
-    <!-- Scroll to Top Button -->
-    <button class="scroll-top-btn" id="scrollTopBtn" title="Yukarı çık" aria-label="Yukarı çık">↑</button>
-
     <script>
         (function() {
-            // DOM Elements
-            const categoryBtns = document.querySelectorAll('.category-btn');
-            const menuSections = document.querySelectorAll('.menu-section');
-            const mainContainer = document.getElementById('mainContainer');
-            const scrollTopBtn = document.getElementById('scrollTopBtn');
+            // SVG ikonlar
+            const icons = {
+                all: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>`,
+                yemekler: `<svg viewBox="0 0 24 24"><path d="M18 2.5a3 3 0 0 1 3 3V12a7 7 0 0 1-7 7h-1a7 7 0 0 1-7-7V5.5a3 3 0 0 1 3-3z"/><line x1="6" y1="11" x2="6" y2="16"/><line x1="10" y1="5" x2="10" y2="16"/><line x1="14" y1="5" x2="14" y2="16"/><line x1="18" y1="11" x2="18" y2="16"/></svg>`,
+                tatlilar: `<svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z"/><circle cx="12" cy="18" r="3"/></svg>`,
+                nargile: `<svg viewBox="0 0 24 24"><path d="M6 2h12v4H6z"/><path d="M8 6v2c0 3.31 2.69 6 6 6s6-2.69 6-6V6"/><path d="M14 14v6"/><path d="M10 20h8"/></svg>`,
+                kahve: `<svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><rect x="2" y="8" width="15" height="11" rx="2"/><line x1="6" y1="2" x2="6" y2="5"/><line x1="10" y1="2" x2="10" y2="5"/><line x1="14" y1="2" x2="14" y2="5"/></svg>`,
+                icecekler: `<svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="9" y1="10" x2="15" y2="10"/></svg>`,
+            };
+
+            const products = [
+                { name:"Bonfile & Madlen", price:"₺520", badge:"Özel", desc:"Özenle marine edilmiş bonfile dilimleri, özel madlen sos, karamelize soğan ve mevsim yeşillikleriyle birlikte sunulan şefin imza tabağı.", img:"https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=600&h=450&fit=crop", category:"yemekler", subcategory:"ana-yemekler" },
+                { name:"Trüflü Fettuccine", price:"₺380", badge:"", desc:"El yapımı taze fettuccine, siyah trüf mantarı, krema ve eski parmesan peynirinin enfes uyumu. İtalyan mutfağından lüks bir dokunuş.", img:"https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=600&h=450&fit=crop", category:"yemekler", subcategory:"ana-yemekler" },
+                { name:"Somon & Avokado", price:"₺450", badge:"Popüler", desc:"Nar gibi kızarmış Atlantik somonu, taze avokado püresi ve limon emülsiyonu ile servis edilir. Hafif ve sağlıklı bir seçenek.", img:"https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&h=450&fit=crop", category:"yemekler", subcategory:"ana-yemekler" },
+                { name:"Fortune Burger", price:"₺340", badge:"", desc:"200 gram özel dana kıyması, olgunlaştırılmış cheddar, karamelize soğan ve brioche ekmeği. Yanında çıtır patates ile.", img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=450&fit=crop", category:"yemekler", subcategory:"ana-yemekler" },
+                { name:"Akdeniz Salatası", price:"₺280", badge:"", desc:"Taze roka, cherry domates, bufalo mozzarella, balzamik glaze ve sızma zeytinyağı ile ferahlatıcı bir başlangıç.", img:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=450&fit=crop", category:"yemekler", subcategory:"salatalar" },
+                { name:"Çikolatalı Sufle", price:"₺190", badge:"Favori", desc:"Sıcak akışkan çikolatalı sufle, Madagaskar vanilyalı dondurma eşliğinde sunulur. Çikolata tutkunlarının vazgeçilmezi.", img:"https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=600&h=450&fit=crop", category:"tatlilar", subcategory:"sicak-tatlilar" },
+                { name:"Cheesecake Orman Meyveli", price:"₺210", badge:"", desc:"New York usulü cheesecake, taze orman meyveleri sosu ve badem kırıntısı ile taçlandırılmıştır.", img:"https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600&h=450&fit=crop", category:"tatlilar", subcategory:"soguk-tatlilar" },
+                { name:"Özel Karışım Nargile", price:"₺350", badge:"Özel", desc:"Amor & Fortune özel blend tütünü, pürüzsüz içim deneyimi ve uzun süreli keyif sunar. Ev yapımı melas ile hazırlanır.", img:"https://images.unsplash.com/photo-1572960251616-62b8b0f04edf?w=600&h=450&fit=crop", category:"nargile", subcategory:"ozel-karisimlar" },
+                { name:"Meyve Aromalı Nargile", price:"₺300", badge:"", desc:"Üzüm, çilek, mango, karpuz & nane gibi zengin aroma seçenekleriyle ferahlatıcı bir nargile keyfi.", img:"https://images.unsplash.com/photo-1523371054106-bbf80586c38c?w=600&h=450&fit=crop", category:"nargile", subcategory:"meyve-aromali" },
+                { name:"Premium Ice Nargile", price:"₺400", badge:"", desc:"Buzlu sistemle soğutulmuş, yoğun duman ve ferahlatıcı içim deneyimi. Özel buz haznesiyle ekstra serinlik.", img:"https://images.unsplash.com/photo-1549877452-9c387954fbc2?w=600&h=450&fit=crop", category:"nargile", subcategory:"ice-nargile" },
+                { name:"Espresso", price:"₺85", badge:"", desc:"Çift çekilmiş özel kavrum çekirdeklerden, yoğun ve aromatik bir espresso. Kahvenin en saf hali.", img:"https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=600&h=450&fit=crop", category:"kahve", subcategory:"sicak-kahveler" },
+                { name:"Latte Art Özel", price:"₺120", badge:"İmza", desc:"Barista imzasıyla hazırlanan, kadifemsi süt köpüğü üzerinde özel latte art deseniyle görsel ve lezzet şöleni.", img:"https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=600&h=450&fit=crop", category:"kahve", subcategory:"sicak-kahveler" },
+                { name:"Türk Kahvesi", price:"₺70", badge:"", desc:"Geleneksel pişirme yöntemiyle, bol köpüklü, kısık ateşte özenle hazırlanır. Yanında özel lokum ile.", img:"https://images.unsplash.com/photo-1580722045030-9c8b2fcb95b7?w=600&h=450&fit=crop", category:"kahve", subcategory:"sicak-kahveler" },
+                { name:"Cold Brew", price:"₺140", badge:"", desc:"12 saat soğuk demlenmiş özel kahve, yumuşak içimli ve ferahlatıcı. Buzlu servis edilir.", img:"https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&h=450&fit=crop", category:"kahve", subcategory:"soguk-kahveler" },
+                { name:"Amor Mojito", price:"₺160", badge:"İmza", desc:"Taze nane, lime, özel ev yapımı şurup ve soda ile hazırlanan ferahlatıcı imza kokteylimiz.", img:"https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=600&h=450&fit=crop", category:"icecekler", subcategory:"soguk-icecekler" },
+                { name:"Smoothie Bowl", price:"₺180", badge:"", desc:"Çilek, muz, yaban mersini ve badem sütü ile hazırlanan, granola ve taze meyvelerle süslenen sağlıklı bowl.", img:"https://images.unsplash.com/photo-1590301157890-4810ed352733?w=600&h=450&fit=crop", category:"icecekler", subcategory:"smoothie" },
+                { name:"Fortune Spritz", price:"₺200", badge:"", desc:"Özel narenciye karışımı, İtalyan maden suyu ve aromatik bitkilerle hazırlanan ferahlatıcı içecek.", img:"https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&h=450&fit=crop", category:"icecekler", subcategory:"soguk-icecekler" }
+            ];
+
+            const menuCategories = {
+                "yemekler": { label:"Yemekler", icon: icons.yemekler, subs: {"ana-yemekler":"Ana Yemekler", "salatalar":"Salatalar"} },
+                "tatlilar": { label:"Tatlılar", icon: icons.tatlilar, subs: {"sicak-tatlilar":"Sıcak Tatlılar", "soguk-tatlilar":"Soğuk Tatlılar"} },
+                "nargile": { label:"Nargile", icon: icons.nargile, subs: {"ozel-karisimlar":"Özel Karışımlar", "meyve-aromali":"Meyve Aromalı", "ice-nargile":"Ice Nargile"} },
+                "kahve": { label:"Kahve", icon: icons.kahve, subs: {"sicak-kahveler":"Sıcak Kahveler", "soguk-kahveler":"Soğuk Kahveler"} },
+                "icecekler": { label:"İçecekler", icon: icons.icecekler, subs: {"soguk-icecekler":"Soğuk İçecekler", "smoothie":"Smoothie"} }
+            };
+
+            const menuToggle = document.getElementById('menuToggle');
+            const menuOverlay = document.getElementById('menuOverlay');
+            const menuPanel = document.getElementById('menuPanel');
+            const contentTitle = document.getElementById('contentTitle');
+            const productList = document.getElementById('productList');
             const modalOverlay = document.getElementById('modalOverlay');
-            const modalCard = document.getElementById('modalCard');
-            const modalCloseBtn = document.getElementById('modalCloseBtn');
             const modalImage = document.getElementById('modalImage');
             const modalTitle = document.getElementById('modalTitle');
             const modalDesc = document.getElementById('modalDesc');
             const modalPrice = document.getElementById('modalPrice');
             const modalBadge = document.getElementById('modalBadge');
             const modalCategory = document.getElementById('modalCategory');
-            const menuItems = document.querySelectorAll('.menu-item');
+            const modalCloseBtn = document.getElementById('modalCloseBtn');
 
-            // Category switching
-            categoryBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const category = this.getAttribute('data-category');
+            let currentFilter = { category: null, subcategory: null };
 
-                    categoryBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
+            function buildMenu() {
+                menuPanel.innerHTML = '';
+                const allBtn = document.createElement('div');
+                allBtn.className = 'all-products-btn';
+                allBtn.innerHTML = `${icons.all} <span>Tüm Ürünler</span>`;
+                allBtn.addEventListener('click', (e) => { e.stopPropagation(); applyFilter(null, null); closeMenu(); });
+                menuPanel.appendChild(allBtn);
 
-                    menuSections.forEach(section => {
-                        section.classList.remove('active');
+                for (let [catKey, catData] of Object.entries(menuCategories)) {
+                    const catDiv = document.createElement('div');
+                    catDiv.className = 'menu-category';
+                    catDiv.innerHTML = `<div class="cat-left">${catData.icon} <span>${catData.label}</span></div><span class="menu-arrow">›</span>`;
+                    catDiv.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const wasOpen = this.classList.contains('open');
+                        document.querySelectorAll('.menu-category').forEach(c => c.classList.remove('open'));
+                        document.querySelectorAll('.sub-categories').forEach(s => s.style.maxHeight = '0');
+                        if (!wasOpen) {
+                            this.classList.add('open');
+                            const subDiv = this.nextElementSibling;
+                            if (subDiv && subDiv.classList.contains('sub-categories')) {
+                                subDiv.style.maxHeight = subDiv.scrollHeight + 'px';
+                            }
+                        }
                     });
+                    menuPanel.appendChild(catDiv);
 
-                    const targetSection = document.getElementById(category);
-                    if (targetSection) {
-                        setTimeout(() => {
-                            targetSection.classList.add('active');
-                            const items = targetSection.querySelectorAll('.menu-item');
-                            items.forEach((item, index) => {
-                                item.style.animation = 'none';
-                                item.offsetHeight;
-                                item.style.animation =
-                                    `itemFadeIn 0.55s var(--transition-smooth) ${index * 0.05}s both`;
+                    if (Object.keys(catData.subs).length > 0) {
+                        const subDiv = document.createElement('div');
+                        subDiv.className = 'sub-categories';
+                        subDiv.style.maxHeight = '0';
+                        for (let [subKey, subLabel] of Object.entries(catData.subs)) {
+                            const subBtn = document.createElement('button');
+                            subBtn.className = 'sub-category-btn';
+                            subBtn.textContent = subLabel;
+                            subBtn.addEventListener('click', function(e) {
+                                e.stopPropagation();
+                                applyFilter(catKey, subKey);
+                                closeMenu();
                             });
-                        }, 80);
+                            subDiv.appendChild(subBtn);
+                        }
+                        menuPanel.appendChild(subDiv);
                     }
+                }
+            }
 
-                    this.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-
-                    if (navigator.vibrate) {
-                        navigator.vibrate(8);
+            function applyFilter(catKey, subKey) {
+                currentFilter.category = catKey;
+                currentFilter.subcategory = subKey;
+                renderProducts();
+                let title = 'Tüm Ürünler';
+                if (catKey) {
+                    title = menuCategories[catKey]?.label || catKey;
+                    if (subKey && menuCategories[catKey]?.subs[subKey]) {
+                        title = menuCategories[catKey].subs[subKey];
                     }
-                });
-            });
+                }
+                contentTitle.textContent = title;
+            }
 
-            // Modal functionality
-            function openModal(item) {
-                const name = item.getAttribute('data-name');
-                const price = item.getAttribute('data-price');
-                const badge = item.getAttribute('data-badge');
-                const desc = item.getAttribute('data-desc');
-                const img = item.getAttribute('data-img');
-                const category = item.getAttribute('data-category');
+            function renderProducts() {
+                let filtered = products;
+                if (currentFilter.category) {
+                    filtered = products.filter(p => p.category === currentFilter.category);
+                    if (currentFilter.subcategory) {
+                        filtered = filtered.filter(p => p.subcategory === currentFilter.subcategory);
+                    }
+                }
 
-                modalImage.src = img;
-                modalImage.alt = name;
-                modalTitle.textContent = name;
-                modalDesc.textContent = desc;
-                modalPrice.textContent = price;
-                modalCategory.textContent = category;
+                productList.innerHTML = '';
+                if (filtered.length === 0) {
+                    productList.innerHTML = '<p class="empty-message">Bu kategoride ürün bulunamadı.</p>';
+                    return;
+                }
 
-                if (badge && badge.trim() !== '') {
-                    modalBadge.textContent = badge;
+                if (!currentFilter.category) {
+                    const grouped = {};
+                    filtered.forEach(p => {
+                        if (!grouped[p.category]) grouped[p.category] = [];
+                        grouped[p.category].push(p);
+                    });
+                    ['yemekler', 'tatlilar', 'nargile', 'kahve', 'icecekler'].forEach(catKey => {
+                        if (grouped[catKey] && grouped[catKey].length > 0) {
+                            const catData = menuCategories[catKey];
+                            const groupDiv = document.createElement('div');
+                            groupDiv.className = 'category-group';
+                            groupDiv.innerHTML = `<h3 class="group-title">${catData.icon} ${catData.label}</h3>`;
+                            const itemsContainer = document.createElement('div');
+                            grouped[catKey].forEach((prod, idx) => itemsContainer.appendChild(createProductItem(prod, idx)));
+                            groupDiv.appendChild(itemsContainer);
+                            productList.appendChild(groupDiv);
+                        }
+                    });
+                } else {
+                    filtered.forEach((prod, idx) => productList.appendChild(createProductItem(prod, idx)));
+                }
+            }
+
+            function createProductItem(prod, index) {
+                const item = document.createElement('div');
+                item.className = 'menu-item';
+                item.style.animationDelay = `${index * 0.03}s`;
+                item.innerHTML = `
+                    <img src="${prod.img}" alt="${prod.name}" class="item-image" loading="lazy" onerror="this.style.opacity='0.3'">
+                    <div class="item-info">
+                        <span class="item-name">${prod.name}</span>
+                        <span class="item-desc">${prod.desc}</span>
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span class="item-price">${prod.price}</span>
+                            ${prod.badge ? `<span class="badge">${prod.badge}</span>` : ''}
+                        </div>
+                    </div>
+                `;
+                item.addEventListener('click', () => openModal(prod));
+                return item;
+            }
+
+            function openModal(prod) {
+                modalImage.src = prod.img;
+                modalImage.alt = prod.name;
+                modalTitle.textContent = prod.name;
+                modalDesc.textContent = prod.desc;
+                modalPrice.textContent = prod.price;
+                modalCategory.textContent = menuCategories[prod.category]?.label || prod.category;
+                if (prod.badge) {
+                    modalBadge.textContent = prod.badge;
                     modalBadge.style.display = 'inline-block';
                 } else {
                     modalBadge.style.display = 'none';
                 }
-
-                document.body.classList.add('no-scroll');
                 modalOverlay.classList.add('active');
-                modalOverlay.setAttribute('aria-hidden', 'false');
-                modalCard.scrollTop = 0;
-
-                if (navigator.vibrate) {
-                    navigator.vibrate(12);
-                }
-
-                // Focus trap
-                setTimeout(() => {
-                    modalCloseBtn.focus();
-                }, 400);
+                document.body.classList.add('no-scroll');
+                document.getElementById('modalCard').scrollTop = 0;
+                setTimeout(() => modalCloseBtn.focus(), 300);
             }
 
             function closeModal() {
                 modalOverlay.classList.remove('active');
-                modalOverlay.setAttribute('aria-hidden', 'true');
                 document.body.classList.remove('no-scroll');
-
-                if (navigator.vibrate) {
-                    navigator.vibrate(6);
-                }
             }
 
-            // Click on menu items
-            menuItems.forEach(item => {
-                item.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    openModal(this);
-                });
-
-                // Touch feedback
-                item.addEventListener('touchstart', function() {
-                    this.style.transform = 'scale(0.97)';
-                    this.style.transition = 'transform 0.12s';
-                }, { passive: true });
-                item.addEventListener('touchend', function() {
-                    this.style.transform = '';
-                    this.style.transition = 'all 0.4s var(--transition-smooth)';
-                });
-                item.addEventListener('touchcancel', function() {
-                    this.style.transform = '';
-                    this.style.transition = 'all 0.4s var(--transition-smooth)';
-                });
-            });
-
-            // Close modal
             modalCloseBtn.addEventListener('click', closeModal);
-
-            modalOverlay.addEventListener('click', function(e) {
-                if (e.target === modalOverlay) {
-                    closeModal();
-                }
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) closeModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modalOverlay.classList.contains('active')) closeModal();
             });
 
-            // Keyboard
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-                    closeModal();
-                }
-            });
-
-            // Prevent modal card click from closing
-            modalCard.addEventListener('click', function(e) {
-                e.stopPropagation();
-            });
-
-            // Swipe down to close on mobile
-            let touchStartY = 0;
-            modalCard.addEventListener('touchstart', function(e) {
-                if (modalCard.scrollTop <= 0) {
-                    touchStartY = e.touches[0].clientY;
-                }
-            }, { passive: true });
-
-            modalCard.addEventListener('touchmove', function(e) {
-                if (modalCard.scrollTop <= 0 && e.touches[0].clientY - touchStartY > 70) {
-                    closeModal();
-                }
-            }, { passive: true });
-
-            // Scroll to top button
-            function checkScroll() {
-                const scrollY = mainContainer.scrollTop || window.scrollY;
-                if (scrollY > 300) {
-                    scrollTopBtn.classList.add('visible');
-                } else {
-                    scrollTopBtn.classList.remove('visible');
-                }
+            function closeMenu() {
+                menuOverlay.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+                document.querySelectorAll('.menu-category.open').forEach(c => c.classList.remove('open'));
+                document.querySelectorAll('.sub-categories').forEach(s => s.style.maxHeight = '0');
             }
 
-            mainContainer.addEventListener('scroll', checkScroll, { passive: true });
-            window.addEventListener('scroll', checkScroll, { passive: true });
-
-            scrollTopBtn.addEventListener('click', function() {
-                mainContainer.scrollTo({ top: 0, behavior: 'smooth' });
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                if (navigator.vibrate) {
-                    navigator.vibrate(6);
+            menuToggle.addEventListener('click', () => {
+                if (menuOverlay.classList.contains('active')) {
+                    closeMenu();
+                } else {
+                    menuOverlay.classList.add('active');
+                    menuToggle.classList.add('active');
+                    document.body.style.overflow = 'hidden';
                 }
             });
 
-            // Social button interactions
-            const socialBtns = document.querySelectorAll('.social-dot');
-            socialBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    this.style.transform = 'scale(1.35)';
-                    this.style.transition = 'transform 0.18s var(--transition-bounce)';
-                    setTimeout(() => {
-                        this.style.transform = 'scale(1)';
-                    }, 200);
-                    if (navigator.vibrate) {
-                        navigator.vibrate(10);
-                    }
-                });
+            menuOverlay.addEventListener('click', (e) => {
+                if (e.target === menuOverlay) closeMenu();
             });
 
-            // Handle image load errors gracefully
-            document.querySelectorAll('.item-image').forEach(img => {
-                img.addEventListener('error', function() {
-                    this.style.opacity = '0.3';
-                    this.style.backgroundColor = '#1a1a1a';
-                });
-            });
-
-            // Initial check
-            checkScroll();
-
-            console.log('%c Amor & Fortune %c QR Menü Hazır ✨',
-                'color: #c9a050; font-size: 1.1em; font-family: serif;',
-                'color: #ccc;');
-            console.log('%c Tüm ürünlere tıklayarak detaylı kart görünümünü açabilirsiniz.',
-                'color: #999;');
-            console.log('%c Görselleri değiştirmek için data-img özniteliklerini güncelleyin.',
-                'color: #999;');
+            buildMenu();
+            applyFilter(null, null);
         })();
     </script>
 </body>
