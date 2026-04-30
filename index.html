@@ -42,8 +42,6 @@
             box-shadow: 0 0 100px rgba(0,0,0,0.9), 0 0 0 1px rgba(201,160,80,0.06);
             display:flex; flex-direction:column;
         }
-
-        /* Top Bar */
         .top-bar {
             display:flex; align-items:center; justify-content:space-between;
             padding: calc(12px + var(--safe-top)) 16px 8px;
@@ -56,21 +54,18 @@
             font-family: 'Great Vibes', cursive;
             font-size:1.8rem; color:var(--gold);
             text-shadow:0 0 25px rgba(201,160,80,0.5);
-            letter-spacing:1px; line-height:1;
+            letter-spacing:1px;
         }
         .menu-toggle {
-            width:38px; height:38px;
-            background:transparent; border:1px solid rgba(201,160,80,0.3);
+            width:38px; height:38px; background:transparent; border:1px solid rgba(201,160,80,0.3);
             border-radius:12px; display:flex; flex-direction:column;
-            align-items:center; justify-content:center; gap:5px;
-            cursor:pointer; transition:all 0.3s;
+            align-items:center; justify-content:center; gap:5px; cursor:pointer;
         }
         .menu-toggle span { display:block; width:22px; height:2px; background:var(--gold); border-radius:2px; transition:all 0.3s; }
         .menu-toggle.active span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
         .menu-toggle.active span:nth-child(2) { opacity:0; }
         .menu-toggle.active span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
 
-        /* Menu Overlay */
         .menu-overlay {
             position:fixed; inset:0; z-index:40;
             background:rgba(0,0,0,0.8); backdrop-filter:blur(18px);
@@ -90,23 +85,18 @@
         .menu-panel::-webkit-scrollbar { width:3px; }
         .menu-panel::-webkit-scrollbar-track { background:transparent; }
         .menu-panel::-webkit-scrollbar-thumb { background:rgba(201,160,80,0.3); border-radius:10px; }
-
         .all-products-btn {
             display:flex; align-items:center; gap:12px;
             padding:16px 20px; background:rgba(201,160,80,0.05);
             border-bottom:1px solid rgba(201,160,80,0.15);
-            cursor:pointer; transition:all 0.3s;
-            color:var(--gold-light); font-weight:500;
-            letter-spacing:1px;
+            cursor:pointer; color:var(--gold-light); font-weight:500; letter-spacing:1px;
         }
         .all-products-btn:active { background:rgba(201,160,80,0.12); }
         .all-products-btn svg { width:24px; height:24px; fill:none; stroke:var(--gold); stroke-width:1.5; }
-
         .menu-category {
             display:flex; align-items:center; justify-content:space-between;
             padding:16px 20px; border-bottom:1px solid rgba(255,255,255,0.05);
-            cursor:pointer; transition:all 0.3s;
-            color:var(--cream); font-weight:500;
+            cursor:pointer; color:var(--cream); font-weight:500;
             letter-spacing:1.5px; font-size:0.95rem;
         }
         .menu-category:active { background:rgba(201,160,80,0.05); }
@@ -114,35 +104,28 @@
         .menu-category svg { width:22px; height:22px; fill:none; stroke:var(--gold); stroke-width:1.5; }
         .menu-arrow { color:var(--gold); font-size:1.2rem; transition:transform 0.3s; }
         .menu-category.open .menu-arrow { transform:rotate(90deg); }
-
         .sub-categories {
             max-height:0; overflow:hidden; transition:max-height 0.5s var(--transition-smooth);
             background:rgba(0,0,0,0.2);
         }
         .sub-category-btn {
             display:block; width:100%; text-align:left;
-            padding:12px 24px 12px 50px;
-            background:transparent; border:none;
+            padding:12px 24px 12px 50px; background:transparent; border:none;
             color:var(--text-light); font-size:0.85rem;
             letter-spacing:2px; text-transform:uppercase;
             border-bottom:1px solid rgba(255,255,255,0.03);
-            cursor:pointer; transition:all 0.3s;
-            font-family:'Montserrat', sans-serif;
+            cursor:pointer; font-family:'Montserrat', sans-serif;
         }
         .sub-category-btn:active { color:var(--gold); background:rgba(201,160,80,0.08); }
 
-        /* Content */
-        .content-area { flex:1; padding:0 14px 20px; }
+        .content-area { flex:1; padding:0 0 20px; }
 
-        /* Hoş Geldiniz Bölümü */
+        /* Hoş Geldiniz */
         .welcome-section {
-            text-align:center; padding:30px 10px 20px;
+            text-align:center; padding:35px 20px 20px;
             animation: fadeInUp 0.8s;
         }
-        .welcome-icon {
-            font-size:2.5rem; margin-bottom:10px;
-            filter: drop-shadow(0 0 8px var(--gold));
-        }
+        .welcome-icon { font-size:2.5rem; margin-bottom:10px; }
         .welcome-title {
             font-family: 'Playfair Display', serif;
             font-size:2rem; color:var(--gold);
@@ -153,32 +136,46 @@
             font-size:0.8rem; color:var(--text-muted);
             line-height:1.6; font-weight:300;
             max-width:320px; margin:0 auto 16px;
-            letter-spacing:0.3px;
         }
-        .welcome-divider {
-            display:flex; align-items:center; justify-content:center; gap:6px;
-        }
+        .welcome-divider { display:flex; align-items:center; justify-content:center; gap:6px; }
         .welcome-line { width:30px; height:1px; background:var(--gold); }
         .welcome-diamond { width:5px; height:5px; background:var(--gold); transform:rotate(45deg); }
 
-        @keyframes fadeInUp {
-            from { opacity:0; transform:translateY(20px); }
-            to { opacity:1; transform:translateY(0); }
+        /* Kategori Banner */
+        .category-banner {
+            position:relative; width:100%; height:240px;
+            overflow:hidden; display:flex; align-items:flex-end;
+            animation: fadeInUp 0.6s;
+            margin-bottom:12px;
         }
+        .category-banner img {
+            position:absolute; top:0; left:0; width:100%; height:100%;
+            object-fit:cover; filter:brightness(0.4);
+        }
+        .banner-overlay {
+            position:relative; z-index:2; width:100%;
+            padding:20px; background:linear-gradient(transparent, rgba(0,0,0,0.8));
+            color:var(--cream);
+        }
+        .banner-title {
+            font-family: 'Playfair Display', serif;
+            font-size:1.8rem; font-weight:700; color:var(--gold-light);
+            text-shadow:0 2px 10px rgba(0,0,0,0.5);
+            margin-bottom:6px;
+        }
+        .banner-desc {
+            font-size:0.75rem; color:var(--text-light);
+            font-weight:300; line-height:1.4;
+        }
+
+        .product-list-padding { padding:0 14px 20px; }
 
         .section-title {
             font-family:'Playfair Display', serif;
-            font-size:1.7rem; color:var(--cream);
-            text-align:center; margin:8px 0 18px;
-            letter-spacing:1px; position:relative;
-            scroll-margin-top: 80px;
+            font-size:1.4rem; color:var(--cream);
+            margin:8px 0 18px; letter-spacing:1px;
+            text-align:center;
         }
-        .section-title::after {
-            content:''; position:absolute; bottom:-6px; left:50%;
-            transform:translateX(-50%); width:45px; height:2px;
-            background:var(--gold); border-radius:2px;
-        }
-
         .category-group { margin-bottom:20px; }
         .group-title {
             font-family:'Playfair Display', serif;
@@ -186,7 +183,6 @@
             padding:8px 0; margin-bottom:8px;
             border-bottom:1px solid rgba(201,160,80,0.2);
             display:flex; align-items:center; gap:8px;
-            letter-spacing:1px;
         }
         .group-title svg { width:22px; height:22px; fill:none; stroke:var(--gold); stroke-width:1.5; }
 
@@ -209,34 +205,27 @@
         .item-desc { font-size:0.65rem; color:var(--text-muted); line-height:1.3; }
         .item-price { font-size:0.9rem; font-weight:700; color:var(--gold); }
         .badge { font-size:0.55rem; padding:2px 7px; border-radius:20px; background:rgba(201,160,80,0.15); color:var(--gold-light); border:1px solid rgba(201,160,80,0.25); white-space:nowrap; }
+        .empty-message { text-align:center; color:var(--text-muted); margin-top:50px; }
 
-        .empty-message { text-align:center; color:var(--text-muted); margin-top:50px; font-style:italic; }
-
-        /* Footer */
         .cafe-footer {
             text-align:center; padding:20px 16px calc(20px + var(--safe-bottom));
             border-top:1px solid rgba(201,160,80,0.12);
         }
         .footer-brand { font-family:'Great Vibes', cursive; font-size:1.5rem; color:var(--gold); opacity:0.7; }
-        .footer-info { font-size:0.6rem; color:var(--text-muted); letter-spacing:2px; text-transform:uppercase; margin-top:4px; }
+        .footer-info { font-size:0.6rem; color:var(--text-muted); letter-spacing:2px; text-transform:uppercase; }
 
-        /* Modal */
         .modal-overlay {
-            position:fixed; inset:0; z-index:1000;
-            background:rgba(0,0,0,0.85); backdrop-filter:blur(20px);
-            -webkit-backdrop-filter:blur(20px);
+            position:fixed; inset:0; z-index:1000; background:rgba(0,0,0,0.85);
+            backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
             display:flex; align-items:center; justify-content:center;
-            padding:16px; opacity:0; pointer-events:none;
-            transition:opacity 0.35s;
+            padding:16px; opacity:0; pointer-events:none; transition:opacity 0.35s;
         }
         .modal-overlay.active { opacity:1; pointer-events:auto; }
         .modal-card {
             background:linear-gradient(160deg, #1a1a1a 0%, #0f0f0f 50%, #0a0a0a 100%);
             border:1.5px solid rgba(201,160,80,0.3);
-            border-radius:24px;
-            width:100%; max-width:420px;
-            max-height:90vh; max-height:90dvh;
-            overflow-y:auto; overflow-x:hidden;
+            border-radius:24px; width:100%; max-width:420px;
+            max-height:90vh; overflow-y:auto;
             box-shadow:0 30px 80px rgba(0,0,0,0.8);
             transform:translateY(30px) scale(0.92);
             transition:transform 0.45s cubic-bezier(0.34,1.56,0.64,1);
@@ -245,94 +234,54 @@
         .modal-close-btn {
             position:sticky; top:12px; float:right; margin-right:12px;
             width:38px; height:38px; border-radius:50%;
-            background:rgba(0,0,0,0.7); backdrop-filter:blur(10px);
-            border:1px solid rgba(201,160,80,0.35);
+            background:rgba(0,0,0,0.7); border:1px solid rgba(201,160,80,0.35);
             color:var(--gold); font-size:1.2rem; cursor:pointer;
-            z-index:10; display:flex; align-items:center; justify-content:center;
-        }
-        .modal-image-wrap {
-            width:100%; height:280px; background:#000;
             display:flex; align-items:center; justify-content:center;
-            border-radius:24px 24px 0 0;
-            overflow:hidden;
         }
-        .modal-image {
-            width:100%; height:100%;
-            object-fit:contain;
-        }
-        .modal-image-overlay {
-            position:absolute; bottom:0; left:0; right:0; height:70px;
-            background:linear-gradient(transparent, rgba(10,10,10,0.9));
-            pointer-events:none;
-        }
+        .modal-image-wrap { width:100%; height:280px; background:#000; display:flex; align-items:center; justify-content:center; border-radius:24px 24px 0 0; overflow:hidden; }
+        .modal-image { width:100%; height:100%; object-fit:contain; }
         .modal-body { padding:16px 20px 22px; }
-        .modal-badge {
-            display:inline-block; font-size:0.6rem; padding:4px 10px;
-            border-radius:20px; background:rgba(201,160,80,0.15);
-            color:var(--gold-light); text-transform:uppercase;
-            letter-spacing:1.5px; border:1px solid rgba(201,160,80,0.3);
-            margin-bottom:10px;
-        }
-        .modal-title {
-            font-family:'Playfair Display', serif;
-            font-size:1.8rem; font-weight:700;
-            color:var(--cream); margin-bottom:8px;
-        }
-        .modal-description {
-            font-size:0.85rem; color:#b0b0b0;
-            line-height:1.6; font-weight:300; margin-bottom:16px;
-        }
+        .modal-badge { display:inline-block; font-size:0.6rem; padding:4px 10px; border-radius:20px; background:rgba(201,160,80,0.15); color:var(--gold-light); text-transform:uppercase; letter-spacing:1.5px; border:1px solid rgba(201,160,80,0.3); margin-bottom:10px; }
+        .modal-title { font-family:'Playfair Display', serif; font-size:1.8rem; font-weight:700; color:var(--cream); margin-bottom:8px; }
+        .modal-description { font-size:0.85rem; color:#b0b0b0; line-height:1.6; font-weight:300; margin-bottom:16px; }
         .modal-price-row { display:flex; align-items:center; justify-content:space-between; }
-        .modal-price {
-            font-family:'Playfair Display', serif;
-            font-size:2rem; font-weight:700;
-            color:var(--gold); text-shadow:0 0 20px rgba(201,160,80,0.4);
-        }
-        .modal-category-tag {
-            font-size:0.65rem; color:var(--text-muted);
-            text-transform:uppercase; letter-spacing:2px;
-            border:1px solid rgba(255,255,255,0.15);
-            padding:6px 14px; border-radius:20px;
-        }
+        .modal-price { font-family:'Playfair Display', serif; font-size:2rem; font-weight:700; color:var(--gold); text-shadow:0 0 20px rgba(201,160,80,0.4); }
+        .modal-category-tag { font-size:0.65rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:2px; border:1px solid rgba(255,255,255,0.15); padding:6px 14px; border-radius:20px; }
         body.no-scroll { overflow:hidden; position:fixed; width:100%; }
+        @keyframes fadeInUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
     </style>
 </head>
 <body>
-    <div class="particles-container" aria-hidden="true">
-        <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
-    </div>
+    <div class="particles-container"><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div></div>
 
     <div class="main-container">
         <div class="top-bar">
             <span class="logo-small">Amor & Fortune</span>
-            <div class="menu-toggle" id="menuToggle">
-                <span></span><span></span><span></span>
-            </div>
+            <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
         </div>
-
         <div class="menu-overlay" id="menuOverlay">
             <div class="menu-panel" id="menuPanel"></div>
         </div>
 
         <div class="content-area" id="contentArea">
-            <!-- Hoş Geldiniz Bölümü -->
             <div class="welcome-section" id="welcomeSection">
                 <div class="welcome-icon">✨</div>
                 <h1 class="welcome-title">Hoş Geldiniz</h1>
-                <p class="welcome-text">
-                    Amor & Fortune'da lüks ve lezzetin büyüleyici buluşmasına tanıklık edin. 
-                    Özenle seçilmiş menümüzle unutulmaz bir deneyime hazır olun.
-                </p>
-                <div class="welcome-divider">
-                    <span class="welcome-line"></span>
-                    <span class="welcome-diamond"></span>
-                    <span class="welcome-line"></span>
+                <p class="welcome-text">Amor & Fortune'da lüks ve lezzetin büyüleyici buluşmasına tanıklık edin. Özenle seçilmiş menümüzle unutulmaz bir deneyime hazır olun.</p>
+                <div class="welcome-divider"><span class="welcome-line"></span><span class="welcome-diamond"></span><span class="welcome-line"></span></div>
+            </div>
+
+            <div class="category-banner" id="categoryBanner" style="display:none;">
+                <img src="" alt="" id="bannerImage">
+                <div class="banner-overlay">
+                    <h2 class="banner-title" id="bannerTitle"></h2>
+                    <p class="banner-desc" id="bannerDesc"></p>
                 </div>
             </div>
 
-            <!-- Ürün Başlığı ve Listesi -->
-            <h2 class="section-title" id="contentTitle">Tüm Ürünler</h2>
-            <div id="productList"></div>
+            <div class="product-list-padding">
+                <div id="productList"></div>
+            </div>
         </div>
 
         <footer class="cafe-footer">
@@ -341,22 +290,15 @@
         </footer>
     </div>
 
-    <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-card">
             <button class="modal-close-btn" id="modalCloseBtn">✕</button>
-            <div class="modal-image-wrap">
-                <img src="" alt="" class="modal-image" id="modalImage">
-                <div class="modal-image-overlay"></div>
-            </div>
+            <div class="modal-image-wrap"><img src="" alt="" class="modal-image" id="modalImage"></div>
             <div class="modal-body">
                 <span class="modal-badge" id="modalBadge"></span>
                 <h3 class="modal-title" id="modalTitle"></h3>
                 <p class="modal-description" id="modalDesc"></p>
-                <div class="modal-price-row">
-                    <span class="modal-price" id="modalPrice"></span>
-                    <span class="modal-category-tag" id="modalCategory"></span>
-                </div>
+                <div class="modal-price-row"><span class="modal-price" id="modalPrice"></span><span class="modal-category-tag" id="modalCategory"></span></div>
             </div>
         </div>
     </div>
@@ -400,10 +342,28 @@
                 "icecekler": { label:"İçecekler", icon: icons.icecekler, subs: {"soguk-icecekler":"Soğuk İçecekler", "smoothie":"Smoothie"} }
             };
 
+            const banners = {
+                "ana-yemekler": { img:"https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=300&fit=crop", title:"Ana Yemekler", desc:"Şefin özenle hazırladığı, damaklarda iz bırakan lezzetler." },
+                "salatalar": { img:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=300&fit=crop", title:"Salatalar", desc:"Taze ve hafif seçeneklerle ferah bir mola." },
+                "sicak-tatlilar": { img:"https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=600&h=300&fit=crop", title:"Sıcak Tatlılar", desc:"Fırından yeni çıkmış sıcacık lezzetler." },
+                "soguk-tatlilar": { img:"https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&h=300&fit=crop", title:"Soğuk Tatlılar", desc:"Serinleten, iştah açan tatlı alternatifleri." },
+                "ozel-karisimlar": { img:"https://images.unsplash.com/photo-1549877452-9c387954fbc2?w=600&h=300&fit=crop", title:"Özel Karışımlar", desc:"Amor & Fortune'un kendine has nargile blendleri." },
+                "meyve-aromali": { img:"https://images.unsplash.com/photo-1523371054106-bbf80586c38c?w=600&h=300&fit=crop", title:"Meyve Aromalı", desc:"En sevilen meyve aromalarıyla ferah bir keyif." },
+                "ice-nargile": { img:"https://images.unsplash.com/photo-1572960251616-62b8b0f04edf?w=600&h=300&fit=crop", title:"Ice Nargile", desc:"Buz gibi serinlikte yoğun duman deneyimi." },
+                "sicak-kahveler": { img:"https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=300&fit=crop", title:"Sıcak Kahveler", desc:"Elit çekirdeklerden hazırlanan sıcak kahve ritüeli." },
+                "soguk-kahveler": { img:"https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&h=300&fit=crop", title:"Soğuk Kahveler", desc:"Serinletici, özenle demlenmiş soğuk kahve seçenekleri." },
+                "soguk-icecekler": { img:"https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=600&h=300&fit=crop", title:"Soğuk İçecekler", desc:"Buz gibi ferahlatıcı içecekler." },
+                "smoothie": { img:"https://images.unsplash.com/photo-1590301157890-4810ed352733?w=600&h=300&fit=crop", title:"Smoothie", desc:"Taze meyvelerle hazırlanan sağlıklı ve lezzetli karışımlar." }
+            };
+
             const menuToggle = document.getElementById('menuToggle');
             const menuOverlay = document.getElementById('menuOverlay');
             const menuPanel = document.getElementById('menuPanel');
-            const contentTitle = document.getElementById('contentTitle');
+            const welcomeSection = document.getElementById('welcomeSection');
+            const categoryBanner = document.getElementById('categoryBanner');
+            const bannerImage = document.getElementById('bannerImage');
+            const bannerTitle = document.getElementById('bannerTitle');
+            const bannerDesc = document.getElementById('bannerDesc');
             const productList = document.getElementById('productList');
             const modalOverlay = document.getElementById('modalOverlay');
             const modalImage = document.getElementById('modalImage');
@@ -421,11 +381,7 @@
                 const allBtn = document.createElement('div');
                 allBtn.className = 'all-products-btn';
                 allBtn.innerHTML = `${icons.all} <span>Tüm Ürünler</span>`;
-                allBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    applyFilter(null, null, true); // scroll yap
-                    closeMenu();
-                });
+                allBtn.addEventListener('click', (e) => { e.stopPropagation(); applyFilter(null, null); closeMenu(); });
                 menuPanel.appendChild(allBtn);
 
                 for (let [catKey, catData] of Object.entries(menuCategories)) {
@@ -457,7 +413,7 @@
                             subBtn.textContent = subLabel;
                             subBtn.addEventListener('click', function(e) {
                                 e.stopPropagation();
-                                applyFilter(catKey, subKey, true);
+                                applyFilter(catKey, subKey);
                                 closeMenu();
                             });
                             subDiv.appendChild(subBtn);
@@ -467,22 +423,35 @@
                 }
             }
 
-            function applyFilter(catKey, subKey, scrollToProducts = false) {
+            function applyFilter(catKey, subKey) {
                 currentFilter.category = catKey;
                 currentFilter.subcategory = subKey;
-                renderProducts();
-                let title = 'Tüm Ürünler';
-                if (catKey) {
-                    title = menuCategories[catKey]?.label || catKey;
-                    if (subKey && menuCategories[catKey]?.subs[subKey]) {
-                        title = menuCategories[catKey].subs[subKey];
-                    }
-                }
-                contentTitle.textContent = title;
+                const isAll = !catKey && !subKey;
+                welcomeSection.style.display = isAll ? 'block' : 'none';
+                categoryBanner.style.display = isAll ? 'none' : 'block';
 
-                if (scrollToProducts) {
+                if (!isAll && subKey && banners[subKey]) {
+                    const b = banners[subKey];
+                    bannerImage.src = b.img;
+                    bannerTitle.textContent = b.title;
+                    bannerDesc.textContent = b.desc;
+                } else if (!isAll && catKey && !subKey) {
+                    // Category without subcategory (if ever)
+                    const b = banners[catKey] || { img:"https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=300&fit=crop", title:menuCategories[catKey]?.label||catKey, desc:"Lezzetli seçenekler." };
+                    bannerImage.src = b.img;
+                    bannerTitle.textContent = b.title;
+                    bannerDesc.textContent = b.desc;
+                }
+
+                renderProducts();
+                // Scroll to banner if category or subcategory selected
+                if (!isAll) {
                     setTimeout(() => {
-                        contentTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        categoryBanner.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                } else {
+                    setTimeout(() => {
+                        welcomeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }, 100);
                 }
             }
@@ -546,17 +515,12 @@
 
             function openModal(prod) {
                 modalImage.src = prod.img;
-                modalImage.alt = prod.name;
                 modalTitle.textContent = prod.name;
                 modalDesc.textContent = prod.desc;
                 modalPrice.textContent = prod.price;
                 modalCategory.textContent = menuCategories[prod.category]?.label || prod.category;
-                if (prod.badge) {
-                    modalBadge.textContent = prod.badge;
-                    modalBadge.style.display = 'inline-block';
-                } else {
-                    modalBadge.style.display = 'none';
-                }
+                if (prod.badge) { modalBadge.textContent = prod.badge; modalBadge.style.display = 'inline-block'; }
+                else { modalBadge.style.display = 'none'; }
                 modalOverlay.classList.add('active');
                 document.body.classList.add('no-scroll');
                 document.querySelector('.modal-card').scrollTop = 0;
@@ -569,12 +533,8 @@
             }
 
             modalCloseBtn.addEventListener('click', closeModal);
-            modalOverlay.addEventListener('click', (e) => {
-                if (e.target === modalOverlay) closeModal();
-            });
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && modalOverlay.classList.contains('active')) closeModal();
-            });
+            modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modalOverlay.classList.contains('active')) closeModal(); });
 
             function closeMenu() {
                 menuOverlay.classList.remove('active');
@@ -585,22 +545,17 @@
             }
 
             menuToggle.addEventListener('click', () => {
-                if (menuOverlay.classList.contains('active')) {
-                    closeMenu();
-                } else {
+                if (menuOverlay.classList.contains('active')) closeMenu();
+                else {
                     menuOverlay.classList.add('active');
                     menuToggle.classList.add('active');
                     document.body.style.overflow = 'hidden';
                 }
             });
+            menuOverlay.addEventListener('click', (e) => { if (e.target === menuOverlay) closeMenu(); });
 
-            menuOverlay.addEventListener('click', (e) => {
-                if (e.target === menuOverlay) closeMenu();
-            });
-
-            // Başlangıç
             buildMenu();
-            applyFilter(null, null, false); // ilk yüklemede scroll yapma, hoş geldin görünsün
+            applyFilter(null, null);
         })();
     </script>
 </body>
