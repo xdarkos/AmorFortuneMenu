@@ -30,8 +30,6 @@
             display: flex; justify-content: center;
             background-image: radial-gradient(ellipse at 50% 0%, rgba(201,160,80,0.03) 0%, transparent 70%);
         }
-
-        /* Particles */
         .particles-container { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
         .particle { position:absolute; width:1.5px; height:1.5px; background:var(--gold); border-radius:50%; animation:floatUp 9s infinite; opacity:0; box-shadow:0 0 5px var(--gold-light); }
         .particle:nth-child(1){left:5%;animation-delay:0s;}.particle:nth-child(2){left:15%;animation-delay:1.3s;}.particle:nth-child(3){left:25%;animation-delay:2.7s;}.particle:nth-child(4){left:35%;animation-delay:0.6s;}.particle:nth-child(5){left:45%;animation-delay:3.2s;}.particle:nth-child(6){left:55%;animation-delay:1.9s;}.particle:nth-child(7){left:65%;animation-delay:4.1s;}.particle:nth-child(8){left:75%;animation-delay:2.3s;}.particle:nth-child(9){left:85%;animation-delay:0.4s;}.particle:nth-child(10){left:92%;animation-delay:3.6s;}
@@ -134,12 +132,46 @@
         .sub-category-btn:active { color:var(--gold); background:rgba(201,160,80,0.08); }
 
         /* Content */
-        .content-area { flex:1; padding:12px 14px 20px; }
+        .content-area { flex:1; padding:0 14px 20px; }
+
+        /* Hoş Geldiniz Bölümü */
+        .welcome-section {
+            text-align:center; padding:30px 10px 20px;
+            animation: fadeInUp 0.8s;
+        }
+        .welcome-icon {
+            font-size:2.5rem; margin-bottom:10px;
+            filter: drop-shadow(0 0 8px var(--gold));
+        }
+        .welcome-title {
+            font-family: 'Playfair Display', serif;
+            font-size:2rem; color:var(--gold);
+            letter-spacing:2px; margin-bottom:10px;
+            text-shadow:0 0 30px rgba(201,160,80,0.4);
+        }
+        .welcome-text {
+            font-size:0.8rem; color:var(--text-muted);
+            line-height:1.6; font-weight:300;
+            max-width:320px; margin:0 auto 16px;
+            letter-spacing:0.3px;
+        }
+        .welcome-divider {
+            display:flex; align-items:center; justify-content:center; gap:6px;
+        }
+        .welcome-line { width:30px; height:1px; background:var(--gold); }
+        .welcome-diamond { width:5px; height:5px; background:var(--gold); transform:rotate(45deg); }
+
+        @keyframes fadeInUp {
+            from { opacity:0; transform:translateY(20px); }
+            to { opacity:1; transform:translateY(0); }
+        }
+
         .section-title {
             font-family:'Playfair Display', serif;
             font-size:1.7rem; color:var(--cream);
             text-align:center; margin:8px 0 18px;
             letter-spacing:1px; position:relative;
+            scroll-margin-top: 80px;
         }
         .section-title::after {
             content:''; position:absolute; bottom:-6px; left:50%;
@@ -167,7 +199,6 @@
         }
         .menu-item:active { transform:scale(0.98); }
         @keyframes itemFade { from{opacity:0;transform:translateY(14px);} }
-
         .item-image {
             width:70px; height:70px; min-width:70px; border-radius:10px;
             object-fit:contain; background:#111;
@@ -189,7 +220,7 @@
         .footer-brand { font-family:'Great Vibes', cursive; font-size:1.5rem; color:var(--gold); opacity:0.7; }
         .footer-info { font-size:0.6rem; color:var(--text-muted); letter-spacing:2px; text-transform:uppercase; margin-top:4px; }
 
-        /* ========== MODAL ========== */
+        /* Modal */
         .modal-overlay {
             position:fixed; inset:0; z-index:1000;
             background:rgba(0,0,0,0.85); backdrop-filter:blur(20px);
@@ -206,39 +237,28 @@
             width:100%; max-width:420px;
             max-height:90vh; max-height:90dvh;
             overflow-y:auto; overflow-x:hidden;
-            box-shadow:0 30px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(201,160,80,0.08) inset, 0 0 60px rgba(201,160,80,0.15);
+            box-shadow:0 30px 80px rgba(0,0,0,0.8);
             transform:translateY(30px) scale(0.92);
             transition:transform 0.45s cubic-bezier(0.34,1.56,0.64,1);
-            position:relative;
-            scrollbar-width:thin; scrollbar-color:rgba(201,160,80,0.3) transparent;
         }
         .modal-overlay.active .modal-card { transform:translateY(0) scale(1); }
-        .modal-card::-webkit-scrollbar { width:3px; }
-        .modal-card::-webkit-scrollbar-track { background:transparent; }
-        .modal-card::-webkit-scrollbar-thumb { background:rgba(201,160,80,0.25); border-radius:10px; }
-
         .modal-close-btn {
             position:sticky; top:12px; float:right; margin-right:12px;
             width:38px; height:38px; border-radius:50%;
             background:rgba(0,0,0,0.7); backdrop-filter:blur(10px);
-            -webkit-backdrop-filter:blur(10px);
             border:1px solid rgba(201,160,80,0.35);
             color:var(--gold); font-size:1.2rem; cursor:pointer;
             z-index:10; display:flex; align-items:center; justify-content:center;
-            transition:all 0.3s;
         }
-        .modal-close-btn:active { background:rgba(201,160,80,0.25); transform:scale(0.9); }
-
         .modal-image-wrap {
             width:100%; height:280px; background:#000;
             display:flex; align-items:center; justify-content:center;
             border-radius:24px 24px 0 0;
-            overflow:hidden; position:relative;
+            overflow:hidden;
         }
         .modal-image {
             width:100%; height:100%;
-            object-fit:contain; /* Görsel tamamen görünür, kırpılmaz */
-            display:block;
+            object-fit:contain;
         }
         .modal-image-overlay {
             position:absolute; bottom:0; left:0; right:0; height:70px;
@@ -256,23 +276,17 @@
         .modal-title {
             font-family:'Playfair Display', serif;
             font-size:1.8rem; font-weight:700;
-            color:var(--cream); letter-spacing:0.5px;
-            margin:0 0 8px; line-height:1.2;
+            color:var(--cream); margin-bottom:8px;
         }
         .modal-description {
             font-size:0.85rem; color:#b0b0b0;
-            line-height:1.6; font-weight:300;
-            margin-bottom:16px;
+            line-height:1.6; font-weight:300; margin-bottom:16px;
         }
-        .modal-price-row {
-            display:flex; align-items:center; justify-content:space-between;
-            flex-wrap:wrap; gap:10px;
-        }
+        .modal-price-row { display:flex; align-items:center; justify-content:space-between; }
         .modal-price {
             font-family:'Playfair Display', serif;
             font-size:2rem; font-weight:700;
-            color:var(--gold);
-            text-shadow:0 0 20px rgba(201,160,80,0.4);
+            color:var(--gold); text-shadow:0 0 20px rgba(201,160,80,0.4);
         }
         .modal-category-tag {
             font-size:0.65rem; color:var(--text-muted);
@@ -280,19 +294,7 @@
             border:1px solid rgba(255,255,255,0.15);
             padding:6px 14px; border-radius:20px;
         }
-
         body.no-scroll { overflow:hidden; position:fixed; width:100%; }
-
-        @media (max-width:360px) {
-            .item-image { width:60px; height:60px; min-width:60px; }
-            .modal-image-wrap { height:200px; }
-            .modal-title { font-size:1.4rem; }
-            .modal-price { font-size:1.5rem; }
-        }
-        @media (min-width:420px) and (max-width:500px) {
-            .item-image { width:80px; height:80px; min-width:80px; }
-            .modal-image-wrap { height:320px; }
-        }
     </style>
 </head>
 <body>
@@ -313,6 +315,22 @@
         </div>
 
         <div class="content-area" id="contentArea">
+            <!-- Hoş Geldiniz Bölümü -->
+            <div class="welcome-section" id="welcomeSection">
+                <div class="welcome-icon">✨</div>
+                <h1 class="welcome-title">Hoş Geldiniz</h1>
+                <p class="welcome-text">
+                    Amor & Fortune'da lüks ve lezzetin büyüleyici buluşmasına tanıklık edin. 
+                    Özenle seçilmiş menümüzle unutulmaz bir deneyime hazır olun.
+                </p>
+                <div class="welcome-divider">
+                    <span class="welcome-line"></span>
+                    <span class="welcome-diamond"></span>
+                    <span class="welcome-line"></span>
+                </div>
+            </div>
+
+            <!-- Ürün Başlığı ve Listesi -->
             <h2 class="section-title" id="contentTitle">Tüm Ürünler</h2>
             <div id="productList"></div>
         </div>
@@ -323,9 +341,9 @@
         </footer>
     </div>
 
-    <!-- ÜRÜN DETAY MODAL -->
+    <!-- Modal -->
     <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-card" id="modalCard">
+        <div class="modal-card">
             <button class="modal-close-btn" id="modalCloseBtn">✕</button>
             <div class="modal-image-wrap">
                 <img src="" alt="" class="modal-image" id="modalImage">
@@ -345,7 +363,6 @@
 
     <script>
         (function() {
-            // SVG ikonlar
             const icons = {
                 all: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>`,
                 yemekler: `<svg viewBox="0 0 24 24"><path d="M18 2.5a3 3 0 0 1 3 3V12a7 7 0 0 1-7 7h-1a7 7 0 0 1-7-7V5.5a3 3 0 0 1 3-3z"/><line x1="6" y1="11" x2="6" y2="16"/><line x1="10" y1="5" x2="10" y2="16"/><line x1="14" y1="5" x2="14" y2="16"/><line x1="18" y1="11" x2="18" y2="16"/></svg>`,
@@ -356,23 +373,23 @@
             };
 
             const products = [
-                { name:"Bonfile & Madlen", price:"₺520", badge:"Özel", desc:"Özenle marine edilmiş bonfile dilimleri, özel madlen sos, karamelize soğan ve mevsim yeşillikleriyle birlikte sunulan şefin imza tabağı.", img:"https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=600&h=450&fit=crop", category:"yemekler", subcategory:"ana-yemekler" },
-                { name:"Trüflü Fettuccine", price:"₺380", badge:"", desc:"El yapımı taze fettuccine, siyah trüf mantarı, krema ve eski parmesan peynirinin enfes uyumu. İtalyan mutfağından lüks bir dokunuş.", img:"https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=600&h=450&fit=crop", category:"yemekler", subcategory:"ana-yemekler" },
-                { name:"Somon & Avokado", price:"₺450", badge:"Popüler", desc:"Nar gibi kızarmış Atlantik somonu, taze avokado püresi ve limon emülsiyonu ile servis edilir. Hafif ve sağlıklı bir seçenek.", img:"https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&h=450&fit=crop", category:"yemekler", subcategory:"ana-yemekler" },
-                { name:"Fortune Burger", price:"₺340", badge:"", desc:"200 gram özel dana kıyması, olgunlaştırılmış cheddar, karamelize soğan ve brioche ekmeği. Yanında çıtır patates ile.", img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=450&fit=crop", category:"yemekler", subcategory:"ana-yemekler" },
-                { name:"Akdeniz Salatası", price:"₺280", badge:"", desc:"Taze roka, cherry domates, bufalo mozzarella, balzamik glaze ve sızma zeytinyağı ile ferahlatıcı bir başlangıç.", img:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=450&fit=crop", category:"yemekler", subcategory:"salatalar" },
-                { name:"Çikolatalı Sufle", price:"₺190", badge:"Favori", desc:"Sıcak akışkan çikolatalı sufle, Madagaskar vanilyalı dondurma eşliğinde sunulur. Çikolata tutkunlarının vazgeçilmezi.", img:"https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=600&h=450&fit=crop", category:"tatlilar", subcategory:"sicak-tatlilar" },
-                { name:"Cheesecake Orman Meyveli", price:"₺210", badge:"", desc:"New York usulü cheesecake, taze orman meyveleri sosu ve badem kırıntısı ile taçlandırılmıştır.", img:"https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600&h=450&fit=crop", category:"tatlilar", subcategory:"soguk-tatlilar" },
-                { name:"Özel Karışım Nargile", price:"₺350", badge:"Özel", desc:"Amor & Fortune özel blend tütünü, pürüzsüz içim deneyimi ve uzun süreli keyif sunar. Ev yapımı melas ile hazırlanır.", img:"https://images.unsplash.com/photo-1572960251616-62b8b0f04edf?w=600&h=450&fit=crop", category:"nargile", subcategory:"ozel-karisimlar" },
-                { name:"Meyve Aromalı Nargile", price:"₺300", badge:"", desc:"Üzüm, çilek, mango, karpuz & nane gibi zengin aroma seçenekleriyle ferahlatıcı bir nargile keyfi.", img:"https://images.unsplash.com/photo-1523371054106-bbf80586c38c?w=600&h=450&fit=crop", category:"nargile", subcategory:"meyve-aromali" },
-                { name:"Premium Ice Nargile", price:"₺400", badge:"", desc:"Buzlu sistemle soğutulmuş, yoğun duman ve ferahlatıcı içim deneyimi. Özel buz haznesiyle ekstra serinlik.", img:"https://images.unsplash.com/photo-1549877452-9c387954fbc2?w=600&h=450&fit=crop", category:"nargile", subcategory:"ice-nargile" },
-                { name:"Espresso", price:"₺85", badge:"", desc:"Çift çekilmiş özel kavrum çekirdeklerden, yoğun ve aromatik bir espresso. Kahvenin en saf hali.", img:"https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=600&h=450&fit=crop", category:"kahve", subcategory:"sicak-kahveler" },
-                { name:"Latte Art Özel", price:"₺120", badge:"İmza", desc:"Barista imzasıyla hazırlanan, kadifemsi süt köpüğü üzerinde özel latte art deseniyle görsel ve lezzet şöleni.", img:"https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=600&h=450&fit=crop", category:"kahve", subcategory:"sicak-kahveler" },
-                { name:"Türk Kahvesi", price:"₺70", badge:"", desc:"Geleneksel pişirme yöntemiyle, bol köpüklü, kısık ateşte özenle hazırlanır. Yanında özel lokum ile.", img:"https://images.unsplash.com/photo-1580722045030-9c8b2fcb95b7?w=600&h=450&fit=crop", category:"kahve", subcategory:"sicak-kahveler" },
-                { name:"Cold Brew", price:"₺140", badge:"", desc:"12 saat soğuk demlenmiş özel kahve, yumuşak içimli ve ferahlatıcı. Buzlu servis edilir.", img:"https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&h=450&fit=crop", category:"kahve", subcategory:"soguk-kahveler" },
-                { name:"Amor Mojito", price:"₺160", badge:"İmza", desc:"Taze nane, lime, özel ev yapımı şurup ve soda ile hazırlanan ferahlatıcı imza kokteylimiz.", img:"https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=600&h=450&fit=crop", category:"icecekler", subcategory:"soguk-icecekler" },
-                { name:"Smoothie Bowl", price:"₺180", badge:"", desc:"Çilek, muz, yaban mersini ve badem sütü ile hazırlanan, granola ve taze meyvelerle süslenen sağlıklı bowl.", img:"https://images.unsplash.com/photo-1590301157890-4810ed352733?w=600&h=450&fit=crop", category:"icecekler", subcategory:"smoothie" },
-                { name:"Fortune Spritz", price:"₺200", badge:"", desc:"Özel narenciye karışımı, İtalyan maden suyu ve aromatik bitkilerle hazırlanan ferahlatıcı içecek.", img:"https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&h=450&fit=crop", category:"icecekler", subcategory:"soguk-icecekler" }
+                { name:"Bonfile & Madlen", price:"₺520", badge:"Özel", desc:"Özenle marine edilmiş bonfile dilimleri, özel madlen sos ve karamelize soğan ile.", img:"https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=600&h=450&fit=crop", category:"yemekler", subcategory:"ana-yemekler" },
+                { name:"Trüflü Fettuccine", price:"₺380", badge:"", desc:"El yapımı fettuccine, siyah trüf mantarı ve eski parmesan.", img:"https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=600&h=450&fit=crop", category:"yemekler", subcategory:"ana-yemekler" },
+                { name:"Somon & Avokado", price:"₺450", badge:"Popüler", desc:"Kızarmış somon, avokado püresi ve limon emülsiyonu.", img:"https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&h=450&fit=crop", category:"yemekler", subcategory:"ana-yemekler" },
+                { name:"Fortune Burger", price:"₺340", badge:"", desc:"200gr özel dana kıyması, cheddar ve brioche.", img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=450&fit=crop", category:"yemekler", subcategory:"ana-yemekler" },
+                { name:"Akdeniz Salatası", price:"₺280", badge:"", desc:"Taze roka, mozzarella ve balzamik glaze.", img:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=450&fit=crop", category:"yemekler", subcategory:"salatalar" },
+                { name:"Çikolatalı Sufle", price:"₺190", badge:"Favori", desc:"Sıcak çikolatalı sufle, vanilyalı dondurma ile.", img:"https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=600&h=450&fit=crop", category:"tatlilar", subcategory:"sicak-tatlilar" },
+                { name:"Cheesecake Orman Meyveli", price:"₺210", badge:"", desc:"New York cheesecake, taze orman meyveleri.", img:"https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600&h=450&fit=crop", category:"tatlilar", subcategory:"soguk-tatlilar" },
+                { name:"Özel Karışım Nargile", price:"₺350", badge:"Özel", desc:"Amor & Fortune özel blend, pürüzsüz içim.", img:"https://images.unsplash.com/photo-1572960251616-62b8b0f04edf?w=600&h=450&fit=crop", category:"nargile", subcategory:"ozel-karisimlar" },
+                { name:"Meyve Aromalı Nargile", price:"₺300", badge:"", desc:"Üzüm, çilek, mango ve nane seçenekleri.", img:"https://images.unsplash.com/photo-1523371054106-bbf80586c38c?w=600&h=450&fit=crop", category:"nargile", subcategory:"meyve-aromali" },
+                { name:"Premium Ice Nargile", price:"₺400", badge:"", desc:"Buzlu sistem, yoğun duman ve ferahlık.", img:"https://images.unsplash.com/photo-1549877452-9c387954fbc2?w=600&h=450&fit=crop", category:"nargile", subcategory:"ice-nargile" },
+                { name:"Espresso", price:"₺85", badge:"", desc:"Çift çekilmiş özel kavrum, yoğun aromatik.", img:"https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=600&h=450&fit=crop", category:"kahve", subcategory:"sicak-kahveler" },
+                { name:"Latte Art Özel", price:"₺120", badge:"İmza", desc:"Barista imzasıyla kadifemsi süt köpüğü.", img:"https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=600&h=450&fit=crop", category:"kahve", subcategory:"sicak-kahveler" },
+                { name:"Türk Kahvesi", price:"₺70", badge:"", desc:"Bol köpüklü, geleneksel pişirme.", img:"https://images.unsplash.com/photo-1580722045030-9c8b2fcb95b7?w=600&h=450&fit=crop", category:"kahve", subcategory:"sicak-kahveler" },
+                { name:"Cold Brew", price:"₺140", badge:"", desc:"12 saat soğuk demlenmiş, ferahlatıcı.", img:"https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&h=450&fit=crop", category:"kahve", subcategory:"soguk-kahveler" },
+                { name:"Amor Mojito", price:"₺160", badge:"İmza", desc:"Taze nane, lime ve soda ile ferahlık.", img:"https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=600&h=450&fit=crop", category:"icecekler", subcategory:"soguk-icecekler" },
+                { name:"Smoothie Bowl", price:"₺180", badge:"", desc:"Çilek, muz ve yaban mersini.", img:"https://images.unsplash.com/photo-1590301157890-4810ed352733?w=600&h=450&fit=crop", category:"icecekler", subcategory:"smoothie" },
+                { name:"Fortune Spritz", price:"₺200", badge:"", desc:"Özel narenciye ve maden suyu.", img:"https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&h=450&fit=crop", category:"icecekler", subcategory:"soguk-icecekler" }
             ];
 
             const menuCategories = {
@@ -404,7 +421,11 @@
                 const allBtn = document.createElement('div');
                 allBtn.className = 'all-products-btn';
                 allBtn.innerHTML = `${icons.all} <span>Tüm Ürünler</span>`;
-                allBtn.addEventListener('click', (e) => { e.stopPropagation(); applyFilter(null, null); closeMenu(); });
+                allBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    applyFilter(null, null, true); // scroll yap
+                    closeMenu();
+                });
                 menuPanel.appendChild(allBtn);
 
                 for (let [catKey, catData] of Object.entries(menuCategories)) {
@@ -436,7 +457,7 @@
                             subBtn.textContent = subLabel;
                             subBtn.addEventListener('click', function(e) {
                                 e.stopPropagation();
-                                applyFilter(catKey, subKey);
+                                applyFilter(catKey, subKey, true);
                                 closeMenu();
                             });
                             subDiv.appendChild(subBtn);
@@ -446,7 +467,7 @@
                 }
             }
 
-            function applyFilter(catKey, subKey) {
+            function applyFilter(catKey, subKey, scrollToProducts = false) {
                 currentFilter.category = catKey;
                 currentFilter.subcategory = subKey;
                 renderProducts();
@@ -458,6 +479,12 @@
                     }
                 }
                 contentTitle.textContent = title;
+
+                if (scrollToProducts) {
+                    setTimeout(() => {
+                        contentTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                }
             }
 
             function renderProducts() {
@@ -532,7 +559,7 @@
                 }
                 modalOverlay.classList.add('active');
                 document.body.classList.add('no-scroll');
-                document.getElementById('modalCard').scrollTop = 0;
+                document.querySelector('.modal-card').scrollTop = 0;
                 setTimeout(() => modalCloseBtn.focus(), 300);
             }
 
@@ -571,8 +598,9 @@
                 if (e.target === menuOverlay) closeMenu();
             });
 
+            // Başlangıç
             buildMenu();
-            applyFilter(null, null);
+            applyFilter(null, null, false); // ilk yüklemede scroll yapma, hoş geldin görünsün
         })();
     </script>
 </body>
