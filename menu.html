@@ -74,101 +74,30 @@
             filter: blur(0.5px);
         }
 
-        .particle:nth-child(1) {
-            left: 5%;
-            animation-delay: 0s;
-            width: 2.5px;
-            height: 2.5px;
-        }
-        .particle:nth-child(2) {
-            left: 15%;
-            animation-delay: 1.3s;
-            width: 1.5px;
-            height: 1.5px;
-        }
-        .particle:nth-child(3) {
-            left: 25%;
-            animation-delay: 2.7s;
-            width: 2px;
-            height: 2px;
-        }
-        .particle:nth-child(4) {
-            left: 35%;
-            animation-delay: 0.6s;
-            width: 1px;
-            height: 1px;
-        }
-        .particle:nth-child(5) {
-            left: 45%;
-            animation-delay: 3.2s;
-            width: 2px;
-            height: 2px;
-        }
-        .particle:nth-child(6) {
-            left: 55%;
-            animation-delay: 1.9s;
-            width: 1.5px;
-            height: 1.5px;
-        }
-        .particle:nth-child(7) {
-            left: 65%;
-            animation-delay: 4.1s;
-            width: 2px;
-            height: 2px;
-        }
-        .particle:nth-child(8) {
-            left: 75%;
-            animation-delay: 2.3s;
-            width: 1px;
-            height: 1px;
-        }
-        .particle:nth-child(9) {
-            left: 85%;
-            animation-delay: 0.4s;
-            width: 2px;
-            height: 2px;
-        }
-        .particle:nth-child(10) {
-            left: 92%;
-            animation-delay: 3.6s;
-            width: 1.5px;
-            height: 1.5px;
-        }
+        .particle:nth-child(1) { left: 5%; animation-delay: 0s; width: 2.5px; height: 2.5px; }
+        .particle:nth-child(2) { left: 15%; animation-delay: 1.3s; width: 1.5px; height: 1.5px; }
+        .particle:nth-child(3) { left: 25%; animation-delay: 2.7s; width: 2px; height: 2px; }
+        .particle:nth-child(4) { left: 35%; animation-delay: 0.6s; width: 1px; height: 1px; }
+        .particle:nth-child(5) { left: 45%; animation-delay: 3.2s; width: 2px; height: 2px; }
+        .particle:nth-child(6) { left: 55%; animation-delay: 1.9s; width: 1.5px; height: 1.5px; }
+        .particle:nth-child(7) { left: 65%; animation-delay: 4.1s; width: 2px; height: 2px; }
+        .particle:nth-child(8) { left: 75%; animation-delay: 2.3s; width: 1px; height: 1px; }
+        .particle:nth-child(9) { left: 85%; animation-delay: 0.4s; width: 2px; height: 2px; }
+        .particle:nth-child(10) { left: 92%; animation-delay: 3.6s; width: 1.5px; height: 1.5px; }
 
         @keyframes floatUp {
-            0% {
-                transform: translateY(108vh) scale(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.7;
-            }
-            30% {
-                transform: translateY(70vh) scale(1.2);
-                opacity: 0.6;
-            }
-            65% {
-                transform: translateY(30vh) scale(0.6);
-                opacity: 0.3;
-            }
-            100% {
-                transform: translateY(-10vh) scale(0);
-                opacity: 0;
-            }
+            0% { transform: translateY(108vh) scale(0); opacity: 0; }
+            10% { opacity: 0.7; }
+            30% { transform: translateY(70vh) scale(1.2); opacity: 0.6; }
+            65% { transform: translateY(30vh) scale(0.6); opacity: 0.3; }
+            100% { transform: translateY(-10vh) scale(0); opacity: 0; }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .particle {
-                animation: none;
-                display: none;
-            }
-            * {
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.01ms !important;
-            }
+            .particle { animation: none; display: none; }
+            * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
         }
 
-        /* Ana konteyner – masaüstünde merkezi lüks görünüm */
         .main-container {
             position: relative;
             z-index: 1;
@@ -192,7 +121,6 @@
             }
         }
 
-        /* Top bar – her zaman hamburger menü görünür (mobil + masaüstü) */
         .top-bar {
             display: flex;
             align-items: center;
@@ -208,10 +136,7 @@
         }
 
         @media (min-width: 769px) {
-            .top-bar {
-                padding: 20px 36px;
-                border-radius: 36px 36px 0 0;
-            }
+            .top-bar { padding: 20px 36px; border-radius: 36px 36px 0 0; }
         }
 
         .logo-small {
@@ -223,72 +148,55 @@
         }
 
         @media (min-width: 769px) {
-            .logo-small {
-                font-size: 2.4rem;
-            }
+            .logo-small { font-size: 2.4rem; }
         }
 
-        /* HAMBURGER MENÜ BUTONU – her ekranda görünür */
-.menu-toggle {
-    width: 52px;
-    height: 52px;
-    background: rgba(20, 20, 20, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1.5px solid rgba(201, 160, 80, 0.6);
-    border-radius: 18px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    cursor: pointer;
-    touch-action: manipulation;
-    box-shadow: 0 0 25px rgba(201, 160, 80, 0.25);
-    transition: all 0.3s var(--transition-smooth);
-    z-index: 101;
-    position: relative;
-}
+        .menu-toggle {
+            width: 52px;
+            height: 52px;
+            background: rgba(20, 20, 20, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1.5px solid rgba(201, 160, 80, 0.6);
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            cursor: pointer;
+            touch-action: manipulation;
+            box-shadow: 0 0 25px rgba(201, 160, 80, 0.25);
+            transition: all 0.3s var(--transition-smooth);
+            z-index: 101;
+            position: relative;
+        }
 
-.menu-toggle:hover {
-    border-color: var(--gold-light);
-    transform: scale(1.02);
-    background: rgba(40, 40, 40, 0.9);
-    box-shadow: 0 0 35px rgba(201, 160, 80, 0.4);
-}
+        .menu-toggle:hover {
+            border-color: var(--gold-light);
+            transform: scale(1.02);
+            background: rgba(40, 40, 40, 0.9);
+            box-shadow: 0 0 35px rgba(201, 160, 80, 0.4);
+        }
 
-.menu-bar {
-    display: block;
-    width: 26px;
-    height: 2.5px;
-    background: var(--gold);
-    border-radius: 4px;
-    box-shadow: 0 0 8px rgba(201, 160, 80, 0.5);
-    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    pointer-events: none;
-    transform-origin: center;
-}
+        .menu-bar {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            background: var(--gold);
+            border-radius: 4px;
+            box-shadow: 0 0 8px rgba(201, 160, 80, 0.5);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            pointer-events: none;
+            transform-origin: center;
+        }
 
-/* Orta çubuk – margin-left:auto kaldırıldı, simetrik oldu */
-.menu-bar:nth-child(2) {
-    background: var(--gold-light);
-}
+        .menu-bar:nth-child(2) { background: var(--gold-light); }
 
-/* Aktif – Çarpı işareti */
-.menu-toggle.active .menu-bar:nth-child(1) {
-    transform: translateY(8.5px) rotate(45deg);
-}
+        .menu-toggle.active .menu-bar:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+        .menu-toggle.active .menu-bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .menu-toggle.active .menu-bar:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
 
-.menu-toggle.active .menu-bar:nth-child(2) {
-    opacity: 0;
-    transform: scaleX(0);
-}
-
-.menu-toggle.active .menu-bar:nth-child(3) {
-    transform: translateY(-8.5px) rotate(-45deg);
-}
-
-        /* Overlay menü – her zaman tam ortada, tüm cihazlarda */
         .menu-overlay {
             position: fixed;
             inset: 0;
@@ -327,29 +235,17 @@
             transition: transform 0.4s cubic-bezier(0.34, 1.4, 0.64, 1);
         }
 
-        .menu-overlay.active .menu-panel {
-            transform: scale(1) translateY(0);
-        }
+        .menu-overlay.active .menu-panel { transform: scale(1) translateY(0); }
 
         @media (min-width: 769px) {
-            .menu-panel {
-                max-width: 550px;
-                border-radius: 40px;
-            }
+            .menu-panel { max-width: 550px; border-radius: 40px; }
         }
 
-        .menu-panel::-webkit-scrollbar {
-            width: 4px;
-        }
-        .menu-panel::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .menu-panel::-webkit-scrollbar-thumb {
-            background: rgba(201, 160, 80, 0.4);
-            border-radius: 10px;
-        }
+        .menu-panel::-webkit-scrollbar { width: 4px; }
+        .menu-panel::-webkit-scrollbar-track { background: transparent; }
+        .menu-panel::-webkit-scrollbar-thumb { background: rgba(201, 160, 80, 0.4); border-radius: 10px; }
 
-        .all-products-btn {
+        .home-btn, .all-products-btn {
             display: flex;
             align-items: center;
             gap: 14px;
@@ -362,18 +258,18 @@
             letter-spacing: 1.5px;
             font-size: 1.1rem;
             transition: all 0.2s;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-family: 'Montserrat', sans-serif;
         }
 
-        .all-products-btn:active {
-            background: rgba(201, 160, 80, 0.18);
-        }
+        .home-btn:active, .all-products-btn:active { background: rgba(201, 160, 80, 0.18); }
         @media (min-width: 769px) {
-            .all-products-btn:hover {
-                background: rgba(201, 160, 80, 0.18);
-            }
+            .home-btn:hover, .all-products-btn:hover { background: rgba(201, 160, 80, 0.18); }
         }
 
-        .all-products-btn svg {
+        .home-btn svg, .all-products-btn svg {
             width: 26px;
             height: 26px;
             stroke: var(--gold);
@@ -395,13 +291,9 @@
             transition: background 0.2s;
         }
 
-        .menu-category:active {
-            background: rgba(201, 160, 80, 0.05);
-        }
+        .menu-category:active { background: rgba(201, 160, 80, 0.05); }
         @media (min-width: 769px) {
-            .menu-category:hover {
-                background: rgba(201, 160, 80, 0.05);
-            }
+            .menu-category:hover { background: rgba(201, 160, 80, 0.05); }
         }
 
         .menu-category .cat-left {
@@ -421,9 +313,7 @@
             font-size: 1.3rem;
             transition: transform 0.35s;
         }
-        .menu-category.open .menu-arrow {
-            transform: rotate(90deg);
-        }
+        .menu-category.open .menu-arrow { transform: rotate(90deg); }
 
         .sub-categories {
             max-height: 0;
@@ -449,45 +339,22 @@
             transition: all 0.2s;
         }
 
-        .sub-category-btn:active {
-            color: var(--gold);
-            background: rgba(201, 160, 80, 0.1);
-        }
+        .sub-category-btn:active { color: var(--gold); background: rgba(201, 160, 80, 0.1); }
         @media (min-width: 769px) {
-            .sub-category-btn:hover {
-                color: var(--gold);
-                background: rgba(201, 160, 80, 0.06);
-            }
+            .sub-category-btn:hover { color: var(--gold); background: rgba(201, 160, 80, 0.06); }
         }
 
-        /* İçerik alanı */
-        .content-area {
-            flex: 1;
-            padding: 0 0 20px;
-        }
-
-        @media (min-width: 769px) {
-            .content-area {
-                padding: 0 32px 32px;
-            }
-        }
+        .content-area { flex: 1; padding: 0 0 20px; }
+        @media (min-width: 769px) { .content-area { padding: 0 32px 32px; } }
 
         .welcome-section {
             text-align: center;
             padding: 40px 24px 32px;
             animation: fadeInUp 0.8s;
         }
+        @media (min-width: 769px) { .welcome-section { padding: 60px 48px 48px; } }
 
-        @media (min-width: 769px) {
-            .welcome-section {
-                padding: 60px 48px 48px;
-            }
-        }
-
-        .welcome-icon {
-            font-size: 3rem;
-            margin-bottom: 12px;
-        }
+        .welcome-icon { font-size: 3rem; margin-bottom: 12px; }
         .welcome-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.3rem;
@@ -495,11 +362,7 @@
             letter-spacing: 1px;
             text-shadow: 0 0 35px rgba(201, 160, 80, 0.5);
         }
-        @media (min-width: 769px) {
-            .welcome-title {
-                font-size: 3rem;
-            }
-        }
+        @media (min-width: 769px) { .welcome-title { font-size: 3rem; } }
 
         .welcome-text {
             font-size: 0.9rem;
@@ -508,7 +371,6 @@
             max-width: 550px;
             margin: 12px auto 20px;
         }
-
         .welcome-divider {
             display: flex;
             align-items: center;
@@ -516,19 +378,9 @@
             gap: 12px;
             margin-top: 8px;
         }
-        .welcome-line {
-            width: 45px;
-            height: 1px;
-            background: var(--gold);
-        }
-        .welcome-diamond {
-            width: 7px;
-            height: 7px;
-            background: var(--gold);
-            transform: rotate(45deg);
-        }
+        .welcome-line { width: 45px; height: 1px; background: var(--gold); }
+        .welcome-diamond { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); }
 
-        /* Banner */
         .category-banner {
             position: relative;
             width: 100%;
@@ -541,13 +393,8 @@
             border-radius: 0 0 28px 28px;
         }
         @media (min-width: 769px) {
-            .category-banner {
-                height: 340px;
-                border-radius: 28px;
-                margin-bottom: 32px;
-            }
+            .category-banner { height: 340px; border-radius: 28px; margin-bottom: 32px; }
         }
-
         .category-banner img {
             position: absolute;
             top: 0;
@@ -557,7 +404,6 @@
             object-fit: cover;
             filter: brightness(0.45) contrast(1.05);
         }
-
         .banner-overlay {
             position: relative;
             z-index: 2;
@@ -572,45 +418,16 @@
             margin-bottom: 6px;
             text-shadow: 0 2px 12px black;
         }
-        .banner-desc {
-            font-size: 0.85rem;
-            color: #ececec;
-            font-weight: 300;
-        }
-        @media (min-width: 769px) {
-            .banner-title {
-                font-size: 2.5rem;
-            }
-            .banner-desc {
-                font-size: 1rem;
-            }
-        }
+        .banner-desc { font-size: 0.85rem; color: #ececec; font-weight: 300; }
+        @media (min-width: 769px) { .banner-title { font-size: 2.5rem; } .banner-desc { font-size: 1rem; } }
 
-        .product-list-padding {
-            padding: 0 16px 28px;
-        }
-        @media (min-width: 769px) {
-            .product-list-padding {
-                padding: 0;
-            }
-        }
+        .product-list-padding { padding: 0 16px 28px; }
+        @media (min-width: 769px) { .product-list-padding { padding: 0; } }
 
-        /* ÜRÜN LİSTESİ – DAİMA ALT ALTA (FLEX COLUMN) */
-        #productList {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
+        #productList { display: flex; flex-direction: column; gap: 18px; }
+        @media (min-width: 640px) { #productList { gap: 22px; } }
 
-        @media (min-width: 640px) {
-            #productList {
-                gap: 22px;
-            }
-        }
-
-        .category-group {
-            margin-bottom: 32px;
-        }
+        .category-group { margin-bottom: 32px; }
         .group-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.6rem;
@@ -622,21 +439,9 @@
             align-items: center;
             gap: 12px;
         }
-        @media (min-width: 769px) {
-            .group-title {
-                font-size: 1.9rem;
-                margin-bottom: 24px;
-            }
-        }
-        .group-title svg {
-            width: 28px;
-            height: 28px;
-            stroke: var(--gold);
-            stroke-width: 1.7;
-            fill: none;
-        }
+        @media (min-width: 769px) { .group-title { font-size: 1.9rem; margin-bottom: 24px; } }
+        .group-title svg { width: 28px; height: 28px; stroke: var(--gold); stroke-width: 1.7; fill: none; }
 
-        /* Kart tasarımı – şık, düzgün hizalı */
         .menu-item {
             display: flex;
             gap: 16px;
@@ -649,17 +454,13 @@
             transition: all 0.3s var(--transition-smooth);
             animation: itemFade 0.5s both;
         }
-
         .menu-item:hover {
             background: rgba(30, 30, 30, 0.85);
             border-color: rgba(201, 160, 80, 0.45);
             transform: translateY(-4px);
             box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.5);
         }
-
-        .menu-item:active {
-            transform: scale(0.98);
-        }
+        .menu-item:active { transform: scale(0.98); }
 
         .item-image {
             width: 88px;
@@ -670,32 +471,11 @@
             background: #262626;
             border: 1px solid rgba(201, 160, 80, 0.25);
         }
-        @media (min-width: 769px) {
-            .item-image {
-                width: 100px;
-                height: 100px;
-                min-width: 100px;
-            }
-        }
+        @media (min-width: 769px) { .item-image { width: 100px; height: 100px; min-width: 100px; } }
 
-        .item-info {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 6px;
-        }
-        .item-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 1rem;
-            color: var(--cream);
-            font-weight: 600;
-        }
-        @media (min-width: 769px) {
-            .item-name {
-                font-size: 1.1rem;
-            }
-        }
+        .item-info { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 6px; }
+        .item-name { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--cream); font-weight: 600; }
+        @media (min-width: 769px) { .item-name { font-size: 1.1rem; } }
         .item-desc {
             font-size: 0.7rem;
             color: var(--text-muted);
@@ -705,20 +485,8 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
-        .price-badge-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 4px;
-        }
-        .item-price {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--gold);
-            letter-spacing: 0.5px;
-        }
+        .price-badge-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+        .item-price { font-size: 1rem; font-weight: 700; color: var(--gold); letter-spacing: 0.5px; }
         .badge {
             font-size: 0.6rem;
             padding: 3px 10px;
@@ -729,34 +497,16 @@
             font-weight: 600;
         }
 
-        .empty-message {
-            text-align: center;
-            color: var(--text-muted);
-            margin-top: 60px;
-            font-style: italic;
-            font-size: 1rem;
-        }
+        .empty-message { text-align: center; color: var(--text-muted); margin-top: 60px; font-style: italic; font-size: 1rem; }
 
-        /* Footer */
         .cafe-footer {
             text-align: center;
             padding: 28px 20px calc(28px + var(--safe-bottom));
             border-top: 1px solid rgba(201, 160, 80, 0.12);
         }
-        .footer-brand {
-            font-family: 'Great Vibes', cursive;
-            font-size: 1.7rem;
-            color: var(--gold);
-            opacity: 0.8;
-        }
-        .footer-info {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
+        .footer-brand { font-family: 'Great Vibes', cursive; font-size: 1.7rem; color: var(--gold); opacity: 0.8; }
+        .footer-info { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
 
-        /* MODAL */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -772,11 +522,7 @@
             pointer-events: none;
             transition: opacity 0.35s, visibility 0.35s;
         }
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-        }
+        .modal-overlay.active { opacity: 1; visibility: visible; pointer-events: auto; }
         .modal-card {
             background: linear-gradient(135deg, #222 0%, #111 100%);
             border: 1.5px solid rgba(201, 160, 80, 0.5);
@@ -789,14 +535,8 @@
             transform: translateY(25px) scale(0.95);
             transition: transform 0.4s cubic-bezier(0.34, 1.4, 0.64, 1);
         }
-        @media (min-width: 769px) {
-            .modal-card {
-                max-width: 700px;
-            }
-        }
-        .modal-overlay.active .modal-card {
-            transform: translateY(0) scale(1);
-        }
+        @media (min-width: 769px) { .modal-card { max-width: 700px; } }
+        .modal-overlay.active .modal-card { transform: translateY(0) scale(1); }
         .modal-close-btn {
             position: sticky;
             top: 16px;
@@ -817,10 +557,7 @@
             z-index: 11;
             transition: all 0.2s;
         }
-        .modal-close-btn:hover {
-            background: rgba(201, 160, 80, 0.2);
-            transform: scale(1.05);
-        }
+        .modal-close-btn:hover { background: rgba(201, 160, 80, 0.2); transform: scale(1.05); }
         .modal-image-wrap {
             width: 100%;
             height: 300px;
@@ -829,19 +566,9 @@
             overflow: hidden;
             border-bottom: 2px solid rgba(201, 160, 80, 0.3);
         }
-        @media (min-width: 769px) {
-            .modal-image-wrap {
-                height: 360px;
-            }
-        }
-        .modal-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .modal-body {
-            padding: 20px 24px 30px;
-        }
+        @media (min-width: 769px) { .modal-image-wrap { height: 360px; } }
+        .modal-image { width: 100%; height: 100%; object-fit: cover; }
+        .modal-body { padding: 20px 24px 30px; }
         .modal-badge {
             display: inline-block;
             font-size: 0.65rem;
@@ -851,30 +578,10 @@
             color: var(--gold-light);
             margin-bottom: 12px;
         }
-        .modal-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: var(--cream);
-            margin-bottom: 12px;
-        }
-        .modal-description {
-            font-size: 0.9rem;
-            color: #b8b8b8;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-        .modal-price-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        .modal-price {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--gold);
-        }
+        .modal-title { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--cream); margin-bottom: 12px; }
+        .modal-description { font-size: 0.9rem; color: #b8b8b8; line-height: 1.5; margin-bottom: 20px; }
+        .modal-price-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 12px; }
+        .modal-price { font-size: 2rem; font-weight: 800; color: var(--gold); }
         .modal-category-tag {
             background: rgba(255, 255, 255, 0.05);
             padding: 6px 16px;
@@ -884,24 +591,12 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(25px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         @keyframes itemFade {
-            from {
-                opacity: 0;
-                transform: translateY(12px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -977,14 +672,36 @@
 
     <script>
         (function() {
-            // ---------- SVG İKONLAR ----------
+            // ---------- GÜNCELLENMİŞ SVG İKONLAR (Tatlı pasta dilimi & Şık içecek bardağı) ----------
             const icons = {
-                all: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>`,
-                yemekler: `<svg viewBox="0 0 24 24"><path d="M18 2.5a3 3 0 0 1 3 3V12a7 7 0 0 1-7 7h-1a7 7 0 0 1-7-7V5.5a3 3 0 0 1 3-3z"/><line x1="6" y1="11" x2="6" y2="16"/><line x1="10" y1="5" x2="10" y2="16"/><line x1="14" y1="5" x2="14" y2="16"/><line x1="18" y1="11" x2="18" y2="16"/></svg>`,
-                tatlilar: `<svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2z"/><circle cx="12" cy="18" r="3"/></svg>`,
-                nargile: `<svg viewBox="0 0 24 24"><path d="M6 2h12v4H6z"/><path d="M8 6v2c0 3.31 2.69 6 6 6s6-2.69 6-6V6"/><path d="M14 14v6"/><path d="M10 20h8"/></svg>`,
-                kahve: `<svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><rect x="2" y="8" width="15" height="11" rx="2"/><line x1="6" y1="2" x2="6" y2="5"/><line x1="10" y1="2" x2="10" y2="5"/><line x1="14" y1="2" x2="14" y2="5"/></svg>`,
-                icecekler: `<svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="9" y1="10" x2="15" y2="10"/></svg>`
+                all: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>
+                </svg>`,
+                home: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>`,
+                yemekler: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 14v8"/><path d="M4 8v6"/><path d="M6 6v8"/><path d="M8 8v6"/>
+                    <path d="M16 14v8"/><path d="M14 8l4 4-4 4"/>
+                </svg>`,
+                tatlilar: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3 L5 21 L19 21 Z"/>
+                    <path d="M9 15 L12 10 L15 15 Z"/>
+                    <line x1="12" y1="10" x2="12" y2="21"/>
+                </svg>`,
+                nargile: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 3h8v3H8z"/><path d="M9 6v4c0 3.31 2.69 6 6 6s6-2.69 6-6V6"/><path d="M14 16v5"/><path d="M10 21h8"/><path d="M5 10c-1 2-1 5 2 7"/>
+                </svg>`,
+                kahve: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 18h20"/><path d="M5 10h12v5a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-5z"/><path d="M17 12h2a2 2 0 0 1 0 4h-2"/><path d="M9 3v3"/><path d="M12 2v3"/><path d="M15 3v3"/>
+                </svg>`,
+                icecekler: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 3 L16 3 L14 12 Q14 18 10 18 Q6 18 6 12 L8 3 Z"/>
+                    <path d="M12 18 L12 22"/>
+                    <path d="M9 22 L15 22"/>
+                    <line x1="14" y1="5" x2="17" y2="2"/>
+                    <circle cx="7" cy="5" r="1.5"/>
+                </svg>`
             };
 
             // ---------- ÜRÜN VERİLERİ ----------
@@ -1051,14 +768,12 @@
 
             let currentFilter = { category: null, subcategory: null };
 
-            // ---------- YARDIMCI FONKSİYONLAR ----------
             function scrollToTop() {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 document.documentElement.scrollTop = 0;
                 document.body.scrollTop = 0;
             }
 
-            // ---------- MENÜ YÖNETİMİ (DÜZELTİLDİ) ----------
             function openMenu() {
                 menuOverlay.classList.add('active');
                 menuToggle.classList.add('active');
@@ -1069,7 +784,6 @@
                 menuOverlay.classList.remove('active');
                 menuToggle.classList.remove('active');
                 document.body.classList.remove('no-scroll');
-                // Alt kategorileri kapat
                 const openCats = menuPanel.querySelectorAll('.menu-category.open');
                 openCats.forEach(cat => cat.classList.remove('open'));
                 const subDivs = menuPanel.querySelectorAll('.sub-categories');
@@ -1085,32 +799,32 @@
                 }
             }
 
-            // Overlay dışına tıklanınca kapat
             menuOverlay.addEventListener('click', function(e) {
-                if (e.target === menuOverlay) {
-                    closeMenu();
-                }
+                if (e.target === menuOverlay) closeMenu();
             });
 
-            // Escape tuşu ile kapat (hem menü hem modal için)
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
-                    if (modalOverlayEl.classList.contains('active')) {
-                        closeModal();
-                    } else if (menuOverlay.classList.contains('active')) {
-                        closeMenu();
-                    }
+                    if (modalOverlayEl.classList.contains('active')) closeModal();
+                    else if (menuOverlay.classList.contains('active')) closeMenu();
                 }
             });
 
-            // Menü toggle butonu
             menuToggle.addEventListener('click', toggleMenu);
 
-            // Mobil menüyü oluştur
             function buildMobileMenu() {
                 menuPanel.innerHTML = '';
 
-                // Tüm Ürünler butonu
+                // Ana Sayfa Butonu
+                const homeBtn = document.createElement('button');
+                homeBtn.className = 'home-btn';
+                homeBtn.innerHTML = `${icons.home} <span>Ana Sayfa</span>`;
+                homeBtn.addEventListener('click', function() {
+                    window.location.href = 'index.html';
+                });
+                menuPanel.appendChild(homeBtn);
+
+                // Tüm Ürünler Butonu
                 const allBtn = document.createElement('div');
                 allBtn.className = 'all-products-btn';
                 allBtn.innerHTML = `${icons.all} <span>Tüm Ürünler</span>`;
@@ -1120,7 +834,7 @@
                 });
                 menuPanel.appendChild(allBtn);
 
-                // Kategoriler ve alt kategoriler
+                // Kategoriler
                 for (let [catKey, catData] of Object.entries(menuCategories)) {
                     const catDiv = document.createElement('div');
                     catDiv.className = 'menu-category';
@@ -1129,8 +843,6 @@
                     catDiv.addEventListener('click', function(e) {
                         e.stopPropagation();
                         const wasOpen = this.classList.contains('open');
-
-                        // Diğer tüm kategorileri kapat
                         const allCats = menuPanel.querySelectorAll('.menu-category');
                         allCats.forEach(c => c.classList.remove('open'));
                         const allSubs = menuPanel.querySelectorAll('.sub-categories');
@@ -1168,12 +880,10 @@
                 }
             }
 
-            // ---------- FİLTRELEME VE ÜRÜN GÖSTERİMİ ----------
             function applyFilter(catKey, subKey) {
                 currentFilter = { category: catKey, subcategory: subKey };
                 const isAll = !catKey && !subKey;
 
-                // Welcome / Banner gösterimi
                 welcomeSection.style.display = isAll ? 'block' : 'none';
                 categoryBanner.style.display = isAll ? 'none' : 'block';
 
@@ -1183,7 +893,6 @@
                     bannerTitle.textContent = b.title;
                     bannerDesc.textContent = b.desc;
                 } else if (!isAll && catKey && !subKey) {
-                    // Alt kategori seçilmeden ana kategori seçildiyse varsayılan banner
                     let fallback = {
                         img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=400&fit=crop",
                         title: menuCategories[catKey]?.label || catKey,
@@ -1208,14 +917,12 @@
                 }
 
                 productList.innerHTML = '';
-
                 if (filtered.length === 0) {
                     productList.innerHTML = '<p class="empty-message">Bu kategoride ürün bulunamadı.</p>';
                     return;
                 }
 
                 if (!currentFilter.category) {
-                    // Tüm ürünler – gruplandırarak göster
                     const grouped = {};
                     filtered.forEach(p => {
                         if (!grouped[p.category]) grouped[p.category] = [];
@@ -1238,7 +945,6 @@
                         }
                     });
                 } else {
-                    // Tek kategori – düz liste
                     filtered.forEach((prod, idx) => {
                         productList.appendChild(createProductItem(prod, idx));
                     });
@@ -1267,21 +973,18 @@
                 return item;
             }
 
-            // ---------- MODAL YÖNETİMİ ----------
             function openModal(prod) {
                 modalImage.src = prod.img;
                 modalTitle.textContent = prod.name;
                 modalDesc.textContent = prod.desc;
                 modalPrice.textContent = prod.price;
                 modalCategory.textContent = menuCategories[prod.category]?.label || prod.category;
-
                 if (prod.badge) {
                     modalBadge.textContent = prod.badge;
                     modalBadge.style.display = 'inline-block';
                 } else {
                     modalBadge.style.display = 'none';
                 }
-
                 document.body.classList.add('no-scroll');
                 modalOverlayEl.classList.add('active');
             }
@@ -1293,20 +996,17 @@
 
             modalCloseBtn.addEventListener('click', closeModal);
             modalOverlayEl.addEventListener('click', function(e) {
-                if (e.target === modalOverlayEl) {
-                    closeModal();
-                }
+                if (e.target === modalOverlayEl) closeModal();
             });
 
-            // ---------- BAŞLANGIÇ ----------
             buildMobileMenu();
             applyFilter(null, null);
 
-            // Sayfa yüklendiğinde en üste kaydır
             window.addEventListener('load', function() {
                 scrollToTop();
             });
         })();
     </script>
 </body>
+</html>
 </html>
