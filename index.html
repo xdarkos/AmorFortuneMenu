@@ -990,13 +990,25 @@
             background: rgba(30, 30, 30, 0.9);
             border-radius: 16px 16px 0 0;
         }
-        .custom-select-trigger .selected-icon {
+        .custom-select-trigger .icon-container {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .custom-select-trigger .icon-container svg {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 20px;
             height: 20px;
             stroke: var(--gold);
             stroke-width: 1.5;
             fill: none;
-            flex-shrink: 0;
+            display: none;
+        }
+        .custom-select-trigger .icon-container svg.active {
+            display: block;
         }
         .custom-select-trigger .selected-text {
             flex: 1;
@@ -1404,20 +1416,24 @@
                             <label>Konu</label>
                             <div class="custom-select-wrapper" id="customSelectWrapper">
                                 <div class="custom-select-trigger" id="customSelectTrigger">
-                                    <svg class="selected-icon" id="selectedIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;"></svg>
+                                    <div class="icon-container">
+                                        <svg class="icon-aydinlatma" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2"/><path d="M12 8v2"/><path d="M4.93 4.93l1.41 1.41"/><path d="M17.66 4.93l-1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M6.34 17.66l-1.41 1.41"/><path d="M17.66 17.66l1.41 1.41"/><circle cx="12" cy="14" r="3"/></svg>
+                                        <svg class="icon-uyari" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                                        <svg class="icon-mesaj" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                                    </div>
                                     <span class="selected-text" id="selectedText">Lütfen seçiniz...</span>
                                     <svg class="custom-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                                 </div>
                                 <ul class="custom-select-options" id="customSelectOptions">
-                                    <li class="custom-option" data-value="öneri" data-icon="lightbulb">
+                                    <li class="custom-option" data-value="öneri" data-icon="aydinlatma">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2"/><path d="M12 8v2"/><path d="M4.93 4.93l1.41 1.41"/><path d="M17.66 4.93l-1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M6.34 17.66l-1.41 1.41"/><path d="M17.66 17.66l1.41 1.41"/><circle cx="12" cy="14" r="3"/></svg>
                                         <span>Öneri</span>
                                     </li>
-                                    <li class="custom-option" data-value="şikayet" data-icon="alert">
+                                    <li class="custom-option" data-value="şikayet" data-icon="uyari">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                                         <span>Şikayet</span>
                                     </li>
-                                    <li class="custom-option" data-value="diğer" data-icon="message">
+                                    <li class="custom-option" data-value="diğer" data-icon="mesaj">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
                                         <span>Diğer</span>
                                     </li>
@@ -1526,20 +1542,36 @@
                 document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
             });
 
-            // ==================== CUSTOM SELECT ====================
+            // ==================== CUSTOM SELECT (DÜZELTİLMİŞ) ====================
             const wrapper = document.getElementById('customSelectWrapper');
             const trigger = document.getElementById('customSelectTrigger');
             const optionsContainer = document.getElementById('customSelectOptions');
             const options = optionsContainer.querySelectorAll('.custom-option');
             const hiddenInput = document.getElementById('feedbackTypeHidden');
             const selectedText = document.getElementById('selectedText');
-            const selectedIcon = document.getElementById('selectedIcon');
+            const iconContainer = trigger.querySelector('.icon-container');
+            const iconAydinlatma = iconContainer.querySelector('.icon-aydinlatma');
+            const iconUyari = iconContainer.querySelector('.icon-uyari');
+            const iconMesaj = iconContainer.querySelector('.icon-mesaj');
+
+            function setActiveIcon(iconType) {
+                // Tüm ikonları gizle
+                iconAydinlatma.classList.remove('active');
+                iconUyari.classList.remove('active');
+                iconMesaj.classList.remove('active');
+                // Seçili ikonu göster
+                if (iconType === 'aydinlatma') iconAydinlatma.classList.add('active');
+                else if (iconType === 'uyari') iconUyari.classList.add('active');
+                else if (iconType === 'mesaj') iconMesaj.classList.add('active');
+            }
 
             function toggleSelect(e) {
                 e.stopPropagation();
                 wrapper.classList.toggle('open');
             }
+
             trigger.addEventListener('click', toggleSelect);
+            // Mobil dokunma için ayrıca touchstart kullan, ama click ile çakışmasın
             trigger.addEventListener('touchend', function(e) {
                 e.preventDefault();
                 toggleSelect(e);
@@ -1551,20 +1583,17 @@
                     const value = this.getAttribute('data-value');
                     const iconType = this.getAttribute('data-icon');
                     const text = this.querySelector('span').textContent;
-                    const iconSvg = this.querySelector('svg').outerHTML;
 
                     hiddenInput.value = value;
                     selectedText.textContent = text;
                     selectedText.classList.add('has-value');
-                    selectedIcon.style.display = 'block';
-                    selectedIcon.outerHTML = iconSvg;
-                    // Yeni icon elementini tekrar yakala
-                    document.getElementById('selectedIcon').style.display = 'block';
+                    setActiveIcon(iconType);
 
                     options.forEach(o => o.classList.remove('selected'));
                     this.classList.add('selected');
                     wrapper.classList.remove('open');
                 });
+                // Mobil uyumlu dokunma
                 option.addEventListener('touchend', function(e) {
                     e.preventDefault();
                     this.click();
@@ -1587,15 +1616,11 @@
             const contactInput = document.getElementById('feedbackContact');
 
             function formatPhone(value) {
-                // Sadece rakamları al
                 let digits = value.replace(/\D/g, '');
-                // Başında 0 yoksa ve ilk karakter olarak varsa ekle
                 if (digits.length > 0 && digits[0] !== '0') {
                     digits = '0' + digits;
                 }
-                // Maksimum 11 hane
                 digits = digits.slice(0, 11);
-                // Formatla: 0XXX XXX XXXX
                 let formatted = '';
                 if (digits.length > 0) {
                     formatted += digits.slice(0, 4);
@@ -1611,24 +1636,18 @@
 
             function handleContactInput(e) {
                 const value = contactInput.value;
-                // Eğer @ işareti varsa e-posta modu, formatlama yapma
                 if (value.includes('@')) {
-                    // E-posta modu: hiçbir şey yapma, normal bırak
                     contactInput.setAttribute('data-mode', 'email');
                     return;
                 }
                 contactInput.setAttribute('data-mode', 'phone');
-
                 const cursorPos = contactInput.selectionStart;
                 const oldLength = value.length;
                 const formatted = formatPhone(value);
                 contactInput.value = formatted;
-
-                // Cursor pozisyonunu koru
                 const newLength = formatted.length;
                 const diff = newLength - oldLength;
                 let newCursorPos = cursorPos + diff;
-                // Boşluk eklendiyse cursor'ı bir ileri al
                 if (diff > 0 && formatted[cursorPos - 1] === ' ') {
                     newCursorPos = Math.min(newCursorPos + 1, newLength);
                 }
@@ -1637,19 +1656,13 @@
 
             function handleKeyDown(e) {
                 const mode = contactInput.getAttribute('data-mode') || 'phone';
-                if (mode === 'email') return; // E-posta modunda müdahale etme
-
-                // Sadece rakam, backspace, delete, ok tuşları, tab, home, end
+                if (mode === 'email') return;
                 const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Tab', 'Home', 'End', 'Control', 'Alt', 'Shift', 'Meta'];
                 if (allowedKeys.includes(e.key)) return;
-
-                // Sadece rakam girişine izin ver
                 if (!/^\d$/.test(e.key)) {
                     e.preventDefault();
                     return;
                 }
-
-                // Maksimum 11 rakam kontrolü
                 const digits = contactInput.value.replace(/\D/g, '');
                 if (digits.length >= 11) {
                     e.preventDefault();
@@ -1658,7 +1671,6 @@
 
             contactInput.addEventListener('input', handleContactInput);
             contactInput.addEventListener('keydown', handleKeyDown);
-            // Paste olayı
             contactInput.addEventListener('paste', function(e) {
                 const mode = contactInput.getAttribute('data-mode') || 'phone';
                 if (mode === 'email') return;
