@@ -54,7 +54,6 @@
             touch-action: none;
         }
 
-        /* Particles */
         .particles-container {
             position: fixed;
             inset: 0;
@@ -166,7 +165,6 @@
             }
         }
 
-        /* Main Container */
         .main-container {
             position: relative;
             z-index: 1;
@@ -190,7 +188,6 @@
             }
         }
 
-        /* Top Bar */
         .top-bar {
             display: flex;
             align-items: center;
@@ -224,7 +221,6 @@
             }
         }
 
-        /* Hamburger */
         .menu-toggle {
             width: 52px;
             height: 52px;
@@ -276,7 +272,6 @@
             transform: translateY(-8.5px) rotate(-45deg);
         }
 
-        /* Menu Overlay */
         .menu-overlay {
             position: fixed;
             inset: 0;
@@ -366,7 +361,6 @@
             border-bottom: 1px solid rgba(201, 160, 80, 0.3);
         }
 
-        /* Hero Section */
         .hero {
             position: relative;
             width: 100%;
@@ -399,7 +393,6 @@
             position: absolute;
             inset: 0;
         }
-        /* Poster fallback — video yüklenene kadar gösterilir */
         .hero-bg .poster-fallback {
             position: absolute;
             inset: 0;
@@ -410,7 +403,6 @@
             z-index: 0;
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 40%, #0d0d0d 100%);
         }
-        /* Video yüklendiğinde poster'ı gizle (opsiyonel, video üstte olur zaten) */
         .hero-bg video.loaded~.poster-fallback {
             opacity: 0;
             transition: opacity 0.5s ease;
@@ -524,7 +516,6 @@
             fill: none;
         }
 
-        /* Scroll indicator */
         .scroll-indicator {
             position: absolute;
             bottom: 30px;
@@ -551,7 +542,6 @@
             }
         }
 
-        /* Sections */
         .section {
             padding: 60px 20px;
             position: relative;
@@ -611,7 +601,6 @@
             transform: rotate(45deg);
         }
 
-        /* Category Cards */
         .categories-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -669,7 +658,6 @@
             font-size: 0.85rem;
         }
 
-        /* Popular items */
         .popular-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -741,7 +729,119 @@
             font-size: 0.9rem;
         }
 
-        /* Contact / Info */
+        .games-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-top: 20px;
+        }
+        @media (min-width: 768px) {
+            .games-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+        .game-card {
+            background: rgba(20, 20, 20, 0.65);
+            border: 1px solid rgba(201, 160, 80, 0.15);
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.4s var(--transition-smooth);
+            cursor: default;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+        .game-card:hover {
+            border-color: rgba(201, 160, 80, 0.5);
+            transform: translateY(-6px);
+            box-shadow: 0 30px 50px -15px rgba(0, 0, 0, 0.7), 0 0 40px rgba(201, 160, 80, 0.1);
+        }
+        .game-image-placeholder {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: linear-gradient(145deg, #1a1a1a 0%, #111111 100%);
+            border-bottom: 1px solid rgba(201, 160, 80, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+        .game-image-placeholder::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(201, 160, 80, 0.08) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .game-card:hover .game-image-placeholder::before {
+            opacity: 1;
+        }
+        .game-image-placeholder svg {
+            width: 56px;
+            height: 56px;
+            stroke: var(--gold);
+            stroke-width: 1.2;
+            fill: none;
+            opacity: 0.7;
+            position: relative;
+            z-index: 1;
+            transition: all 0.4s;
+        }
+        .game-card:hover .game-image-placeholder svg {
+            opacity: 1;
+            transform: scale(1.08);
+            filter: drop-shadow(0 0 12px rgba(201, 160, 80, 0.5));
+        }
+        .game-image-placeholder .placeholder-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            color: rgba(201, 160, 80, 0.6);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+            transition: color 0.4s;
+        }
+        .game-card:hover .game-image-placeholder .placeholder-text {
+            color: rgba(201, 160, 80, 0.9);
+        }
+        .game-info {
+            padding: 20px 22px 24px;
+            text-align: center;
+        }
+        .game-info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--gold-light);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        .game-info p {
+            font-size: 0.8rem;
+            color: #b0b0b0;
+            line-height: 1.5;
+        }
+        .game-tag {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 6px 16px;
+            border: 1px solid rgba(201, 160, 80, 0.3);
+            border-radius: 30px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
         .info-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -789,7 +889,272 @@
             line-height: 1.6;
         }
 
-        /* Footer */
+        /* ========== FEEDBACK FORM ========== */
+        .feedback-form-wrapper {
+            max-width: 650px;
+            margin: 20px auto 0;
+        }
+        .feedback-form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+        }
+        @media (min-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .form-group label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            font-weight: 500;
+            margin-left: 4px;
+        }
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(20, 20, 20, 0.8);
+            border: 1.5px solid rgba(201, 160, 80, 0.25);
+            border-radius: 16px;
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s var(--transition-smooth);
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            line-height: 1.5;
+        }
+        .form-input:focus,
+        .form-textarea:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 25px rgba(201, 160, 80, 0.2);
+            background: rgba(30, 30, 30, 0.9);
+        }
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: rgba(180, 180, 180, 0.5);
+            letter-spacing: 0.5px;
+        }
+        .form-textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        /* Custom Select */
+        .custom-select-wrapper {
+            position: relative;
+            width: 100%;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .custom-select-trigger {
+            width: 100%;
+            padding: 14px 44px 14px 18px;
+            background: rgba(20, 20, 20, 0.8);
+            border: 1.5px solid rgba(201, 160, 80, 0.25);
+            border-radius: 16px;
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-height: 50px;
+            line-height: 1.5;
+        }
+        .custom-select-trigger:hover {
+            border-color: rgba(201, 160, 80, 0.5);
+        }
+        .custom-select-wrapper.open .custom-select-trigger {
+            border-color: var(--gold);
+            box-shadow: 0 0 25px rgba(201, 160, 80, 0.2);
+            background: rgba(30, 30, 30, 0.9);
+            border-radius: 16px 16px 0 0;
+        }
+        .custom-select-trigger .selected-icon {
+            width: 20px;
+            height: 20px;
+            stroke: var(--gold);
+            stroke-width: 1.5;
+            fill: none;
+            flex-shrink: 0;
+        }
+        .custom-select-trigger .selected-text {
+            flex: 1;
+            color: rgba(180, 180, 180, 0.7);
+            transition: color 0.3s;
+        }
+        .custom-select-trigger .selected-text.has-value {
+            color: var(--text-light);
+        }
+        .custom-select-arrow {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            stroke: var(--gold);
+            stroke-width: 2;
+            fill: none;
+            transition: transform 0.3s var(--transition-smooth);
+            pointer-events: none;
+        }
+        .custom-select-wrapper.open .custom-select-arrow {
+            transform: translateY(-50%) rotate(180deg);
+        }
+        .custom-select-options {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(22, 22, 22, 0.98);
+            border: 1.5px solid var(--gold);
+            border-top: 1px solid rgba(201, 160, 80, 0.3);
+            border-radius: 0 0 16px 16px;
+            list-style: none;
+            padding: 4px 0;
+            margin: 0;
+            max-height: 220px;
+            overflow-y: auto;
+            z-index: 50;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(-8px);
+            transition: all 0.25s var(--transition-smooth);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            -webkit-overflow-scrolling: touch;
+        }
+        .custom-select-wrapper.open .custom-select-options {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        .custom-select-options::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-select-options::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-select-options::-webkit-scrollbar-thumb {
+            background: rgba(201, 160, 80, 0.4);
+            border-radius: 10px;
+        }
+        .custom-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            min-height: 48px;
+            touch-action: manipulation;
+        }
+        .custom-option:last-child {
+            border-bottom: none;
+        }
+        .custom-option:hover,
+        .custom-option:active {
+            background: rgba(201, 160, 80, 0.1);
+            color: var(--gold-light);
+        }
+        .custom-option.selected {
+            background: rgba(201, 160, 80, 0.15);
+            color: var(--gold-light);
+            font-weight: 600;
+        }
+        .custom-option svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--gold);
+            stroke-width: 1.5;
+            fill: none;
+            flex-shrink: 0;
+        }
+        .custom-option:hover svg {
+            stroke: var(--gold-light);
+        }
+
+        .feedback-submit-row {
+            text-align: center;
+            margin-top: 8px;
+        }
+        .btn-submit {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, rgba(201, 160, 80, 0.3), rgba(201, 160, 80, 0.5));
+            border: 1.5px solid var(--gold);
+            color: var(--gold-light);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            cursor: pointer;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            transition: all 0.35s var(--transition-smooth);
+            box-shadow: 0 0 30px rgba(201, 160, 80, 0.3);
+            -webkit-appearance: none;
+        }
+        .btn-submit:hover {
+            background: rgba(201, 160, 80, 0.55);
+            box-shadow: 0 0 50px rgba(201, 160, 80, 0.55);
+            transform: translateY(-3px);
+            color: #fff;
+        }
+        .btn-submit:active {
+            transform: scale(0.96);
+        }
+        .btn-submit svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--gold-light);
+            stroke-width: 2;
+            fill: none;
+        }
+        .form-success-message {
+            display: none;
+            text-align: center;
+            padding: 24px;
+            color: var(--gold-light);
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        .form-success-message.visible {
+            display: block;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
         .cafe-footer {
             text-align: center;
             padding: 28px 20px calc(28px + var(--safe-bottom));
@@ -810,7 +1175,6 @@
             text-transform: uppercase;
         }
 
-        /* Reveal animations */
         .reveal {
             opacity: 0;
             transform: translateY(35px);
@@ -840,7 +1204,6 @@
     </div>
 
     <div class="main-container">
-        <!-- Top Bar -->
         <div class="top-bar">
             <span class="logo-small">Amor & Fortune</span>
             <div class="menu-toggle" id="menuToggle" role="button" aria-label="Menüyü aç">
@@ -850,7 +1213,6 @@
             </div>
         </div>
 
-        <!-- Overlay Menü -->
         <div class="menu-overlay" id="menuOverlay">
             <div class="menu-panel" id="menuPanel">
                 <a href="#hero" class="nav-link" data-close>
@@ -869,9 +1231,19 @@
                     <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                     Popüler Ürünler
                 </a>
-                <a href="#contact" class="nav-link" data-close>
-                    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                    İletişim
+                <a href="#games" class="nav-link" data-close>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="6" width="20" height="12" rx="2"/>
+                        <path d="M12 12h.01"/><path d="M8 12h.01"/><path d="M16 12h.01"/><path d="M6 16h12"/>
+                    </svg>
+                    Oyun Keyfi
+                </a>
+                <a href="#feedback" class="nav-link" data-close>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        <line x1="9" y1="10" x2="15" y2="10"/><line x1="12" y1="7" x2="12" y2="13"/>
+                    </svg>
+                    Öneri & Şikayet
                 </a>
                 <a href="menu.html" class="nav-link highlight" data-close>
                     <svg viewBox="0 0 24 24"><path d="M6 2h12v4H6z"/><path d="M8 6v2c0 3.31 2.69 6 6 6s6-2.69 6-6V6"/><path d="M14 14v6"/><path d="M10 20h8"/></svg>
@@ -880,312 +1252,448 @@
             </div>
         </div>
 
-        <!-- Hero Section -->
         <section class="hero" id="hero">
             <div class="hero-bg">
-                <!-- Video arka plan: sürekli döngü, otomatik oynatma, sessiz, mobil uyumlu -->
-                <video
-                id="heroVideo"
-                autoplay
-                muted
-                loop
-                playsinline
-                preload="auto"
-                poster="https://images.unsplash.com/photo-1550966871-3ed3cdb51f3a?w=1400&h=900&fit=crop"
-                aria-hidden="true"
-                >
-                <source src="kahve-yudum.mp4" type="video/mp4">
-                <!-- Tarayıcı video formatını desteklemezse veya dosya bulunamazsa fallback mesajı (gizli) -->
-                <p>Tarayıcınız video oynatmayı desteklemiyor.</p>
-            </video>
-            <!-- Poster / fallback görsel (video yüklenene kadar gösterilir) -->
-            <img
-            class="poster-fallback"
-            src="https://images.unsplash.com/photo-1550966871-3ed3cdb51f3a?w=1400&h=900&fit=crop"
-            alt="Amor & Fortune Kafe"
-            loading="eager"
-            onerror="this.style.display='none';"
-            >
-        </div>
-        <div class="hero-overlay">
-            <p class="hero-pre-title">Lüks & Lezzet</p>
-            <h1 class="hero-title">Amor & Fortune</h1>
-            <p class="hero-subtitle">Her yudumda zarafet, her lokmada tutku</p>
-            <div class="hero-divider">
-                <span class="hero-line"></span>
-                <span class="hero-diamond"></span>
-                <span class="hero-line"></span>
+                <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="https://images.unsplash.com/photo-1550966871-3ed3cdb51f3a?w=1400&h=900&fit=crop" aria-hidden="true">
+                    <source src="kahve-yudum.mp4" type="video/mp4">
+                    <p>Tarayıcınız video oynatmayı desteklemiyor.</p>
+                </video>
+                <img class="poster-fallback" src="https://images.unsplash.com/photo-1550966871-3ed3cdb51f3a?w=1400&h=900&fit=crop" alt="Amor & Fortune Kafe" loading="eager" onerror="this.style.display='none';">
             </div>
-            <a href="menu.html" class="btn-gold">
-                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-                Menüyü Keşfedin
-            </a>
-        </div>
-        <div class="scroll-indicator" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="section" id="about">
-        <div class="section-inner reveal">
-            <p class="section-label">Hakkımızda</p>
-            <h2 class="section-title">Bir Lezzet Hikâyesi</h2>
-            <div class="divider-sm">
-                <span class="line"></span><span class="diamond"></span><span class="line"></span>
-            </div>
-            <p class="section-desc">
-                Amor & Fortune, 2025 yılında İstanbul'un kalbinde doğan bir tutku projesidir. 
-                Dünya mutfağından ilham alan şeflerimiz, en taze malzemelerle hazırladıkları 
-                özel tariflerle sizleri ağırlıyor. Kahvemizin her damlasında özen, 
-                nargilemizin her nefesinde keyif saklı. Lüks ortamımızda unutulmaz anlar 
-                yaşamanız için her detayı düşündük.
-            </p>
-        </div>
-    </section>
-
-<!-- Categories Section -->
-<section class="section" id="categories" style="padding-top: 0;">
-    <div class="section-inner reveal">
-        <p class="section-label">Keşfedin</p>
-        <h2 class="section-title">Özel Kategorilerimiz</h2>
-        <div class="divider-sm">
-            <span class="line"></span><span class="diamond"></span><span class="line"></span>
-        </div>
-        <div class="categories-grid">
-            <a href="menu.html" class="cat-card">
-                <!-- Yeni Yemekler İkonu (Tava) -->
-                <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 12 A7 7 0 0 1 18 12"/>
-                    <path d="M4 12 L4 14 A7 7 0 0 0 18 14 L18 12"/>
-                    <path d="M18 13 L23 9"/>
-                    <path d="M22 9 L24 10"/>
-                </svg>
-                <span>Yemekler</span>
-            </a>
-            <a href="menu.html" class="cat-card">
-                <!-- Yeni Tatlılar İkonu (Mumlu Pasta) -->
-                <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <ellipse cx="12" cy="19" rx="8" ry="2"/>
-                    <path d="M4 19 L4 13 Q12 9 20 13 L20 19"/>
-                    <path d="M5 16 Q12 13 19 16" stroke-width="2"/>
-                    <path d="M6 13 Q12 10 18 13" stroke-width="1.5"/>
-                    <line x1="12" y1="13" x2="12" y2="7" stroke-width="2"/>
-                    <path d="M12 5 Q10 6 12 7 Q14 6 12 5z" fill="currentColor" opacity="0.6"/>
-                    <path d="M12 4.5 Q11 6 12 7 Q13 6 12 4.5z" fill="currentColor" opacity="0.8"/>
-                </svg>
-                <span>Tatlılar</span>
-            </a>
-            <a href="menu.html" class="cat-card">
-                <!-- Nargile İkonu (Aynı kalabilir, isterseniz QR menüdeki güncel halini kullandık) -->
-                <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M8 3h8v3H8z"/>
-                    <path d="M9 6v4c0 3.31 2.69 6 6 6s6-2.69 6-6V6"/>
-                    <path d="M14 16v5"/>
-                    <path d="M10 21h8"/>
-                    <path d="M5 10c-1 2-1 5 2 7"/>
-                </svg>
-                <span>Nargile</span>
-            </a>
-            <a href="menu.html" class="cat-card">
-                <!-- Kahve İkonu (Aynı) -->
-                <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M2 18h20"/>
-                    <path d="M5 10h12v5a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-5z"/>
-                    <path d="M17 12h2a2 2 0 0 1 0 4h-2"/>
-                    <path d="M9 3v3"/>
-                    <path d="M12 2v3"/>
-                    <path d="M15 3v3"/>
-                </svg>
-                <span>Kahve</span>
-            </a>
-            <a href="menu.html" class="cat-card">
-                <!-- Yeni İçecekler İkonu (Bardak) -->
-                <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M8 3 L16 3 L14 12 Q14 18 10 18 Q6 18 6 12 L8 3 Z"/>
-                    <path d="M12 18 L12 22"/>
-                    <path d="M9 22 L15 22"/>
-                    <line x1="14" y1="5" x2="17" y2="2"/>
-                    <circle cx="7" cy="5" r="1.5"/>
-                </svg>
-                <span>İçecekler</span>
-            </a>
-        </div>
-    </div>
-</section>
-
-    <!-- Popular Section -->
-    <section class="section" id="popular" style="padding-top: 0;">
-        <div class="section-inner reveal">
-            <p class="section-label">Öne Çıkanlar</p>
-            <h2 class="section-title">Popüler Lezzetler</h2>
-            <div class="divider-sm">
-                <span class="line"></span><span class="diamond"></span><span class="line"></span>
-            </div>
-            <div class="popular-grid">
-                <a href="menu.html" class="popular-card">
-                    <img src="https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=400&h=400&fit=crop" alt="Bonfile & Madlen" loading="lazy" onerror="this.style.background='#262626';">
-                    <div class="popular-info">
-                        <span class="popular-name">Bonfile & Madlen</span>
-                        <span class="popular-desc">Özenle marine edilmiş bonfile, özel madlen sos ve karamelize soğan.</span>
-                        <span class="popular-price">₺520</span>
-                    </div>
-                </a>
-                <a href="menu.html" class="popular-card">
-                    <img src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=400&h=400&fit=crop" alt="Çikolatalı Sufle" loading="lazy" onerror="this.style.background='#262626';">
-                    <div class="popular-info">
-                        <span class="popular-name">Çikolatalı Sufle</span>
-                        <span class="popular-desc">Sıcak çikolatalı sufle, vanilyalı dondurma ile.</span>
-                        <span class="popular-price">₺190</span>
-                    </div>
-                </a>
-                <a href="menu.html" class="popular-card">
-                    <img src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=400&h=400&fit=crop" alt="Latte Art Özel" loading="lazy" onerror="this.style.background='#262626';">
-                    <div class="popular-info">
-                        <span class="popular-name">Latte Art Özel</span>
-                        <span class="popular-desc">Barista imzasıyla kadifemsi süt köpüğü.</span>
-                        <span class="popular-price">₺120</span>
-                    </div>
-                </a>
-            </div>
-            <div style="text-align:center; margin-top:30px;">
+            <div class="hero-overlay">
+                <p class="hero-pre-title">Lüks & Lezzet</p>
+                <h1 class="hero-title">Amor & Fortune</h1>
+                <p class="hero-subtitle">Her yudumda zarafet, her lokmada tutku</p>
+                <div class="hero-divider">
+                    <span class="hero-line"></span><span class="hero-diamond"></span><span class="hero-line"></span>
+                </div>
                 <a href="menu.html" class="btn-gold">
-                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-                    Tüm Menüyü Gör
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                    Menüyü Keşfedin
                 </a>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section" id="contact" style="padding-top: 0;">
-        <div class="section-inner reveal">
-            <p class="section-label">Bize Ulaşın</p>
-            <h2 class="section-title">İletişim & Konum</h2>
-            <div class="divider-sm">
-                <span class="line"></span><span class="diamond"></span><span class="line"></span>
+            <div class="scroll-indicator" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
-            <div class="info-grid">
-                <div class="info-card">
-                    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                    <h4>Adres</h4>
-                    <p>Bağdat Caddesi No: 142<br>Kadıköy / İstanbul</p>
-                </div>
-                <div class="info-card">
-                    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    <h4>Telefon</h4>
-                    <p>+90 212 555 44 33<br>+90 533 777 88 99</p>
-                </div>
-                <div class="info-card">
-                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    <h4>Çalışma Saatleri</h4>
-                    <p>Pazartesi - Cuma<br>09:00 - 02:00<br>Cumartesi - Pazar<br>10:00 - 03:00</p>
+        </section>
+
+        <section class="section" id="about">
+            <div class="section-inner reveal">
+                <p class="section-label">Hakkımızda</p>
+                <h2 class="section-title">Bir Lezzet Hikâyesi</h2>
+                <div class="divider-sm"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
+                <p class="section-desc">
+                    Amor & Fortune, 2025 yılında İstanbul'un kalbinde doğan bir tutku projesidir.
+                    Dünya mutfağından ilham alan şeflerimiz, en taze malzemelerle hazırladıkları
+                    özel tariflerle sizleri ağırlıyor. Kahvemizin her damlasında özen,
+                    nargilemizin her nefesinde keyif saklı. Lüks ortamımızda unutulmaz anlar
+                    yaşamanız için her detayı düşündük.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" id="categories" style="padding-top: 0;">
+            <div class="section-inner reveal">
+                <p class="section-label">Keşfedin</p>
+                <h2 class="section-title">Özel Kategorilerimiz</h2>
+                <div class="divider-sm"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
+                <div class="categories-grid">
+                    <a href="menu.html" class="cat-card">
+                        <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 A7 7 0 0 1 18 12"/><path d="M4 12 L4 14 A7 7 0 0 0 18 14 L18 12"/><path d="M18 13 L23 9"/><path d="M22 9 L24 10"/></svg>
+                        <span>Yemekler</span>
+                    </a>
+                    <a href="menu.html" class="cat-card">
+                        <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="19" rx="8" ry="2"/><path d="M4 19 L4 13 Q12 9 20 13 L20 19"/><path d="M5 16 Q12 13 19 16" stroke-width="2"/><path d="M6 13 Q12 10 18 13" stroke-width="1.5"/><line x1="12" y1="13" x2="12" y2="7" stroke-width="2"/><path d="M12 5 Q10 6 12 7 Q14 6 12 5z" fill="currentColor" opacity="0.6"/><path d="M12 4.5 Q11 6 12 7 Q13 6 12 4.5z" fill="currentColor" opacity="0.8"/></svg>
+                        <span>Tatlılar</span>
+                    </a>
+                    <a href="menu.html" class="cat-card">
+                        <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h8v3H8z"/><path d="M9 6v4c0 3.31 2.69 6 6 6s6-2.69 6-6V6"/><path d="M14 16v5"/><path d="M10 21h8"/><path d="M5 10c-1 2-1 5 2 7"/></svg>
+                        <span>Nargile</span>
+                    </a>
+                    <a href="menu.html" class="cat-card">
+                        <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18h20"/><path d="M5 10h12v5a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-5z"/><path d="M17 12h2a2 2 0 0 1 0 4h-2"/><path d="M9 3v3"/><path d="M12 2v3"/><path d="M15 3v3"/></svg>
+                        <span>Kahve</span>
+                    </a>
+                    <a href="menu.html" class="cat-card">
+                        <svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 L16 3 L14 12 Q14 18 10 18 Q6 18 6 12 L8 3 Z"/><path d="M12 18 L12 22"/><path d="M9 22 L15 22"/><line x1="14" y1="5" x2="17" y2="2"/><circle cx="7" cy="5" r="1.5"/></svg>
+                        <span>İçecekler</span>
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer class="cafe-footer">
-        <p class="footer-brand">Amor & Fortune</p>
-        <p class="footer-info">© 2025 • Lüks Kafe Deneyimi • Tüm Hakları Saklıdır</p>
-    </footer>
-</div>
+        <section class="section" id="popular" style="padding-top: 0;">
+            <div class="section-inner reveal">
+                <p class="section-label">Öne Çıkanlar</p>
+                <h2 class="section-title">Popüler Lezzetler</h2>
+                <div class="divider-sm"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
+                <div class="popular-grid">
+                    <a href="menu.html" class="popular-card">
+                        <img src="https://images.unsplash.com/photo-1546833998-877b37c2e5c6?w=400&h=400&fit=crop" alt="Bonfile & Madlen" loading="lazy" onerror="this.style.background='#262626';">
+                        <div class="popular-info"><span class="popular-name">Bonfile & Madlen</span><span class="popular-desc">Özenle marine edilmiş bonfile, özel madlen sos ve karamelize soğan.</span><span class="popular-price">₺520</span></div>
+                    </a>
+                    <a href="menu.html" class="popular-card">
+                        <img src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=400&h=400&fit=crop" alt="Çikolatalı Sufle" loading="lazy" onerror="this.style.background='#262626';">
+                        <div class="popular-info"><span class="popular-name">Çikolatalı Sufle</span><span class="popular-desc">Sıcak çikolatalı sufle, vanilyalı dondurma ile.</span><span class="popular-price">₺190</span></div>
+                    </a>
+                    <a href="menu.html" class="popular-card">
+                        <img src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=400&h=400&fit=crop" alt="Latte Art Özel" loading="lazy" onerror="this.style.background='#262626';">
+                        <div class="popular-info"><span class="popular-name">Latte Art Özel</span><span class="popular-desc">Barista imzasıyla kadifemsi süt köpüğü.</span><span class="popular-price">₺120</span></div>
+                    </a>
+                </div>
+                <div style="text-align:center; margin-top:30px;">
+                    <a href="menu.html" class="btn-gold">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                        Tüm Menüyü Gör
+                    </a>
+                </div>
+            </div>
+        </section>
 
-<script>
-    (function() {
-        // Menü toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const menuOverlay = document.getElementById('menuOverlay');
-        const menuPanel = document.getElementById('menuPanel');
+        <section class="section" id="games">
+            <div class="section-inner reveal">
+                <p class="section-label">Eğlence</p>
+                <h2 class="section-title">Oyun Keyfi</h2>
+                <div class="divider-sm"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
+                <p class="section-desc" style="margin-bottom: 10px;">
+                    Amor & Fortune'da lezzetli kahvenizi yudumlarken sevdiklerinizle keyifli oyunlar oynayabilirsiniz.
+                    Okey takımlarımız ve zengin masa oyunu seçeneklerimizle eğlence her zaman masanızda.
+                </p>
+                <div class="games-grid">
+                    <div class="game-card">
+                        <div class="game-image-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><rect x="7" y="9" width="10" height="6" rx="1.5"/><line x1="12" y1="3" x2="12" y2="5"/><circle cx="12" cy="2" r="1" fill="currentColor" stroke="none"/></svg>
+                            <span class="placeholder-text">Okey Görseli Eklenecek</span>
+                        </div>
+                        <div class="game-info"><h4>Okey</h4><p>Geleneksel okey keyfini lüks ortamımızda yaşayın. Özel tasarım ıstakalar ve kaliteli taşlarla unutulmaz anlar sizi bekliyor.</p><span class="game-tag">🎲 4 Kişilik</span></div>
+                    </div>
+                    <div class="game-card">
+                        <div class="game-image-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="9" height="13" rx="2"/><rect x="13" y="4" width="9" height="13" rx="2"/><rect x="6" y="8" width="5" height="5" rx="1" stroke-dasharray="2 1.5"/><circle cx="17.5" cy="11.5" r="2.5"/><path d="M15.5 10l4-2.5" stroke-width="0.8"/></svg>
+                            <span class="placeholder-text">Masa Oyunları Görseli Eklenecek</span>
+                        </div>
+                        <div class="game-info"><h4>Masa Oyunları</h4><p>UNO, Monopoly, Tabu ve daha fazlası… Arkadaşlarınızla keyifli vakit geçirmek için geniş oyun koleksiyonumuz emrinizde.</p><span class="game-tag">🃏 2-8 Kişilik</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        function openMenu() {
-            menuOverlay.classList.add('active');
-            menuToggle.classList.add('active');
-            document.body.classList.add('no-scroll');
-        }
+        <!-- ==================== ÖNERİ & ŞİKAYET ==================== -->
+        <section class="section" id="feedback">
+            <div class="section-inner reveal">
+                <p class="section-label">Görüşleriniz</p>
+                <h2 class="section-title">Öneri & Şikayet</h2>
+                <div class="divider-sm"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
+                <p class="section-desc" style="margin-bottom: 10px;">
+                    Sizleri daha iyi ağırlayabilmek için düşünceleriniz bizim için çok değerli.
+                    Öneri veya şikayetlerinizi aşağıdaki form aracılığıyla iletebilirsiniz.
+                </p>
+                <div class="feedback-form-wrapper">
+                    <form class="feedback-form" id="feedbackForm" action="https://formspree.io/f/your-form-id" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="feedbackName">Adınız Soyadınız</label>
+                                <input type="text" id="feedbackName" name="name" class="form-input" placeholder="Adınızı yazın..." required>
+                            </div>
+                            <div class="form-group">
+                                <label for="feedbackContact">E-posta veya Telefon</label>
+                                <input type="text" id="feedbackContact" name="contact" class="form-input" placeholder="ornek@posta.com veya 0534 576 9457" required autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Konu</label>
+                            <div class="custom-select-wrapper" id="customSelectWrapper">
+                                <div class="custom-select-trigger" id="customSelectTrigger">
+                                    <svg class="selected-icon" id="selectedIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;"></svg>
+                                    <span class="selected-text" id="selectedText">Lütfen seçiniz...</span>
+                                    <svg class="custom-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                                </div>
+                                <ul class="custom-select-options" id="customSelectOptions">
+                                    <li class="custom-option" data-value="öneri" data-icon="lightbulb">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2"/><path d="M12 8v2"/><path d="M4.93 4.93l1.41 1.41"/><path d="M17.66 4.93l-1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M6.34 17.66l-1.41 1.41"/><path d="M17.66 17.66l1.41 1.41"/><circle cx="12" cy="14" r="3"/></svg>
+                                        <span>Öneri</span>
+                                    </li>
+                                    <li class="custom-option" data-value="şikayet" data-icon="alert">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                                        <span>Şikayet</span>
+                                    </li>
+                                    <li class="custom-option" data-value="diğer" data-icon="message">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                                        <span>Diğer</span>
+                                    </li>
+                                </ul>
+                                <input type="hidden" name="type" id="feedbackTypeHidden" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="feedbackMessage">Mesajınız</label>
+                            <textarea id="feedbackMessage" name="message" class="form-textarea" placeholder="Düşüncelerinizi buraya yazın..." required></textarea>
+                        </div>
+                        <input type="hidden" name="_subject" value="Amor & Fortune - Yeni Mesaj">
+                        <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off">
+                        <div class="feedback-submit-row">
+                            <button type="submit" class="btn-submit">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                                Gönder
+                            </button>
+                        </div>
+                    </form>
+                    <div class="form-success-message" id="formSuccessMessage">
+                        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="var(--gold)" stroke-width="1.5" style="margin-bottom:12px;"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>
+                        <p>Mesajınız başarıyla iletildi!<br><span style="font-size:0.8rem;color:#b0b0b0;">En kısa sürede size dönüş yapacağız.</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        function closeMenu() {
-            menuOverlay.classList.remove('active');
-            menuToggle.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-        }
+        <section class="section" id="contact" style="padding-top: 0;">
+            <div class="section-inner reveal">
+                <p class="section-label">Bize Ulaşın</p>
+                <h2 class="section-title">İletişim & Konum</h2>
+                <div class="divider-sm"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <h4>Adres</h4><p>Bağdat Caddesi No: 142<br>Kadıköy / İstanbul</p>
+                    </div>
+                    <div class="info-card">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <h4>Telefon</h4><p>+90 212 555 44 33<br>+90 533 777 88 99</p>
+                    </div>
+                    <div class="info-card">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <h4>Çalışma Saatleri</h4><p>Pazartesi - Cuma<br>09:00 - 02:00<br>Cumartesi - Pazar<br>10:00 - 03:00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        menuToggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            if (menuOverlay.classList.contains('active')) {
-                closeMenu();
-            } else {
-                openMenu();
+        <footer class="cafe-footer">
+            <p class="footer-brand">Amor & Fortune</p>
+            <p class="footer-info">© 2025 • Lüks Kafe Deneyimi • Tüm Hakları Saklıdır</p>
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const menuOverlay = document.getElementById('menuOverlay');
+            const menuPanel = document.getElementById('menuPanel');
+
+            function openMenu() {
+                menuOverlay.classList.add('active');
+                menuToggle.classList.add('active');
+                document.body.classList.add('no-scroll');
             }
-        });
-
-        menuOverlay.addEventListener('click', function(e) {
-            if (e.target === menuOverlay) {
-                closeMenu();
+            function closeMenu() {
+                menuOverlay.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.classList.remove('no-scroll');
             }
-        });
-
-        // Menü linklerine tıklayınca kapat
-        menuPanel.querySelectorAll('[data-close]').forEach(link => {
-            link.addEventListener('click', function() {
-                closeMenu();
+            menuToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                menuOverlay.classList.contains('active') ? closeMenu() : openMenu();
             });
-        });
-
-        // Escape tuşu
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && menuOverlay.classList.contains('active')) {
-                closeMenu();
-            }
-        });
-
-        // Video yüklendiğinde poster'ı gizle (opsiyonel, yumuşak geçiş)
-        const heroVideo = document.getElementById('heroVideo');
-        if (heroVideo) {
-            heroVideo.addEventListener('loadeddata', function() {
-                heroVideo.classList.add('loaded');
+            menuOverlay.addEventListener('click', function(e) {
+                if (e.target === menuOverlay) closeMenu();
             });
-            // Video zaten yeterince yüklenmişse (cache'den) hemen kontrol et
-            if (heroVideo.readyState >= 3) {
-                heroVideo.classList.add('loaded');
-            }
-            // Video oynatma hatasında poster görünür kalır, ek işlem gerekmez
-            heroVideo.addEventListener('error', function() {
-                // Video yüklenemezse poster-fallback zaten görünür durumda kalır
-                console.warn('Video yüklenemedi, poster görseli gösteriliyor.');
+            menuPanel.querySelectorAll('[data-close]').forEach(link => {
+                link.addEventListener('click', () => closeMenu());
             });
-        }
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && menuOverlay.classList.contains('active')) closeMenu();
+            });
 
-        // Scroll reveal (Intersection Observer)
-        const revealElements = document.querySelectorAll('.reveal');
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px 0px -60px 0px',
-            threshold: 0.15
-        };
+            const heroVideo = document.getElementById('heroVideo');
+            if (heroVideo) {
+                heroVideo.addEventListener('loadeddata', () => heroVideo.classList.add('loaded'));
+                if (heroVideo.readyState >= 3) heroVideo.classList.add('loaded');
+                heroVideo.addEventListener('error', () => console.warn('Video yüklenemedi.'));
+            }
 
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    revealObserver.unobserve(entry.target);
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { root: null, rootMargin: '0px 0px -60px 0px', threshold: 0.15 });
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            document.querySelector('.scroll-indicator')?.addEventListener('click', function() {
+                document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // ==================== CUSTOM SELECT ====================
+            const wrapper = document.getElementById('customSelectWrapper');
+            const trigger = document.getElementById('customSelectTrigger');
+            const optionsContainer = document.getElementById('customSelectOptions');
+            const options = optionsContainer.querySelectorAll('.custom-option');
+            const hiddenInput = document.getElementById('feedbackTypeHidden');
+            const selectedText = document.getElementById('selectedText');
+            const selectedIcon = document.getElementById('selectedIcon');
+
+            function toggleSelect(e) {
+                e.stopPropagation();
+                wrapper.classList.toggle('open');
+            }
+            trigger.addEventListener('click', toggleSelect);
+            trigger.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                toggleSelect(e);
+            });
+
+            options.forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const value = this.getAttribute('data-value');
+                    const iconType = this.getAttribute('data-icon');
+                    const text = this.querySelector('span').textContent;
+                    const iconSvg = this.querySelector('svg').outerHTML;
+
+                    hiddenInput.value = value;
+                    selectedText.textContent = text;
+                    selectedText.classList.add('has-value');
+                    selectedIcon.style.display = 'block';
+                    selectedIcon.outerHTML = iconSvg;
+                    // Yeni icon elementini tekrar yakala
+                    document.getElementById('selectedIcon').style.display = 'block';
+
+                    options.forEach(o => o.classList.remove('selected'));
+                    this.classList.add('selected');
+                    wrapper.classList.remove('open');
+                });
+                option.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    this.click();
+                });
+            });
+
+            // Dışarı tıklayınca kapat
+            document.addEventListener('click', function(e) {
+                if (!wrapper.contains(e.target)) {
+                    wrapper.classList.remove('open');
                 }
             });
-        }, observerOptions);
+            document.addEventListener('touchend', function(e) {
+                if (!wrapper.contains(e.target)) {
+                    wrapper.classList.remove('open');
+                }
+            });
 
-        revealElements.forEach(el => revealObserver.observe(el));
+            // ==================== TELEFON FORMATLAMA ====================
+            const contactInput = document.getElementById('feedbackContact');
 
-        // Hero'daki scroll indicator tıklaması
-        document.querySelector('.scroll-indicator')?.addEventListener('click', function() {
-            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
-        });
+            function formatPhone(value) {
+                // Sadece rakamları al
+                let digits = value.replace(/\D/g, '');
+                // Başında 0 yoksa ve ilk karakter olarak varsa ekle
+                if (digits.length > 0 && digits[0] !== '0') {
+                    digits = '0' + digits;
+                }
+                // Maksimum 11 hane
+                digits = digits.slice(0, 11);
+                // Formatla: 0XXX XXX XXXX
+                let formatted = '';
+                if (digits.length > 0) {
+                    formatted += digits.slice(0, 4);
+                }
+                if (digits.length > 4) {
+                    formatted += ' ' + digits.slice(4, 7);
+                }
+                if (digits.length > 7) {
+                    formatted += ' ' + digits.slice(7, 11);
+                }
+                return formatted;
+            }
 
-        // Sayfa yüklendiğinde en üste
-        window.addEventListener('load', function() {
-            window.scrollTo({ top: 0, behavior: 'instant' });
-        });
-    })();
-</script>
+            function handleContactInput(e) {
+                const value = contactInput.value;
+                // Eğer @ işareti varsa e-posta modu, formatlama yapma
+                if (value.includes('@')) {
+                    // E-posta modu: hiçbir şey yapma, normal bırak
+                    contactInput.setAttribute('data-mode', 'email');
+                    return;
+                }
+                contactInput.setAttribute('data-mode', 'phone');
+
+                const cursorPos = contactInput.selectionStart;
+                const oldLength = value.length;
+                const formatted = formatPhone(value);
+                contactInput.value = formatted;
+
+                // Cursor pozisyonunu koru
+                const newLength = formatted.length;
+                const diff = newLength - oldLength;
+                let newCursorPos = cursorPos + diff;
+                // Boşluk eklendiyse cursor'ı bir ileri al
+                if (diff > 0 && formatted[cursorPos - 1] === ' ') {
+                    newCursorPos = Math.min(newCursorPos + 1, newLength);
+                }
+                contactInput.setSelectionRange(newCursorPos, newCursorPos);
+            }
+
+            function handleKeyDown(e) {
+                const mode = contactInput.getAttribute('data-mode') || 'phone';
+                if (mode === 'email') return; // E-posta modunda müdahale etme
+
+                // Sadece rakam, backspace, delete, ok tuşları, tab, home, end
+                const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Tab', 'Home', 'End', 'Control', 'Alt', 'Shift', 'Meta'];
+                if (allowedKeys.includes(e.key)) return;
+
+                // Sadece rakam girişine izin ver
+                if (!/^\d$/.test(e.key)) {
+                    e.preventDefault();
+                    return;
+                }
+
+                // Maksimum 11 rakam kontrolü
+                const digits = contactInput.value.replace(/\D/g, '');
+                if (digits.length >= 11) {
+                    e.preventDefault();
+                }
+            }
+
+            contactInput.addEventListener('input', handleContactInput);
+            contactInput.addEventListener('keydown', handleKeyDown);
+            // Paste olayı
+            contactInput.addEventListener('paste', function(e) {
+                const mode = contactInput.getAttribute('data-mode') || 'phone';
+                if (mode === 'email') return;
+                e.preventDefault();
+                const pasted = (e.clipboardData || window.clipboardData).getData('text');
+                const digits = pasted.replace(/\D/g, '');
+                const currentDigits = contactInput.value.replace(/\D/g, '');
+                let combined = currentDigits + digits;
+                if (combined.length > 0 && combined[0] !== '0') {
+                    combined = '0' + combined;
+                }
+                combined = combined.slice(0, 11);
+                contactInput.value = formatPhone(combined);
+            });
+
+            // ==================== FORM GÖNDERİMİ ====================
+            const feedbackForm = document.getElementById('feedbackForm');
+            const formSuccessMessage = document.getElementById('formSuccessMessage');
+
+            if (feedbackForm) {
+                feedbackForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const formData = new FormData(feedbackForm);
+                    const data = {};
+                    formData.forEach((value, key) => { data[key] = value; });
+                    console.log('Form verileri:', data);
+                    feedbackForm.style.display = 'none';
+                    formSuccessMessage.classList.add('visible');
+                });
+            }
+
+            window.addEventListener('load', function() {
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            });
+        })();
+    </script>
 </body>
 </html>
