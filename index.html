@@ -1439,7 +1439,7 @@
                         </div>
                         <div class="form-group">
                             <label for="feedbackMessage">Mesajınız</label>
-                            <textarea id="feedbackMessage" name="message" class="form-textarea" placeholder="Düşüncelerinizi buraya yazın..." required></textarea>
+                            <textarea id="feedbackMessage" name="message" class="form-textarea" placeholder="Düşüncelerinizi buraya yazın... (en fazla 1000 karakter)" required maxlength="1000"></textarea>
                         </div>
                         <input type="hidden" name="_subject" value="Amor & Fortune - Yeni Mesaj">
                         <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off">
@@ -1487,221 +1487,256 @@
     </div>
 
     <script>
-        (function() {
-            const menuToggle = document.getElementById('menuToggle');
-            const menuOverlay = document.getElementById('menuOverlay');
-            const menuPanel = document.getElementById('menuPanel');
+    (function() {
+        const menuToggle = document.getElementById('menuToggle');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const menuPanel = document.getElementById('menuPanel');
 
-            function openMenu() {
-                menuOverlay.classList.add('active');
-                menuToggle.classList.add('active');
-                document.body.classList.add('no-scroll');
-            }
-            function closeMenu() {
-                menuOverlay.classList.remove('active');
-                menuToggle.classList.remove('active');
-                document.body.classList.remove('no-scroll');
-            }
-            menuToggle.addEventListener('click', function(e) {
+        function openMenu() {
+            menuOverlay.classList.add('active');
+            menuToggle.classList.add('active');
+            document.body.classList.add('no-scroll');
+        }
+        function closeMenu() {
+            menuOverlay.classList.remove('active');
+            menuToggle.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            menuOverlay.classList.contains('active') ? closeMenu() : openMenu();
+        });
+        menuOverlay.addEventListener('click', function(e) {
+            if (e.target === menuOverlay) closeMenu();
+        });
+        menuPanel.querySelectorAll('[data-close]').forEach(link => {
+            link.addEventListener('click', () => closeMenu());
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && menuOverlay.classList.contains('active')) closeMenu();
+        });
+
+        const heroVideo = document.getElementById('heroVideo');
+        if (heroVideo) {
+            heroVideo.addEventListener('loadeddata', () => heroVideo.classList.add('loaded'));
+            if (heroVideo.readyState >= 3) heroVideo.classList.add('loaded');
+            heroVideo.addEventListener('error', () => console.warn('Video yüklenemedi.'));
+        }
+
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { root: null, rootMargin: '0px 0px -60px 0px', threshold: 0.15 });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        document.querySelector('.scroll-indicator')?.addEventListener('click', function() {
+            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // ==================== CUSTOM SELECT ====================
+        const wrapper = document.getElementById('customSelectWrapper');
+        const trigger = document.getElementById('customSelectTrigger');
+        const optionsContainer = document.getElementById('customSelectOptions');
+        const options = optionsContainer.querySelectorAll('.custom-option');
+        const hiddenInput = document.getElementById('feedbackTypeHidden');
+        const selectedText = document.getElementById('selectedText');
+        const iconContainer = trigger.querySelector('.icon-container');
+        const iconAydinlatma = iconContainer.querySelector('.icon-aydinlatma');
+        const iconUyari = iconContainer.querySelector('.icon-uyari');
+        const iconMesaj = iconContainer.querySelector('.icon-mesaj');
+
+        function setActiveIcon(iconType) {
+            iconAydinlatma.classList.remove('active');
+            iconUyari.classList.remove('active');
+            iconMesaj.classList.remove('active');
+            if (iconType === 'aydinlatma') iconAydinlatma.classList.add('active');
+            else if (iconType === 'uyari') iconUyari.classList.add('active');
+            else if (iconType === 'mesaj') iconMesaj.classList.add('active');
+        }
+
+        function toggleSelect(e) {
+            e.stopPropagation();
+            wrapper.classList.toggle('open');
+        }
+
+        trigger.addEventListener('click', toggleSelect);
+        trigger.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            toggleSelect(e);
+        });
+
+        options.forEach(option => {
+            option.addEventListener('click', function(e) {
                 e.stopPropagation();
-                menuOverlay.classList.contains('active') ? closeMenu() : openMenu();
+                const value = this.getAttribute('data-value');
+                const iconType = this.getAttribute('data-icon');
+                const text = this.querySelector('span').textContent;
+
+                hiddenInput.value = value;
+                selectedText.textContent = text;
+                selectedText.classList.add('has-value');
+                setActiveIcon(iconType);
+
+                options.forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+                wrapper.classList.remove('open');
             });
-            menuOverlay.addEventListener('click', function(e) {
-                if (e.target === menuOverlay) closeMenu();
-            });
-            menuPanel.querySelectorAll('[data-close]').forEach(link => {
-                link.addEventListener('click', () => closeMenu());
-            });
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && menuOverlay.classList.contains('active')) closeMenu();
-            });
-
-            const heroVideo = document.getElementById('heroVideo');
-            if (heroVideo) {
-                heroVideo.addEventListener('loadeddata', () => heroVideo.classList.add('loaded'));
-                if (heroVideo.readyState >= 3) heroVideo.classList.add('loaded');
-                heroVideo.addEventListener('error', () => console.warn('Video yüklenemedi.'));
-            }
-
-            const revealElements = document.querySelectorAll('.reveal');
-            const revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        revealObserver.unobserve(entry.target);
-                    }
-                });
-            }, { root: null, rootMargin: '0px 0px -60px 0px', threshold: 0.15 });
-            revealElements.forEach(el => revealObserver.observe(el));
-
-            document.querySelector('.scroll-indicator')?.addEventListener('click', function() {
-                document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
-            });
-
-            // ==================== CUSTOM SELECT (DÜZELTİLMİŞ) ====================
-            const wrapper = document.getElementById('customSelectWrapper');
-            const trigger = document.getElementById('customSelectTrigger');
-            const optionsContainer = document.getElementById('customSelectOptions');
-            const options = optionsContainer.querySelectorAll('.custom-option');
-            const hiddenInput = document.getElementById('feedbackTypeHidden');
-            const selectedText = document.getElementById('selectedText');
-            const iconContainer = trigger.querySelector('.icon-container');
-            const iconAydinlatma = iconContainer.querySelector('.icon-aydinlatma');
-            const iconUyari = iconContainer.querySelector('.icon-uyari');
-            const iconMesaj = iconContainer.querySelector('.icon-mesaj');
-
-            function setActiveIcon(iconType) {
-                // Tüm ikonları gizle
-                iconAydinlatma.classList.remove('active');
-                iconUyari.classList.remove('active');
-                iconMesaj.classList.remove('active');
-                // Seçili ikonu göster
-                if (iconType === 'aydinlatma') iconAydinlatma.classList.add('active');
-                else if (iconType === 'uyari') iconUyari.classList.add('active');
-                else if (iconType === 'mesaj') iconMesaj.classList.add('active');
-            }
-
-            function toggleSelect(e) {
-                e.stopPropagation();
-                wrapper.classList.toggle('open');
-            }
-
-            trigger.addEventListener('click', toggleSelect);
-            // Mobil dokunma için ayrıca touchstart kullan, ama click ile çakışmasın
-            trigger.addEventListener('touchend', function(e) {
+            option.addEventListener('touchend', function(e) {
                 e.preventDefault();
-                toggleSelect(e);
+                this.click();
             });
+        });
 
-            options.forEach(option => {
-                option.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const value = this.getAttribute('data-value');
-                    const iconType = this.getAttribute('data-icon');
-                    const text = this.querySelector('span').textContent;
+        document.addEventListener('click', function(e) {
+            if (!wrapper.contains(e.target)) {
+                wrapper.classList.remove('open');
+            }
+        });
+        document.addEventListener('touchend', function(e) {
+            if (!wrapper.contains(e.target)) {
+                wrapper.classList.remove('open');
+            }
+        });
 
-                    hiddenInput.value = value;
-                    selectedText.textContent = text;
-                    selectedText.classList.add('has-value');
-                    setActiveIcon(iconType);
+        // ==================== TELEFON / E-POSTA (AKILLI ALGILAMA) ====================
+        const contactInput = document.getElementById('feedbackContact');
 
-                    options.forEach(o => o.classList.remove('selected'));
-                    this.classList.add('selected');
-                    wrapper.classList.remove('open');
-                });
-                // Mobil uyumlu dokunma
-                option.addEventListener('touchend', function(e) {
-                    e.preventDefault();
-                    this.click();
-                });
-            });
+        function formatPhone(value) {
+            let digits = value.replace(/\D/g, '');
+            if (digits.length > 0 && digits[0] !== '0') {
+                digits = '0' + digits;
+            }
+            digits = digits.slice(0, 11);
+            let formatted = '';
+            if (digits.length > 0) {
+                formatted += digits.slice(0, 4);
+            }
+            if (digits.length > 4) {
+                formatted += ' ' + digits.slice(4, 7);
+            }
+            if (digits.length > 7) {
+                formatted += ' ' + digits.slice(7, 11);
+            }
+            return formatted;
+        }
 
-            // Dışarı tıklayınca kapat
-            document.addEventListener('click', function(e) {
-                if (!wrapper.contains(e.target)) {
-                    wrapper.classList.remove('open');
-                }
-            });
-            document.addEventListener('touchend', function(e) {
-                if (!wrapper.contains(e.target)) {
-                    wrapper.classList.remove('open');
-                }
-            });
+        // Algılama: içinde harf veya @ varsa e-posta modu, aksi halde telefon
+        function detectMode(value) {
+            // İçinde harf veya @ varsa e-posta moduna geç
+            if (/[a-zA-Z@]/i.test(value)) {
+                return 'email';
+            }
+            // Sadece rakam/boşluk varsa telefon modu
+            return 'phone';
+        }
 
-            // ==================== TELEFON FORMATLAMA ====================
-            const contactInput = document.getElementById('feedbackContact');
+        function handleContactInput(e) {
+            const value = contactInput.value;
+            const mode = detectMode(value);
+            contactInput.setAttribute('data-mode', mode);
+            if (mode === 'email') {
+                // E-posta modunda formatlama yapma, direkt bırak
+                return;
+            }
+            // Telefon modunda formatla
+            const cursorPos = contactInput.selectionStart;
+            const oldLength = value.length;
+            const formatted = formatPhone(value);
+            contactInput.value = formatted;
+            const newLength = formatted.length;
+            const diff = newLength - oldLength;
+            let newCursorPos = cursorPos + diff;
+            if (diff > 0 && formatted[cursorPos - 1] === ' ') {
+                newCursorPos = Math.min(newCursorPos + 1, newLength);
+            }
+            contactInput.setSelectionRange(newCursorPos, newCursorPos);
+        }
 
-            function formatPhone(value) {
-                let digits = value.replace(/\D/g, '');
-                if (digits.length > 0 && digits[0] !== '0') {
-                    digits = '0' + digits;
+        function handleKeyDown(e) {
+            const mode = contactInput.getAttribute('data-mode') || 'phone';
+            // E-posta modunda tüm karakterlere izin ver
+            if (mode === 'email') return;
+
+            const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Tab', 'Home', 'End', 'Control', 'Alt', 'Shift', 'Meta'];
+            if (allowedKeys.includes(e.key)) return;
+
+            // Telefon modundayken: sadece rakam, ilk karakter olarak harf gelirse e-postaya geç
+            if (!/^\d$/.test(e.key)) {
+                // Kullanıcı ilk kez bir harf yazıyorsa e-posta moduna geç
+                // Burada sayısal olmayan harf ise otomatik geçiş yap
+                if (/^[a-zA-Z@]$/.test(e.key)) {
+                    // Bir sonraki input olayında mode değişecek, şimdilik izin ver
+                    // Ancak keyDown'da engellemiyoruz, input event mode'u değiştirecek
+                    // Ama biz şimdiden izin verelim, çünkü input'a yansıması gerek
+                    return;
                 }
-                digits = digits.slice(0, 11);
-                let formatted = '';
-                if (digits.length > 0) {
-                    formatted += digits.slice(0, 4);
-                }
-                if (digits.length > 4) {
-                    formatted += ' ' + digits.slice(4, 7);
-                }
-                if (digits.length > 7) {
-                    formatted += ' ' + digits.slice(7, 11);
-                }
-                return formatted;
+                // Diğer özel karakterleri engelle (isteğe bağlı)
+                e.preventDefault();
+                return;
             }
 
-            function handleContactInput(e) {
+            // Rakam girişi, maksimum 11 hane kontrolü
+            const digits = contactInput.value.replace(/\D/g, '');
+            if (digits.length >= 11) {
+                e.preventDefault();
+            }
+        }
+
+        contactInput.addEventListener('input', handleContactInput);
+        contactInput.addEventListener('keydown', handleKeyDown);
+        contactInput.addEventListener('paste', function(e) {
+            // Paste işleminde önce input'un yeni değerini bekleyelim
+            setTimeout(() => {
                 const value = contactInput.value;
-                if (value.includes('@')) {
-                    contactInput.setAttribute('data-mode', 'email');
-                    return;
+                const mode = detectMode(value);
+                contactInput.setAttribute('data-mode', mode);
+                if (mode === 'phone') {
+                    // Telefon formatlamasını uygula
+                    contactInput.value = formatPhone(value);
                 }
-                contactInput.setAttribute('data-mode', 'phone');
-                const cursorPos = contactInput.selectionStart;
-                const oldLength = value.length;
-                const formatted = formatPhone(value);
-                contactInput.value = formatted;
-                const newLength = formatted.length;
-                const diff = newLength - oldLength;
-                let newCursorPos = cursorPos + diff;
-                if (diff > 0 && formatted[cursorPos - 1] === ' ') {
-                    newCursorPos = Math.min(newCursorPos + 1, newLength);
-                }
-                contactInput.setSelectionRange(newCursorPos, newCursorPos);
-            }
+            }, 0);
+        });
 
-            function handleKeyDown(e) {
-                const mode = contactInput.getAttribute('data-mode') || 'phone';
-                if (mode === 'email') return;
-                const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Tab', 'Home', 'End', 'Control', 'Alt', 'Shift', 'Meta'];
-                if (allowedKeys.includes(e.key)) return;
-                if (!/^\d$/.test(e.key)) {
-                    e.preventDefault();
-                    return;
-                }
-                const digits = contactInput.value.replace(/\D/g, '');
-                if (digits.length >= 11) {
-                    e.preventDefault();
-                }
-            }
+        // ==================== FORM DOĞRULAMA VE GÖNDERİMİ ====================
+        const feedbackForm = document.getElementById('feedbackForm');
+        const formSuccessMessage = document.getElementById('formSuccessMessage');
 
-            contactInput.addEventListener('input', handleContactInput);
-            contactInput.addEventListener('keydown', handleKeyDown);
-            contactInput.addEventListener('paste', function(e) {
-                const mode = contactInput.getAttribute('data-mode') || 'phone';
-                if (mode === 'email') return;
+        function validateForm() {
+            const name = document.getElementById('feedbackName').value.trim();
+            const contact = document.getElementById('feedbackContact').value.trim();
+            const type = hiddenInput.value;
+            const message = document.getElementById('feedbackMessage').value.trim();
+
+            if (!name || !contact || !type || !message) {
+                alert('Lütfen tüm alanları eksiksiz doldurunuz.');
+                return false;
+            }
+            return true;
+        }
+
+        if (feedbackForm) {
+            feedbackForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                const pasted = (e.clipboardData || window.clipboardData).getData('text');
-                const digits = pasted.replace(/\D/g, '');
-                const currentDigits = contactInput.value.replace(/\D/g, '');
-                let combined = currentDigits + digits;
-                if (combined.length > 0 && combined[0] !== '0') {
-                    combined = '0' + combined;
-                }
-                combined = combined.slice(0, 11);
-                contactInput.value = formatPhone(combined);
+                if (!validateForm()) return;
+
+                const formData = new FormData(feedbackForm);
+                const data = {};
+                formData.forEach((value, key) => { data[key] = value; });
+                console.log('Form verileri:', data);
+                feedbackForm.style.display = 'none';
+                formSuccessMessage.classList.add('visible');
             });
+        }
 
-            // ==================== FORM GÖNDERİMİ ====================
-            const feedbackForm = document.getElementById('feedbackForm');
-            const formSuccessMessage = document.getElementById('formSuccessMessage');
-
-            if (feedbackForm) {
-                feedbackForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const formData = new FormData(feedbackForm);
-                    const data = {};
-                    formData.forEach((value, key) => { data[key] = value; });
-                    console.log('Form verileri:', data);
-                    feedbackForm.style.display = 'none';
-                    formSuccessMessage.classList.add('visible');
-                });
-            }
-
-            window.addEventListener('load', function() {
-                window.scrollTo({ top: 0, behavior: 'instant' });
-            });
-        })();
+        window.addEventListener('load', function() {
+            window.scrollTo({ top: 0, behavior: 'instant' });
+        });
+    })();
     </script>
 </body>
 </html>
